@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/productTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Products"
+                android:textColor="@color/black"
+                android:textSize="@dimen/titleTextSize"
+                style="@style/TextViewStyle"
+                android:layout_marginTop="@dimen/titleMarginTop"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/productIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:adjustViewBounds="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/productTV" />
+
+            <LinearLayout
+                android:id="@+id/rattingLL"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_50"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/productIV">
+
+                <TextView
+                    android:id="@+id/priceTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="$29.21"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_20"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTV" />
+
+                <include
+                    android:id="@+id/rattingV"
+                    layout="@layout/ratting_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/colorRV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/rattingLL" />
+
+            <LinearLayout
+                android:id="@+id/addToCartLL"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/colorRV">
+
+                <ImageView
+                    android:id="@+id/minusIV"
+                    android:layout_width="@dimen/_25"
+                    android:layout_height="@dimen/_25"
+                    android:padding="@dimen/_6"
+                    android:src="@drawable/ic_minus" />
+
+                <TextView
+                    android:id="@+id/noTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15"
+                    android:layout_marginEnd="@dimen/_15"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/plusIV"
+                    android:layout_width="@dimen/_25"
+                    android:layout_height="@dimen/_25"
+                    android:padding="@dimen/_6"
+                    android:src="@drawable/ic_plus" />
+
+                <Button
+                    android:id="@+id/cartBt"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp"
+                    android:layout_marginStart="40dp"
+                    android:backgroundTint="@color/red"
+                    android:text="@string/add_to_cart"
+                    android:textAllCaps="false"
+                    style="@style/TextViewStyle"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/productHeightLightsTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:text="Product Highlights"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_20"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/addToCartLL" />
+
+            <TextView
+                android:id="@+id/descTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="The Sauce Labs Backpack is the best of all worlds - infinite capacity and endless style. Fits in comfortably a laptop up to 15 inch. Never leave a thing behind and forget you have your world on your shoulders."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/productHeightLightsTV" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_20"
+                app:layout_constraintTop_toBottomOf="@+id/descTV"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

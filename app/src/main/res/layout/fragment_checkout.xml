@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.CheckoutFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/checkoutSV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/paymentCV">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/enterPaymentTitleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/checkout"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            style="@style/TextViewStyle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/enterPaymentMethodTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/enter_a_payment_method"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            style="@style/TextViewStyle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/enterPaymentTitleTV" />
+
+        <TextView
+            android:id="@+id/paymentDetailsTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/enterPaymentMethodTV"
+            android:layout_marginTop="15dp"
+            android:paddingEnd="24dp"
+            android:textColor="@color/black"
+            android:text="@string/payment_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/cardTV"
+            android:text="@string/card"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            style="@style/TextViewStyle"
+            android:layout_marginTop="30dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/visaIV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/paymentDetailsTV"/>
+
+        <ImageView
+            android:id="@+id/mastercardIV"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/mastercard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/visaIV"
+            app:layout_constraintBottom_toBottomOf="@id/visaIV"
+            />
+
+        <ImageView
+            android:id="@+id/visaIV"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/visa"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/mastercardIV"
+            app:layout_constraintTop_toTopOf="@id/cardTV"
+            app:layout_constraintBottom_toBottomOf="@id/cardTV"
+            />
+
+        <View
+            android:id="@+id/itemV"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/visaIV" />
+
+        <TextView
+            android:id="@+id/nameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/fullname"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            style="@style/TextViewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/itemV" />
+
+        <RelativeLayout
+            android:id="@+id/nameRL"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_bg_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameTV">
+
+            <EditText
+                android:id="@+id/nameET"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:gravity="center_vertical"
+                android:hint="Rebecca Winter"
+                android:inputType="text"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/nameErrorIV"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/alert"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/nameErrorTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/value_looks_invalid"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameRL" />
+
+        <TextView
+            android:id="@+id/cardNumberTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/card_number"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            style="@style/TextViewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameErrorTV" />
+
+        <RelativeLayout
+            android:id="@+id/cardNumberRL"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/edit_bg_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberTV">
+
+<!--            <EditText-->
+<!--                android:id="@+id/cardNumberET"-->
+<!--                style="@style/editTextStyle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:cursorVisible="true"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:hint="3258 1256 7568 7891"-->
+<!--                android:maxLength="19"-->
+<!--                android:inputType="number"-->
+<!--                android:textColor="@color/black" />-->
+
+            <com.uphyca.creditcardedittext.CreditCardNumberEditText
+                android:id="@+id/cardNumberET"
+                android:hint="3258 1256 7568 7891"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColor="@color/black"/>
+
+            <ImageView
+                android:id="@+id/cardNumberErrorIV"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="2dp"
+                android:src="@drawable/alert"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/cardNumberErrorTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/value_looks_invalid"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberRL" />
+
+        <TextView
+            android:id="@+id/expirationDateTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/expiration_date"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            style="@style/TextViewStyle"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/securityCodeTV"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberErrorTV" />
+
+        <RelativeLayout
+            android:id="@+id/expirationDateRL"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/edit_bg_grey"
+            app:layout_constraintEnd_toEndOf="@id/expirationDateTV"
+            app:layout_constraintStart_toStartOf="@id/expirationDateTV"
+            app:layout_constraintTop_toBottomOf="@id/expirationDateTV">
+
+<!--            <EditText-->
+<!--                android:id="@+id/expirationDateET"-->
+<!--                style="@style/editTextStyle"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:cursorVisible="true"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:maxLength="5"-->
+<!--                android:hint="03/25"-->
+<!--                android:inputType="date"-->
+<!--                android:textColor="@color/black" />-->
+
+            <com.uphyca.creditcardedittext.CreditCardDateEditText
+                android:id="@+id/expirationDateET"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="03/25"
+                style="@style/editTextStyle"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/expirationDateIV"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/alert"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/expirationDateErrorTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/value_looks_invalid"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@id/expirationDateRL"
+            app:layout_constraintStart_toStartOf="@id/expirationDateRL"
+            app:layout_constraintTop_toBottomOf="@id/expirationDateRL" />
+
+        <TextView
+            android:id="@+id/securityCodeTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/security_code"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            style="@style/TextViewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/expirationDateTV"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberErrorTV" />
+
+        <ImageView
+            android:id="@+id/questionIV"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/question"
+            android:tooltipText="@string/security_code_tip"
+            app:layout_constraintEnd_toEndOf="@id/securityCodeTV"
+            app:layout_constraintTop_toTopOf="@id/securityCodeTV"
+            app:layout_constraintBottom_toBottomOf="@id/securityCodeTV"
+            />
+
+        <RelativeLayout
+            android:id="@+id/securityCodeRL"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_bg_grey"
+            app:layout_constraintEnd_toEndOf="@id/securityCodeTV"
+            app:layout_constraintStart_toStartOf="@id/securityCodeTV"
+            app:layout_constraintTop_toBottomOf="@id/securityCodeTV">
+
+            <EditText
+                android:id="@+id/securityCodeET"
+                style="@style/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cursorVisible="true"
+                android:gravity="center_vertical"
+                android:hint="123"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/securityCodeIV"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/alert"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/securityCodeErrorTV"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/value_looks_invalid"
+            android:textColor="@color/red"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@id/securityCodeRL"
+            app:layout_constraintStart_toStartOf="@id/securityCodeRL"
+            app:layout_constraintTop_toBottomOf="@id/securityCodeRL" />
+
+        <CheckBox
+            android:id="@+id/billingAddressCB"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/securityCodeErrorTV"
+            android:text="@string/billing_address_same"
+            android:checked="true"
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/checkoutInfoCL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/billingAddressCB">
+
+            <TextView
+                android:id="@+id/fullNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/fullname"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/fullNameRL"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullNameTV">
+
+                <EditText
+                    android:id="@+id/fullNameET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="Rebecca Winter"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/fullNameErrorIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/fullNameErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide your full name."
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullNameRL" />
+
+            <TextView
+                android:id="@+id/address1TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/address_line_1"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fullNameErrorTV" />
+
+            <RelativeLayout
+                android:id="@+id/address1RL"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address1TV">
+
+                <EditText
+                    android:id="@+id/address1ET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="Mandorley 112"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/address1ErrorIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/address1ErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide your address."
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address1RL" />
+
+            <TextView
+                android:id="@+id/address2TV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/address_line_2"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                style="@style/TextViewStyle"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address1ErrorTV" />
+
+            <RelativeLayout
+                android:id="@+id/address2RL"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address2TV">
+
+                <EditText
+                    android:id="@+id/address2ET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="Entrance 1"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/address2ErrorIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/address2ErrorTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text=""
+                style="@style/TextViewStyle"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address2RL" />
+
+            <TextView
+                android:id="@+id/cityTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/city"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toStartOf="@id/stateTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/address2ErrorTV" />
+
+            <RelativeLayout
+                android:id="@+id/cityRL"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="@id/cityTV"
+                app:layout_constraintStart_toStartOf="@id/cityTV"
+                app:layout_constraintTop_toBottomOf="@id/cityTV">
+
+                <EditText
+                    android:id="@+id/cityET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="Truro"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/cityIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/cityErrorTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide your city."
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@id/cityRL"
+                app:layout_constraintStart_toStartOf="@id/cityRL"
+                app:layout_constraintTop_toBottomOf="@id/cityRL" />
+
+            <TextView
+                android:id="@+id/stateTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/state_region"
+                android:textColor="@color/black"
+                style="@style/TextViewStyle"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cityTV"
+                app:layout_constraintTop_toBottomOf="@id/address2ErrorTV" />
+
+
+            <RelativeLayout
+                android:id="@+id/stateRL"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="@id/stateTV"
+                app:layout_constraintStart_toStartOf="@id/stateTV"
+                app:layout_constraintTop_toBottomOf="@id/stateTV">
+
+                <EditText
+                    android:id="@+id/stateET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="Cornwall"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/stateIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/stateErrorTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text=""
+                android:textColor="@color/red"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@id/stateRL"
+                app:layout_constraintStart_toStartOf="@id/stateRL"
+                app:layout_constraintTop_toBottomOf="@id/stateRL" />
+
+            <TextView
+                android:id="@+id/zipTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/zip_code"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toStartOf="@id/stateTV"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cityErrorTV" />
+
+
+            <RelativeLayout
+                android:id="@+id/zipRL"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="@id/zipTV"
+                app:layout_constraintStart_toStartOf="@id/zipTV"
+                app:layout_constraintTop_toBottomOf="@id/zipTV">
+
+                <EditText
+                    android:id="@+id/zipET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="89750"
+                    android:inputType="number"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/zipIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/zipErrorTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide your zip"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toEndOf="@id/cityRL"
+                app:layout_constraintStart_toStartOf="@id/cityRL"
+                app:layout_constraintTop_toBottomOf="@id/zipRL" />
+
+            <TextView
+                android:id="@+id/countryTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/country"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                style="@style/TextViewStyle"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cityTV"
+                app:layout_constraintTop_toBottomOf="@id/stateErrorTV" />
+
+            <RelativeLayout
+                android:id="@+id/countryRL"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/edit_bg_grey"
+                app:layout_constraintEnd_toEndOf="@id/countryTV"
+                app:layout_constraintStart_toStartOf="@id/countryTV"
+                app:layout_constraintTop_toBottomOf="@id/countryTV">
+
+                <EditText
+                    android:id="@+id/countryET"
+                    style="@style/editTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:cursorVisible="true"
+                    android:gravity="center_vertical"
+                    android:hint="United Kingdom"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/countryIV"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12dp"
+                    android:src="@drawable/alert"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/countryErrorTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Please provide your"
+                android:textColor="@color/red"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@id/countryRL"
+                app:layout_constraintStart_toStartOf="@id/countryRL"
+                app:layout_constraintTop_toBottomOf="@id/countryRL" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/paymentCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="@color/white">
+
+        <android.widget.Button
+            android:id="@+id/paymentBtn"
+            android:text="@string/review_order"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:layout_margin="15dp"
+            style="@style/TextViewStyle"
+            android:background="@drawable/login_button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

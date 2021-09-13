@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/completeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Checkout Complete"
+                style="@style/TextViewStyle"
+                android:textStyle="bold"
+                android:textSize="@dimen/_22"
+                android:layout_marginTop="60dp"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline" />
+
+
+            <TextView
+                android:id="@+id/thankYouTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thank you for your order"
+                android:textColor="@color/black"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/completeTV"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline" />
+
+            <TextView
+                android:id="@+id/swagTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your new swag is on its way"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_16"
+                style="@style/TextViewStyle"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@+id/thankYouTV"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline" />
+
+
+            <TextView
+                android:id="@+id/orderTV"
+                android:layout_width="@dimen/_0"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Your order has been dispatched and will arrive as fast as the pony gallops!"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16"
+                android:layout_marginTop="@dimen/_15"
+                app:layout_constraintTop_toBottomOf="@+id/swagTV"
+                app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+                app:layout_constraintStart_toStartOf="@id/leftGuideline" />
+
+            <ImageView
+                android:id="@+id/horseIV"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/orderTV"
+                android:src="@drawable/ic_horse"/>
+
+            <Button
+                android:id="@+id/shoopingBt"
+                android:layout_width="wrap_content"
+                android:layout_height="58dp"
+                android:backgroundTint="@color/red"
+                android:layout_marginTop="@dimen/_20"
+                android:text="@string/continue_shopping"
+                android:paddingStart="@dimen/_20"
+                android:paddingEnd="@dimen/_20"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horseIV" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

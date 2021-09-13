@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_15">
+
+        <ImageView
+            android:id="@+id/aroundIV"
+            android:layout_width="@dimen/_35"
+            android:layout_height="@dimen/_35"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_red_circle_side"/>
+
+        <ImageView
+            android:id="@+id/colorIV"
+            android:layout_width="@dimen/_25"
+            android:layout_height="@dimen/_25"
+            android:src="@drawable/ic_red_circle"
+            app:layout_constraintTop_toTopOf="@+id/aroundIV"
+            app:layout_constraintEnd_toEndOf="@+id/aroundIV"
+            app:layout_constraintBottom_toBottomOf="@+id/aroundIV"
+            app:layout_constraintStart_toStartOf="@+id/aroundIV"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

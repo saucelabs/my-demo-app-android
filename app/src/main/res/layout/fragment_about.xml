@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.AboutFragment">
+
+    <TextView
+        android:id="@+id/aboutTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about"
+        style="@style/TextViewStyle"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/titleIV"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_splash_logo"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="40dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTV" />
+
+    <TextView
+        android:id="@+id/versionTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/version_1"
+        android:textColor="@color/black"
+        android:gravity="center"
+        style="@style/TextViewStyle"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleIV" />
+
+    <ImageView
+        android:id="@+id/teamIV"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_splash_logo"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="20dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/versionTV"/>
+
+    <TextView
+        android:id="@+id/webTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/go_to_website"
+        style="@style/TextViewStyle"
+        android:textColor="@drawable/about_drawable"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/teamIV" />
+
+    <ImageView
+        android:id="@+id/characterIV"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:src="@drawable/bot_graphic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webTV"
+        android:layout_marginTop="50dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

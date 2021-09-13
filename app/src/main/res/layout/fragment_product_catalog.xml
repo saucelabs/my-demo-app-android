@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/productTV"
+            style="@style/TextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8"
+            android:layout_marginTop="@dimen/titleMarginTop"
+            android:text="@string/products"
+            android:textColor="@color/black"
+            android:textSize="@dimen/titleTextSize"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="@dimen/_0"
+            android:layout_height="@dimen/_0"
+            android:layout_marginTop="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintTop_toBottomOf="@+id/productTV">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productRV"
+                    android:layout_width="@dimen/_0"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/socialLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/productRV">
+
+
+                    <ImageView
+                        android:layout_width="@dimen/_20"
+                        android:layout_height="@dimen/_20"
+                        android:src="@drawable/ic_twitter" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_20"
+                        android:layout_height="@dimen/_20"
+                        android:layout_marginStart="@dimen/_10"
+                        android:src="@drawable/ic_fb" />
+
+                    <ImageView
+                        android:layout_width="@dimen/_20"
+                        android:layout_height="@dimen/_20"
+                        android:layout_marginStart="@dimen/_10"
+                        android:src="@drawable/ic_in" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_20"
+                        android:layout_marginEnd="@dimen/_10"
+                        android:text="@string/sauce_labs_all_rights_reserved_terms_of_service_privacy_policy"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="@dimen/_10" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_20"
+                    app:layout_constraintTop_toBottomOf="@+id/socialLL" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/leftGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="12dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/rightGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="12dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

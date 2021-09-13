@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorAccent">@color/red_</color>
+
+    <color name="defaultColor">#5d5089</color>
+    <color name="defaultLightColor">#c0aeee</color>
+    <color name="colorGrey">#F6F6F6</color>
+    <color name="app_orange_color">#e58574</color>
+    <color name="light_orange_color">#f8f0e9</color>
+    <color name="light_grey_color">#f3f1ee</color>
+    <color name="cardView_bg_color">#428c8f</color>
+    <color name="default_micro_light">#f7f6f9</color>
+    <color name="border_grey_color">#b1b0ad</color>
+    <color name="appBrownColor">#eaae6b</color>
+    <color name="dark_grey">#656463</color>
+    <color name="color_theme">#8576a2</color>
+
+    <color name="black">#000000</color>
+    <color name="dark_grey_text_color">#212121</color>
+    <color name="medium_grey_text_color">#656463</color>
+    <color name="grey_text_color">#7d7b7a</color>
+    <color name="light_grey_text_color">#bebdba</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_60">#99FFFFFF</color>
+
+    <color name="medium_grey_color">#bfbfbf</color>
+    <color name="button_grey">#E3E0E0</color>
+
+    <color name="light_yellow">#FDFBF8</color>
+    <color name="light_silver">#E3E2DF</color>
+    <color name="light_red">#E57174</color>
+    <color name="dark_red">#B66D60</color>
+    <color name="dark_silver">#6A6968</color>
+    <color name="dark_yellow">#EAAE6B</color>
+    <color name="yellow">#FAD01E</color>
+
+    <color name="violet">#67548B</color>
+    <color name="border_color">#dbdbdb</color>
+
+    <color name="grey">#7E7A7A</color>
+    <color name="dark_gray">#7E7A7A</color>
+    <color name="light_grey">#f2f2f2</color>
+    <color name="light_red_bg">#fde2dc</color>
+    <color name="white_bg">#f2f2f2</color>
+    <color name="red">#E2231A</color>
+    <color name="red_">#E2231A</color>
+    <color name="cursor_color">#009973</color>
+    <color name="edit_text_border">#B6BECC</color>
+    <color name="hint_color">#6D7584</color>
+    <color name="line_color">#E8EBF1</color>
+
+</resources>
+
+
+<!--    100% — FF-->
+<!--    95% — F2-->
+<!--    90% — E6-->
+<!--    85% — D9-->
+<!--    80% — CC-->
+<!--    75% — BF-->
+<!--    70% — B3-->
+<!--    65% — A6-->
+<!--    60% — 99-->
+<!--    55% — 8C-->
+<!--    50% — 80-->
+<!--    45% — 73-->
+<!--    40% — 66-->
+<!--    35% — 59-->
+<!--    30% — 4D-->
+<!--    25% — 40-->
+<!--    20% — 33-->
+<!--    15% — 26-->
+<!--    10% — 1A-->
+<!--    5%  — 0D-->
+<!--    0% —  00-->

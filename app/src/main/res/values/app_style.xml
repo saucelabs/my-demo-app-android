@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="itemBottomViewSmall" parent="@style/AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_10</item>
+        <item name="android:layout_marginTop">-7dp</item>
+    </style>
+
+    <style name="itemBottomViewLarge" parent="@style/AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_10</item>
+        <item name="android:layout_marginTop">-5dp</item>
+    </style>
+
+    <style name="materialButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:fontFamily">@font/regular_font</item>
+    </style>
+
+    <style name="mediumTextStyle" parent="@style/AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@drawable/textview_states</item>
+        <item name="android:fontFamily">@font/regular_font</item>
+    </style>
+
+    <style name="mediumTextBoldStyle" parent="@style/AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
+        <item name="android:textColor">@drawable/textview_states</item>
+        <item name="android:fontFamily">@font/bold_font</item>
+    </style>
+
+    <style name="largeTextBoldStyle" parent="@style/AppTheme">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
+        <item name="android:textColor">@drawable/textview_states</item>
+        <item name="android:fontFamily">@font/bold_font</item>
+    </style>
+
+    <style name="parentFragmentStyle2" parent="@style/AppTheme">
+        <item name="android:paddingTop">@dimen/fragment_top_margin</item>
+        <item name="android:paddingBottom">@dimen/fragment_bottom_margin</item>
+    </style>
+
+    <style name="customRatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlNormal">@color/dark_yellow</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
+    <style name="postCustomRatingBar" parent="android:style/Widget.Material.RatingBar.Small">
+        <item name="colorControlNormal">@color/dark_gray</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+</resources>

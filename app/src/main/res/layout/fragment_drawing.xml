@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".view.fragments.DrawingFragment">
+
+    <TextView
+        android:id="@+id/drawingTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/drawing"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/titleMarginTop"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold"
+        android:paddingStart="15dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <com.github.gcacace.signaturepad.views.SignaturePad-->
+<!--        android:id="@+id/signature_pad"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:penColor="@android:color/holo_red_light"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:background="@drawable/drawing_bg"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/drawingTV"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/buttonsLL"/>-->
+
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:src="@drawable/drawing_bg"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/drawingTV"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/buttonsLL" />-->
+
+<!--    <com.kyanogen.signatureview.SignatureView-->
+<!--        android:id="@+id/signature_pad"-->
+<!--        xmlns:sign="http://schemas.android.com/apk/res-auto"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:penColor="@android:color/holo_red_light"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/drawingTV"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/buttonsLL"-->
+<!--        sign:enableSignature="true"/>-->
+
+    <com.williamww.silkysignature.views.SignaturePad
+        android:id="@+id/signature_pad"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:penColor="@android:color/holo_red_light"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/drawing_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/drawingTV"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLL"
+        />
+
+    <LinearLayout
+        android:id="@+id/buttonsLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <android.widget.Button
+            android:id="@+id/clearBtn"
+            android:layout_weight="1"
+            android:text="@string/clear"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textAllCaps="false"
+            android:layout_margin="10dp"
+            android:background="@drawable/login_button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.widget.Button
+            android:layout_weight="1"
+            android:id="@+id/saveBtn"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:textAllCaps="false"
+            android:background="@drawable/login_button_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

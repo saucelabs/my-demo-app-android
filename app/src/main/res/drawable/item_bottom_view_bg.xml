@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#dbdada"/>
+    <corners android:bottomLeftRadius="@dimen/_10"
+        android:bottomRightRadius="@dimen/_10"/>
+</shape>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Demo App</string>
+    <string name="catalog">Catalog</string>
+    <string name="webview">WebView</string>
+    <string name="qr_code_scanner">QR Code Scanner</string>
+    <string name="geo_location">Geo Location</string>
+    <string name="drawing">Drawing</string>
+    <string name="about">About</string>
+    <string name="app_reset_state">Reset App State</string>
+    <string name="biometrics">Biometrics</string>
+    <string name="login">Log In</string>
+    <string name="logout">Log Out</string>
+    <string name="sort_by">Sort by:</string>
+    <string name="name_asc">Name - Ascending</string>
+    <string name="name_des">Name - Descending</string>
+    <string name="price_asc">Price - Ascending</string>
+    <string name="price_des">Price - Descending</string>
+    <string name="login_title">Login</string>
+    <string name="select_username_and_password_from_below">Select a username and password from the list below, or click on the username to automatically populate the username and password.</string>
+    <string name="username">Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">Password</string>
+
+    <string name="add_to_cart">Add To Cart</string>
+
+    <string name="usernames">Usernames</string>
+    <string name="webview_">Webview</string>
+    <string name="url">URL</string>
+    <string name="url_hint">https://www.website.com</string>
+    <string name="enter_an_https_url">Enter an HTTPS url</string>
+    <string name="go_to_site">Go To Site</string>
+    <string name="version_1">V.1.0.0-build 73 by</string>
+    <string name="go_to_website"><u>Go to the Sauce Labs website.</u></string>
+    <string name="location_details">Below you will find the latitude and longitude. This screen will automatically start with observing the location. You can manually disable/enable  it by clicking on the buttons. It will automatically stop observing the location when you leave the screen.</string>
+    <string name="link"><u>this link.</u></string>
+    <string name="link_details">You can use Appium to change them with</string>
+    <string name="determine_position">Determining the position on Android can take a while.</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="start_observing">Start Observing</string>
+    <string name="stop_observing">Stop Observing</string>
+    <string name="save">Save</string>
+    <string name="clear">Clear</string>
+    <string name="allow_bio_login">Allow login with FingerPrint</string>
+    <string name="biometric_info">If your device supports FingerPrint you can enable it here. This will help you to easily log in.</string>
+    <string name="biometric_info_">Normally this screen would be behind a secure login, but for demo purposes this screen has been put in the menu by default.</string>
+
+    <string name="my_cart">My Cart</string>
+    <string name="no_items">No Items</string>
+    <string name="oh_no_your_cart_is_empty_fill_it_up_with_swag_to_complete_your_purchase">Oh no! Your cart is empty. Fill it up with swag to complete your purchase.</string>
+    <string name="go_shopping">Go Shopping</string>
+
+    <string name="loading">Loading ...</string>
+    <string name="oh_no">Oh no!!!</string>
+    <string name="ok">Ok</string>
+    <string name="checkout">Checkout</string>
+    <string name="enter_a_shipping_address">Enter a shipping address</string>
+    <string name="fullname">Full Name*</string>
+    <string name="address_line_1">Address Line 1*</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City*</string>
+    <string name="state_region">State/Region</string>
+    <string name="zip_code">Zip Code*</string>
+    <string name="country">Country*</string>
+    <string name="to_payment">To Payment</string>
+
+    <string name="color">Color:</string>
+    <string name="close_model">Close Model</string>
+    <string name="thank_you_for_submitting_your_review">Thank you for submitting your review!</string>
+
+    <string name="review_order">Review Order</string>
+    <string name="payment_details">You will not be charged until you review your purchase on the next screen.</string>
+    <string name="card">Card</string>
+    <string name="enter_a_payment_method">Enter a payment method</string>
+    <string name="card_number">Card Number*</string>
+    <string name="expiration_date">Expiration Date*</string>
+    <string name="value_looks_invalid">Value looks invalid.</string>
+    <string name="billing_address_same">My billing address is the same as my shipping address.</string>
+    <string name="security_code">Security Code*</string>
+    <string name="security_code_tip">CVV is the last three digits on the back of your credit card.</string>
+    <string name="review_your_order">Review your order</string>
+    <string name="deliver_address">Deliver Address</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="dhl_standard_delivery">DHL Standard Delivery</string>
+    <string name="social_text">2021 Sauce Labs All Rights Reserved Terms of Services | Privacy Policy</string>
+    <string name="total">Total:</string>
+    <string name="place_order">Place Order</string>
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="products">Products</string>
+    <string name="biomatric_message">Biometric is or not supported or not enable on your device. Please check your device or your settings.</string>
+    <string name="bod_example_com"><u>bod@example.com</u></string>
+    <string name="alice_example_com_locked_out"><u>alice@example.com (locked out)</u></string>
+    <string name="items">Items</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="soory_this_user_has_been_locked_out">Sorry this user has been locked out.</string>
+    <string name="you_have_successfully_loggedout">You are Successfully logged out.</string>
+    <string name="sauce_labs_all_rights_reserved_terms_of_service_privacy_policy">&#169; 2021 Sauce Labs All Rights Reserved. Terms of Service | Privacy Policy</string>
+    <string name="fingerprint">FingerPrint</string>
+</resources>

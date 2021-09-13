@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.LocationFragment">
+
+    <TextView
+        android:id="@+id/locationTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/geo_location"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/titleMarginTop"
+        android:textSize="@dimen/titleTextSize"
+        android:textStyle="bold"
+        android:paddingStart="15dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/locationDetailsTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/location_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationTV"
+        android:textColor="@color/black"
+        android:layout_marginTop="40dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"/>
+
+    <TextView
+        android:id="@+id/linkTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:paddingStart="20dp"
+        android:text="@string/link_details"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/linkedTV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationDetailsTV" />
+
+    <TextView
+        android:id="@+id/linkedTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingStart="4dp"
+        android:text="@string/link"
+        android:textColor="@color/red"
+        app:layout_constraintStart_toEndOf="@id/linkTV"
+        app:layout_constraintBottom_toBottomOf="@+id/linkTV"
+        app:layout_constraintTop_toBottomOf="@+id/locationDetailsTV"
+        tools:layout_editor_absoluteX="337dp" />
+
+    <TextView
+        android:id="@+id/extraTextTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/determine_position"
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linkTV"/>
+
+    <View
+        android:id="@+id/lineV"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/medium_grey_color"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extraTextTV"/>
+
+    <LinearLayout
+        android:id="@+id/latlongLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineV">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/latitude"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/latitudeTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_text_color"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/longitude"
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/longitudeTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey_text_color"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="22sp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line2V"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/medium_grey_color"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/latlongLL"/>
+
+    <LinearLayout
+        android:id="@+id/buttonLL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line2V">
+
+        <android.widget.Button
+            android:id="@+id/startBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordErrorTV"
+            android:text="@string/start_observing"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@color/button_grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.widget.Button
+            android:id="@+id/stopBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordErrorTV"
+            android:text="@string/stop_observing"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:layout_marginStart="4dp"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:background="@color/red_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

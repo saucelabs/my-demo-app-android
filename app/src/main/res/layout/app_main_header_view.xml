@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/mainHeaderLL"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_height"
+        android:background="@color/white"
+        android:layoutDirection="ltr"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/_20"
+        android:paddingRight="@dimen/_20">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/backLL"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:gravity="center"
+                android:paddingRight="@dimen/_20"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="@dimen/_30"
+                    android:layout_height="@dimen/_30"
+                    android:adjustViewBounds="true"
+             />
+            </LinearLayout>
+
+            <ImageView
+
+                android:id="@+id/logoIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:paddingStart="@dimen/_10"
+                android:paddingTop="@dimen/_15"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/_10"
+                android:layout_centerInParent="true"
+
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/profileIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:adjustViewBounds="true"
+                android:paddingStart="@dimen/_10"
+                android:paddingTop="@dimen/_15"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/_10"
+
+                android:visibility="gone" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/langIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+               />
+
+            <TextView
+                android:id="@+id/langTV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_5"
+                android:paddingRight="@dimen/_5"
+                android:fontFamily="@font/regular_font"
+                android:textSize="@dimen/_18"
+                android:textColor="@color/defaultColor" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true" />
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/logoIV2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:paddingStart="@dimen/_10"
+            android:paddingTop="@dimen/_15"
+            android:paddingEnd="0dp"
+            android:paddingBottom="@dimen/_10"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+</layout>

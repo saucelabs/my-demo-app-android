@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.CheckoutInfoFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/checkoutSV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/paymentCV">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/checkoutTitleTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/checkout"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/titleTextSize"
+                    android:textStyle="bold"
+                    android:layout_marginTop="@dimen/titleMarginTop"
+                    style="@style/TextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/enterShippingAddressTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="@string/enter_a_shipping_address"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    style="@style/TextViewStyle"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkoutTitleTV" />
+
+                <TextView
+                    android:id="@+id/fullNameTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/fullname"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    style="@style/TextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/enterShippingAddressTV" />
+
+                <RelativeLayout
+                    android:id="@+id/fullNameRL"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fullNameTV">
+
+                    <EditText
+                        android:id="@+id/fullNameET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="Rebecca Winter"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/fullNameErrorIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/fullNameErrorTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Please provide your full name."
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fullNameRL" />
+
+                <TextView
+                    android:id="@+id/address1TV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/address_line_1"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    style="@style/TextViewStyle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fullNameErrorTV" />
+
+                <RelativeLayout
+                    android:id="@+id/address1RL"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address1TV">
+
+                    <EditText
+                        android:id="@+id/address1ET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="Mandorley 112"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/address1ErrorIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/address1ErrorTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Please provide your address."
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address1RL" />
+
+                <TextView
+                    android:id="@+id/address2TV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/address_line_2"
+                    android:textColor="@color/black"
+                    style="@style/TextViewStyle"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address1ErrorTV" />
+
+                <RelativeLayout
+                    android:id="@+id/address2RL"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address2TV">
+
+                    <EditText
+                        android:id="@+id/address2ET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="Entrance 1"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/address2ErrorIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/ic_done"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/address2ErrorTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address2RL" />
+
+                <TextView
+                    android:id="@+id/cityTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/city"
+                    android:textColor="@color/black"
+                    style="@style/TextViewStyle"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/stateTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/address2ErrorTV" />
+
+                <RelativeLayout
+                    android:id="@+id/cityRL"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="@id/cityTV"
+                    app:layout_constraintStart_toStartOf="@id/cityTV"
+                    app:layout_constraintTop_toBottomOf="@id/cityTV">
+
+                    <EditText
+                        android:id="@+id/cityET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="Truro"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/cityIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/cityErrorTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Please provide your city."
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@id/cityRL"
+                    app:layout_constraintStart_toStartOf="@id/cityRL"
+                    app:layout_constraintTop_toBottomOf="@id/cityRL" />
+
+                <TextView
+                    android:id="@+id/stateTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/state_region"
+                    android:textColor="@color/black"
+                    style="@style/TextViewStyle"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cityTV"
+                    app:layout_constraintTop_toBottomOf="@id/address2ErrorTV" />
+
+
+                <RelativeLayout
+                    android:id="@+id/stateRL"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="@id/stateTV"
+                    app:layout_constraintStart_toStartOf="@id/stateTV"
+                    app:layout_constraintTop_toBottomOf="@id/stateTV">
+
+                    <EditText
+                        android:id="@+id/stateET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="Cornwall"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/stateIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/stateErrorTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text=""
+                    android:textColor="@color/red"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@id/stateRL"
+                    app:layout_constraintStart_toStartOf="@id/stateRL"
+                    app:layout_constraintTop_toBottomOf="@id/stateRL" />
+
+                <TextView
+                    android:id="@+id/zipTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/zip_code"
+                    android:textColor="@color/black"
+                    style="@style/TextViewStyle"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@id/stateTV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cityErrorTV" />
+
+
+                <RelativeLayout
+                    android:id="@+id/zipRL"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="@id/zipTV"
+                    app:layout_constraintStart_toStartOf="@id/zipTV"
+                    app:layout_constraintTop_toBottomOf="@id/zipTV">
+
+                    <EditText
+                        android:id="@+id/zipET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="89750"
+                        android:inputType="number"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/zipIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/zipErrorTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Please provide your zip"
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@id/cityRL"
+                    app:layout_constraintStart_toStartOf="@id/cityRL"
+                    app:layout_constraintTop_toBottomOf="@id/zipRL" />
+
+                <TextView
+                    android:id="@+id/countryTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/country"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    style="@style/TextViewStyle"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/cityTV"
+                    app:layout_constraintTop_toBottomOf="@id/stateErrorTV" />
+
+                <RelativeLayout
+                    android:id="@+id/countryRL"
+                    android:layout_width="0dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/edit_bg_grey"
+                    app:layout_constraintEnd_toEndOf="@id/countryTV"
+                    app:layout_constraintStart_toStartOf="@id/countryTV"
+                    app:layout_constraintTop_toBottomOf="@id/countryTV">
+
+                    <EditText
+                        android:id="@+id/countryET"
+                        style="@style/editTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:cursorVisible="true"
+                        android:gravity="center_vertical"
+                        android:hint="United Kingdom"
+                        android:inputType="text"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/countryIV"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="12dp"
+                        android:src="@drawable/alert"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/countryErrorTV"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Please provide your"
+                    android:textColor="@color/red"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@id/countryRL"
+                    app:layout_constraintStart_toStartOf="@id/countryRL"
+                    app:layout_constraintTop_toBottomOf="@id/countryRL" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/paymentCV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="8dp"
+            android:backgroundTint="@color/white">
+
+            <android.widget.Button
+                android:id="@+id/paymentBtn"
+                android:text="@string/to_payment"
+                android:textColor="@color/white"
+                style="@style/TextViewStyle"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_margin="15dp"
+                android:background="@drawable/login_button_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

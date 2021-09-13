@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="login_1nd_text_size">18dp</dimen>
+    <dimen name="login_2nd_text_size">20dp</dimen>
+    <dimen name="login_2nd_text_margin_top">5dp</dimen>
+    <dimen name="banner_height">350dp</dimen>
+    <dimen name="edit_radius">20dp</dimen>
+
+    <dimen name="input_left_right_padding">20dp</dimen>
+    <dimen name="fragment_padding">20dp</dimen>
+    <dimen name="adapter_padding">15dp</dimen>
+    <dimen name="fragment_top_margin">20dp</dimen>
+    <dimen name="fragment_bottom_margin">10dp</dimen>
+
+    <dimen name="button_height">65dp</dimen>
+
+    <dimen name="edit_bg_height">65dp</dimen>
+
+    <dimen name="small_text_size">10sp</dimen>
+    <dimen name="normal_text_size">12sp</dimen>
+    <dimen name="app_text_size">14sp</dimen>
+    <dimen name="medium_text_size">16sp</dimen>
+    <dimen name="large_text_size">18sp</dimen>
+    <dimen name="dimen_size">20dp</dimen>
+
+    <dimen name="titleTextSize">24dp</dimen>
+    <dimen name="titleMarginTop">30dp</dimen>
+
+    <dimen name="_0">0dp</dimen>
+    <dimen name="_1">1dp</dimen>
+    <dimen name="_2">2dp</dimen>
+    <dimen name="_3">3dp</dimen>
+    <dimen name="_4">4dp</dimen>
+    <dimen name="_5">5dp</dimen>
+    <dimen name="_6">6dp</dimen>
+    <dimen name="_8">8dp</dimen>
+    <dimen name="_10">10dp</dimen>
+    <dimen name="_12">12dp</dimen>
+    <dimen name="_13">13dp</dimen>
+    <dimen name="_14">14dp</dimen>
+    <dimen name="_15">15dp</dimen>
+    <dimen name="_16">16dp</dimen>
+    <dimen name="_18">18dp</dimen>
+    <dimen name="_20">20dp</dimen>
+    <dimen name="_22">22dp</dimen>
+    <dimen name="_25">25dp</dimen>
+    <dimen name="_28">28dp</dimen>
+    <dimen name="_30">30dp</dimen>
+    <dimen name="_34">34dp</dimen>
+    <dimen name="_35">35dp</dimen>
+    <dimen name="_40">40dp</dimen>
+    <dimen name="_50">50dp</dimen>
+    <dimen name="_60">60dp</dimen>
+    <dimen name="_70">70dp</dimen>
+    <dimen name="_80">80dp</dimen>
+    <dimen name="_90">90dp</dimen>
+    <dimen name="_100">100dp</dimen>
+    <dimen name="search_height">60dp</dimen>
+    <dimen name="header_height">70dp</dimen>
+    <dimen name="cardview_archive_sub_item_width">340dp</dimen>
+    <dimen name="profile_image_width">150dp</dimen>
+    <dimen name="top_player_height">300dp</dimen>
+</resources>
