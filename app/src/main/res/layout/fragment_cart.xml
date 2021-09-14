@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -30,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_40"
                 android:src="@drawable/cart"
+                android:contentDescription="@string/image_of_cart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/noItemTitleTV" />
@@ -59,7 +61,8 @@
                 android:text="@string/go_shopping"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="16dp"
+                android:contentDescription="@string/tap_to_open_catalog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/emptyTV" />
@@ -77,6 +80,7 @@
                 android:id="@+id/scrollView"
                 android:layout_width="@dimen/_0"
                 android:layout_height="@dimen/_0"
+                android:contentDescription="@string/manages_scrolling_of_views_in_given_screen"
                 app:layout_constraintBottom_toTopOf="@+id/bottomCV"
                 app:layout_constraintEnd_toEndOf="@id/rightGuideline"
                 app:layout_constraintStart_toStartOf="@id/leftGuideline"
@@ -103,7 +107,7 @@
                         android:id="@+id/productRV"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-
+                        android:contentDescription="@string/displays_list_of_selected_products"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/productTV" />
@@ -119,20 +123,26 @@
                         app:layout_constraintTop_toBottomOf="@+id/productRV">
 
                         <ImageView
+                            android:id="@+id/twitterIV"
                             android:layout_width="@dimen/_20"
                             android:layout_height="@dimen/_20"
+                            android:contentDescription="@string/twitter"
                             android:src="@drawable/ic_twitter" />
 
                         <ImageView
+                            android:id="@+id/FacebookIV"
                             android:layout_width="@dimen/_20"
                             android:layout_height="@dimen/_20"
                             android:layout_marginStart="@dimen/_10"
+                            android:contentDescription="@string/facebook"
                             android:src="@drawable/ic_fb" />
 
                         <ImageView
+                            android:id="@+id/LinkedInIV"
                             android:layout_width="@dimen/_20"
                             android:layout_height="@dimen/_20"
                             android:layout_marginStart="@dimen/_10"
+                            android:contentDescription="@string/linkedin"
                             android:src="@drawable/ic_in" />
 
                         <TextView
@@ -154,12 +164,10 @@
 
             </androidx.core.widget.NestedScrollView>
 
-
             <androidx.cardview.widget.CardView
                 android:id="@+id/bottomCV"
                 android:layout_width="@dimen/_0"
                 android:layout_height="wrap_content"
-
                 android:layout_marginBottom="@dimen/_10"
                 app:cardCornerRadius="@dimen/_10"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -184,7 +192,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Total:"
+                            android:text="@string/total"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14"
                             style="@style/TextViewStyle"
@@ -213,7 +221,6 @@
                             android:textSize="@dimen/_14"
                             android:textStyle="bold" />
 
-
                     </LinearLayout>
 
                     <Button
@@ -223,11 +230,12 @@
                         android:layout_marginTop="@dimen/_15"
                         android:layout_marginBottom="@dimen/_25"
                         android:backgroundTint="@color/red"
-                        android:text="Proceed To Checkout"
+                        android:text="@string/proceed_to_checkout"
                         android:textAllCaps="false"
                         style="@style/TextViewStyle"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="@dimen/_14"
+                        android:contentDescription="@string/confirms_products_for_checkout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />

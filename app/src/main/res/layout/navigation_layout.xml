@@ -9,6 +9,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/menuRV"
+        android:contentDescription="@string/recycler_view_for_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

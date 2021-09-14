@@ -1,11 +1,16 @@
 package com.saucelabs.mydemoapp.android.view.fragments;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.google.zxing.Result;
@@ -15,7 +20,12 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentQrBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
+
+import static com.saucelabs.mydemoapp.android.view.activities.MainActivity.FRAGMENT_PRODUCT_CATAlOG;
 
 public class QRFragment extends BaseFragment implements View.OnClickListener , ZXingScannerView.ResultHandler {
     private FragmentQrBinding binding;
@@ -59,6 +69,30 @@ public class QRFragment extends BaseFragment implements View.OnClickListener , Z
         mDb = AppDatabase.getInstance(getActivity());
         mScannerView = new ZXingScannerView(mAct);
         binding.cameraFL.addView(mScannerView);
+        checkPermission();
+    }
+
+    private void checkPermission() {
+        if(ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions( requireActivity(),new String[]{Manifest.permission.CAMERA}, 1002);
+            }
+                //ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+                //MenuFragment.requestPermissions( new String[]{Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_READ_CONTACTS)
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 1002){
+
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_PRODUCT_CATAlOG, 1));
+//                        singleton.showCommonDialog(null, "Permission Denied!", "Please go to settings and enable permissions.", getString(R.string.ok), true);
+                }
+        }
     }
 
     @Override

@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_product2"
+            android:contentDescription="@string/displays_selected_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,6 +47,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/shows_rating_of_product"
             app:layout_constraintTop_toBottomOf="@+id/priceTV" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
