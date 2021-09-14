@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/headerCL"
@@ -19,6 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_menu"
+            android:contentDescription="@string/tap_to_view_menu"
             tools:ignore="VectorDrawableCompat" />
 
         <ImageView
@@ -28,6 +30,7 @@
             android:layout_marginEnd="12dp"
             android:padding="2dp"
             android:visibility="visible"
+            android:contentDescription="@string/shows_current_sorting_order_and_displays_available_sorting_options"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cartRL"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,6 +44,7 @@
             android:layout_height="@dimen/_30"
             android:clickable="true"
             android:layout_marginEnd="@dimen/_12"
+            android:contentDescription="@string/tap_to_view_you_cart"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -52,6 +56,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="8dp"
                 app:srcCompat="@drawable/cart"
+                android:contentDescription="@string/displays_number_of_items_in_your_cart"
                 tools:ignore="VectorDrawableCompat" />
 
             <RelativeLayout
@@ -59,11 +64,15 @@
                 android:layout_width="@dimen/_15"
                 android:layout_height="@dimen/_15"
                 android:layout_marginEnd="@dimen/_5"
+                android:contentDescription="@string/displays_number_of_items_in_your_cart"
                 android:layout_alignParentEnd="true">
+
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:contentDescription="@null"
                     android:src="@drawable/ic_gray_circle"/>
+
                 <TextView
                     android:id="@+id/cartTV"
                     android:layout_width="wrap_content"
@@ -76,8 +85,6 @@
 
             </RelativeLayout>
 
-
-
         </RelativeLayout>
 
         <ImageView
@@ -87,10 +94,10 @@
             android:clickable="false"
             android:focusable="false"
             android:scaleType="fitCenter"
+            android:contentDescription="@string/app_logo_and_name"
             android:src="@drawable/ic_splash_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

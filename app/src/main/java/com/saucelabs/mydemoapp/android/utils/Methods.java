@@ -161,7 +161,7 @@ public class Methods extends Constants {
     }
 
     public void showDialog(final OnDialogCallBack onOkClickRCB,Activity mActivity, String title, String message, String okButtonText) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(mActivity,R.style.MyDialogTheme);
         builder.setTitle(title)
                 .setMessage(message)
                 .setCancelable(false)

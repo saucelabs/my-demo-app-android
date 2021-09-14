@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -13,31 +14,36 @@
                 android:id="@+id/start1IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
-                android:src="@drawable/ic_unselected_start"/>
+                android:src="@drawable/ic_unselected_start"
+                android:contentDescription="@string/tap_to_rate_an_item_1_star" />
             <ImageView
                 android:id="@+id/start2IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"/>
+                android:src="@drawable/ic_unselected_start"
+                android:contentDescription="@string/tap_to_rate_an_item_2_star" />
             <ImageView
                 android:id="@+id/start3IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"/>
+                android:src="@drawable/ic_unselected_start"
+                android:contentDescription="@string/tap_to_rate_an_item_3_star" />
             <ImageView
                 android:id="@+id/start4IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"/>
+                android:src="@drawable/ic_unselected_start"
+                android:contentDescription="@string/tap_to_rate_an_item_4_star" />
             <ImageView
                 android:id="@+id/start5IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"/>
+                android:src="@drawable/ic_unselected_start"
+                android:contentDescription="@string/tap_to_rate_an_item_5_star" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

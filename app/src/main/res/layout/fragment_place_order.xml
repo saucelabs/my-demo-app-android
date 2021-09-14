@@ -11,6 +11,7 @@
             android:id="@+id/checkoutSV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:contentDescription="@string/manages_scrolling_of_views_in_given_screen"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/checkout"
                     android:textColor="@color/black"
-                    android:textSize="26sp"
+                    android:textSize="26dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +41,7 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/review_your_order"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
+                    android:contentDescription="@string/displays_list_of_selected_products"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/enterShippingAddressTV"/>
@@ -78,7 +80,7 @@
                     <TextView
                         android:text="@string/deliver_address"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:textStyle="bold"
                         android:layout_marginTop="8dp"
                         android:layout_width="match_parent"
@@ -128,7 +130,7 @@
                     <TextView
                         android:text="@string/payment_method"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:layout_marginTop="8dp"
                         android:textStyle="bold"
                         android:layout_width="match_parent"
@@ -159,7 +161,7 @@
                         android:id="@+id/billingAddressTV"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:text="Billing address is the same as shipping address"
+                        android:text="@string/billing_address_is_the_same_as_shipping_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -179,7 +181,7 @@
                     <TextView
                         android:text="Billing Address"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
+                        android:textSize="16dp"
                         android:layout_marginTop="8dp"
                         android:textStyle="bold"
                         android:layout_width="match_parent"
@@ -210,7 +212,7 @@
                         android:id="@+id/billingZipAndCountryTV"
                         android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:text="Billing address is the same as shipping address"
+                        android:text="@string/billing_address_is_the_same_as_shipping_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -230,9 +232,9 @@
                     android:id="@+id/dhlTV"
                     android:text="@string/dhl_standard_delivery"
                     android:textColor="@color/black"
-                    android:textSize="16sp"
+                    android:textSize="16dp"
                     android:textStyle="bold"
-                    android:layout_marginTop="20sp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/item2V"
                     android:layout_width="0dp"
@@ -240,11 +242,11 @@
 
                 <TextView
                     android:id="@+id/amountTV"
-                    android:layout_marginTop="20sp"
+                    android:layout_marginTop="20dp"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
-                    android:text="$5.99"
+                    android:text="@string/delivery_amount"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/item2V"
                     android:layout_width="0dp"
@@ -272,19 +274,24 @@
                     android:orientation="horizontal">
 
                     <ImageView
-
+                        android:id="@+id/twitterIV"
+                        android:contentDescription="@string/twitter"
                         android:layout_marginEnd="5dp"
                         android:src="@drawable/ic_twitter"
                         android:layout_width="24dp"
                         android:layout_height="24dp"/>
 
                     <ImageView
+                        android:id="@+id/FacebookIV"
                         android:src="@drawable/ic_fb"
+                        android:contentDescription="@string/facebook"
                         android:layout_marginEnd="5dp"
                         android:layout_width="24dp"
                         android:layout_height="24dp"/>
 
                     <ImageView
+                        android:id="@+id/LinkedInIV"
+                        android:contentDescription="@string/linkedin"
                         android:src="@drawable/ic_in"
                         android:layout_marginEnd="5dp"
                         android:layout_width="24dp"
@@ -332,7 +339,7 @@
                         android:id="@+id/totalTextTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textStyle="bold"
                         android:text="@string/total"
                         android:textColor="@color/black"/>
@@ -341,7 +348,7 @@
                         android:text=""
                         android:textColor="@color/black"
                         android:layout_marginStart="5dp"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -349,7 +356,7 @@
                         android:id="@+id/totalAmountTV"
                         android:text=""
                         android:gravity="end"
-                        android:textSize="18sp"
+                        android:textSize="18dp"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_width="match_parent"
@@ -363,13 +370,14 @@
                     android:id="@+id/paymentBtn"
                     android:text="@string/place_order"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="20dp"
                     android:layout_marginTop="20dp"
                     android:textAllCaps="false"
                     android:background="@drawable/login_button_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextViewStyle"
+                    android:contentDescription="@string/completes_the_process_of_checkout"
                     app:layout_constraintTop_toBottomOf="@id/totalLL"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

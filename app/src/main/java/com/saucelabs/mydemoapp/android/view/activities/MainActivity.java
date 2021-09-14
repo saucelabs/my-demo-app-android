@@ -99,7 +99,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void initialize(){
         init();
         setMenu();
-        checkAndRequestPermissions();
+//        checkAndRequestPermissions();
         setListener();
         setData();
     }
@@ -240,8 +240,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         list.add(getString(R.string.about));
         list.add(getString(R.string.app_reset_state));
         list.add(getString(R.string.fingerprint));
-        list.add(getString(R.string.login));
-        list.add(getString(R.string.logout));
+        if(ST.isLogin){
+            list.add(getString(R.string.logout));
+        }else{
+            list.add(getString(R.string.login));
+        }
 
         menuAdapter = new MenuAdapter(list, this, new OnItemClickListener() {
             @Override
@@ -327,10 +330,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case 8:
                 if (ST.isLogin) {
 //                    setFragment(FRAGMENT_CART, param1, param2, param3);
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_CART,1));
-                } else
+                    showLogoutAlertDialog();
+                } else{
+                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_LOGIN,1));
+                }
 //                    setFragment(FRAGMENT_LOGIN, param1, param2, param3);
-                ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_LOGIN,1));
                 break;
             case 9:
                 showLogoutAlertDialog();
@@ -476,6 +480,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         ST.isLogin = false;
+                        setMenu();
                         Bundle bundle = ST.getBundle(FRAGMENT_LOGIN, 1);
                         bundle.putString(ST.ARG_PARAM1, ST.LOGOUT);
                         ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);

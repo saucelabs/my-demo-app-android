@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,9 +21,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
             android:layout_width="@dimen/_0"
             android:layout_height="@dimen/_0"
             android:layout_marginTop="35dp"
+            android:contentDescription="@string/scrollview_manages_views_in_given_screen_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/rightGuideline"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"
@@ -35,6 +38,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/productRV"
                     android:layout_width="@dimen/_0"
+                    android:contentDescription="@string/displays_all_products_of_catalog"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -52,20 +56,26 @@
 
 
                     <ImageView
+                        android:id="@+id/twitterIV"
                         android:layout_width="@dimen/_20"
                         android:layout_height="@dimen/_20"
+                        android:contentDescription="@string/twitter"
                         android:src="@drawable/ic_twitter" />
 
                     <ImageView
+                        android:id="@+id/FacebookIV"
                         android:layout_width="@dimen/_20"
                         android:layout_height="@dimen/_20"
                         android:layout_marginStart="@dimen/_10"
+                        android:contentDescription="@string/facebook"
                         android:src="@drawable/ic_fb" />
 
                     <ImageView
+                        android:id="@+id/LinkedInIV"
                         android:layout_width="@dimen/_20"
                         android:layout_height="@dimen/_20"
                         android:layout_marginStart="@dimen/_10"
+                        android:contentDescription="@string/linkedin"
                         android:src="@drawable/ic_in" />
 
                     <TextView

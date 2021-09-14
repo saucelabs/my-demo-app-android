@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/_15">
@@ -10,6 +11,7 @@
             android:layout_width="@dimen/_35"
             android:layout_height="@dimen/_35"
             android:visibility="invisible"
+            android:contentDescription="@string/indicates_when_color_is_selected"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:src="@drawable/ic_red_circle_side"/>
@@ -19,6 +21,7 @@
             android:layout_width="@dimen/_25"
             android:layout_height="@dimen/_25"
             android:src="@drawable/ic_red_circle"
+            android:contentDescription="@string/displays_color_of_product"
             app:layout_constraintTop_toTopOf="@+id/aroundIV"
             app:layout_constraintEnd_toEndOf="@+id/aroundIV"
             app:layout_constraintBottom_toBottomOf="@+id/aroundIV"

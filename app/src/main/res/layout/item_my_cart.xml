@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:src="@drawable/ic_product2"
+            android:contentDescription="@string/displays_selected_product"
             app:layout_constraintEnd_toStartOf="@+id/infoCL"
             app:layout_constraintHorizontal_weight="1.2"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
                 android:text="Product 1"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/productIV" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <TextView
                 android:id="@+id/priceTV"
@@ -56,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
+                android:contentDescription="@string/shows_rating_of_product"
                 app:layout_constraintTop_toBottomOf="@+id/priceTV" />
-
 
             <TextView
                 android:id="@+id/colorTitleTV"
@@ -76,6 +77,7 @@
                 android:layout_height="@dimen/_25"
                 android:layout_marginStart="@dimen/_10"
                 android:layout_marginTop="@dimen/_15"
+                android:contentDescription="@string/displays_color_of_selected_product"
                 android:src="@drawable/ic_black_circle"
                 app:layout_constraintStart_toEndOf="@+id/colorTitleTV"
                 app:layout_constraintTop_toBottomOf="@+id/rattingV" />
@@ -89,7 +91,6 @@
             android:layout_marginTop="@dimen/_15"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/productIV">
@@ -105,6 +106,7 @@
                     android:layout_width="@dimen/_25"
                     android:layout_height="@dimen/_25"
                     android:padding="@dimen/_6"
+                    android:contentDescription="@string/reduces_number_of_products"
                     android:src="@drawable/ic_minus" />
 
                 <TextView
@@ -122,6 +124,7 @@
                     android:layout_width="@dimen/_25"
                     android:layout_height="@dimen/_25"
                     android:padding="@dimen/_6"
+                    android:contentDescription="@string/increases_number_of_products"
                     android:src="@drawable/ic_plus" />
             </LinearLayout>
 
@@ -133,11 +136,12 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="Remove Item"
+                android:text="@string/remove_item"
                 android:paddingTop="@dimen/_8"
                 android:paddingBottom="@dimen/_8"
                 android:textColor="@color/red"
-                android:textSize="16sp"
+                android:textSize="16dp"
+                android:contentDescription="@string/removes_product_from_cart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />

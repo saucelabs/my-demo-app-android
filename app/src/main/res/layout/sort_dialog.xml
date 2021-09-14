@@ -23,7 +23,7 @@
                 android:paddingEnd="12dp"
                 android:text="@string/sort_by"
                 android:textColor="@color/black"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +37,7 @@
                 android:paddingEnd="@dimen/_20"
                 android:paddingTop="@dimen/_10"
                 android:paddingBottom="@dimen/_10"
-
+                android:contentDescription="@string/ascending_order_by_name"
                 app:layout_constraintTop_toBottomOf="@id/sortTV">
 
                 <ImageView
@@ -45,6 +45,7 @@
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@drawable/ic_done"
+                    android:contentDescription="@string/to_show_which_sorting_order_is_selected"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -55,6 +56,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/sort_asc"
+                    android:contentDescription="@string/displays_ascending_sorting_order_by_name"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tickNameAscIV"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -80,6 +82,7 @@
                 android:paddingEnd="@dimen/_20"
                 android:paddingTop="@dimen/_10"
                 android:paddingBottom="@dimen/_10"
+                android:contentDescription="@string/descending_order_by_name"
                 app:layout_constraintTop_toBottomOf="@id/nameAscCL">
 
                 <ImageView
@@ -88,6 +91,7 @@
                     android:layout_height="12dp"
                     android:src="@drawable/ic_done"
                     android:visibility="invisible"
+                    android:contentDescription="@string/to_show_which_sorting_order_is_selected"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -98,6 +102,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/sort_des"
+                    android:contentDescription="@string/displays_descending_sorting_order_by_name"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tickNameDesIV"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -123,6 +128,7 @@
                 android:paddingEnd="@dimen/_20"
                 android:paddingTop="@dimen/_10"
                 android:paddingBottom="@dimen/_10"
+                android:contentDescription="@string/ascending_order_by_price"
                 app:layout_constraintTop_toBottomOf="@id/nameDesCL">
 
                 <ImageView
@@ -131,6 +137,7 @@
                     android:layout_height="12dp"
                     android:src="@drawable/ic_done"
                     android:visibility="invisible"
+                    android:contentDescription="@string/to_show_which_sorting_order_is_selected"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -141,6 +148,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/price_asc"
+                    android:contentDescription="@string/displays_ascending_sorting_order_by_price"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tickPriceAscIV"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -166,6 +174,7 @@
                 android:paddingEnd="@dimen/_20"
                 android:paddingTop="@dimen/_10"
                 android:paddingBottom="@dimen/_10"
+                android:contentDescription="@string/descending_order_by_price"
                 app:layout_constraintTop_toBottomOf="@id/priceAscCL">
 
                 <ImageView
@@ -173,6 +182,7 @@
                     android:layout_width="12dp"
                     android:layout_height="12dp"
                     android:src="@drawable/ic_done"
+                    android:contentDescription="@string/to_show_which_sorting_order_is_selected"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -184,6 +194,7 @@
                     android:layout_height="24dp"
                     android:layout_marginStart="8dp"
                     android:src="@drawable/price_des"
+                    android:contentDescription="@string/displays_descending_sorting_order_by_price"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tickPriceDscIV"
                     app:layout_constraintTop_toTopOf="parent" />

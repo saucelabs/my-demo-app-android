@@ -55,6 +55,7 @@
         android:layout_marginTop="20dp"
         android:paddingStart="4dp"
         android:text="@string/link"
+        android:contentDescription="@string/tap_to_visit_given_web_address"
         android:textColor="@color/red"
         app:layout_constraintStart_toEndOf="@id/linkTV"
         app:layout_constraintBottom_toBottomOf="@+id/linkTV"
@@ -112,13 +113,13 @@
                 android:textColor="@color/red"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
             <TextView
                 android:id="@+id/latitudeTV"
@@ -127,7 +128,7 @@
                 android:textColor="@color/grey_text_color"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
         </LinearLayout>
 
@@ -144,13 +145,13 @@
                 android:textColor="@color/red"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
             <TextView
                 android:id="@+id/longitudeTV"
@@ -159,7 +160,7 @@
                 android:textColor="@color/grey_text_color"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22sp"/>
+                android:textSize="22dp"/>
 
         </LinearLayout>
 
@@ -198,9 +199,10 @@
             app:layout_constraintTop_toBottomOf="@id/passwordErrorTV"
             android:text="@string/start_observing"
             android:textColor="@color/grey"
-            android:textSize="18sp"
+            android:textSize="18dp"
             android:textAllCaps="false"
             android:layout_weight="1"
+            android:contentDescription="@string/start_observation_of_user_location"
             android:layout_marginEnd="4dp"
             android:background="@color/button_grey"
             android:layout_width="match_parent"
@@ -213,7 +215,8 @@
             app:layout_constraintTop_toBottomOf="@id/passwordErrorTV"
             android:text="@string/stop_observing"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="18dp"
+            android:contentDescription="@string/stop_observation_of_user_location"
             android:layout_marginStart="4dp"
             android:textAllCaps="false"
             android:layout_weight="1"

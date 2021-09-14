@@ -19,7 +19,6 @@
         android:textSize="@dimen/titleTextSize"
         android:textStyle="bold"
         android:paddingStart="15dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -68,6 +67,22 @@
 <!--        app:layout_constraintBottom_toTopOf="@id/buttonsLL"-->
 <!--        sign:enableSignature="true"/>-->
 
+    <ImageView
+        android:id="@+id/padBackgroundIV"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/drawing_bg"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/background_for_drawing_pad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/drawingTV"
+        app:layout_constraintBottom_toTopOf="@id/buttonsLL"/>
+
     <com.williamww.silkysignature.views.SignaturePad
         android:id="@+id/signature_pad"
         android:layout_width="match_parent"
@@ -77,12 +92,12 @@
         android:layout_marginEnd="15dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/drawing_bg"
+        android:contentDescription="@string/pad_to_draw_on"
+        android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/drawingTV"
-        app:layout_constraintBottom_toTopOf="@id/buttonsLL"
-        />
+        app:layout_constraintBottom_toTopOf="@id/buttonsLL"/>
 
     <LinearLayout
         android:id="@+id/buttonsLL"
@@ -99,9 +114,10 @@
             android:layout_weight="1"
             android:text="@string/clear"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="20dp"
             android:textAllCaps="false"
             android:layout_margin="10dp"
+            android:contentDescription="@string/removes_anything_drawn_on_pad"
             android:background="@drawable/login_button_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -111,7 +127,8 @@
             android:id="@+id/saveBtn"
             android:text="@string/save"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="20dp"
+            android:contentDescription="@string/save_anything_drawn_on_pad"
             android:layout_margin="10dp"
             android:textAllCaps="false"
             android:background="@drawable/login_button_bg"
