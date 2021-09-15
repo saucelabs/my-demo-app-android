@@ -50,7 +50,6 @@ public class DrawingFragment extends BaseFragment implements View.OnClickListene
         }
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

@@ -21,7 +21,10 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentLoginBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
+import com.testfairy.TestFairy;
 
+
+import java.util.Random;
 
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
 
@@ -52,13 +55,16 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             mParam3 = getArguments().getInt(Constants.ARG_PARAM3, -1);
         }
 
+//        TestFairy.hideView(R.id.nameET);
+        TestFairy.hideView(R.id.password1TV);
+        TestFairy.hideView(R.id.password2TV);
+        TestFairy.hideView(R.id.passwordET);
 //        ST.logActivityToFirebase(getActivity(),"HomeActivity", ST.SCREEN_HOME, "");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false);
 
         init();
@@ -102,7 +108,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             binding.passwordErrorTV.setVisibility(View.INVISIBLE);
             binding.passwordErrorIV.setVisibility(View.INVISIBLE);
         } else if (view.equals(binding.bioMetricIB)) {
-            BiometricLogin();
+            biometricLogin();
         } else if (view.equals(binding.username2TV)) {
             binding.nameET.setText("alice@example.com");
             binding.passwordET.setText(binding.password1TV.getText().toString().trim());
@@ -115,7 +121,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         }
     }
 
-    private void BiometricLogin() {
+    private void biometricLogin() {
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Biometric Login")
                 .setSubtitle("Login using you biometric credential")
@@ -130,12 +136,18 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
                 Log.e(TAG, "onAuthenticationError: ");
+
+                TestFairy.addEvent("Authentication errored with biometrics");
             }
 
             @Override
             public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
                 super.onAuthenticationSucceeded(result);
                 Log.e(TAG, "onAuthenticationSucceeded: ");
+
+                TestFairy.setUserId(getMockBiometricUserName());
+                TestFairy.addEvent("User signed in with biometrics");
+
                 ST.isLogin = true;
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
             }
@@ -144,10 +156,18 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
                 Log.e(TAG, "onAuthenticationFailed: ");
+
+                TestFairy.addEvent("Authentication failed with biometrics");
             }
         });
 
         biometricPrompt.authenticate(promptInfo);
+    }
+
+    private String getMockBiometricUserName() {
+        Random random = new Random();
+        String[] names = new String[] { "oliver", "william", "james", "benjamin", "henry", "alexander", "guy", "michael", "daniel", "jacob", "roy", "jonathan", "olivia", "charlotte", "sophia", "sarah", "isabella", "evelyn", "harper", "camila", "gianna", "abigail", "ella" };
+        return names[Math.abs(random.nextInt()) % names.length] + "@example.com";
     }
 
     @SuppressLint("NewApi")
@@ -170,7 +190,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         } else if (binding.nameET.getText().toString().contains("alice@example.com")) {
             binding.passwordErrorTV.setText(getString(R.string.soory_this_user_has_been_locked_out));
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
+            TestFairy.addEvent("Authentication failed for locked user");
         } else {
+            TestFairy.setUserId(binding.nameET.getText().toString().trim());
+            TestFairy.addEvent("User signed in with password");
+
             ST.isLogin = true;
             if (mParam1.equals(ST.CHECKOUT)) {
                 Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);

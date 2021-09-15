@@ -9,9 +9,12 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
@@ -50,6 +53,12 @@ import java.util.ArrayList;
 import com.saucelabs.mydemoapp.android.view.fragments.ProductDetailFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.QRFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
+import com.testfairy.FeedbackFormField;
+import com.testfairy.FeedbackOptions;
+import com.testfairy.SelectFeedbackFormField;
+import com.testfairy.StringFeedbackFormField;
+import com.testfairy.TestFairy;
+import com.testfairy.TextAreaFeedbackFormField;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -240,6 +249,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         list.add(getString(R.string.about));
         list.add(getString(R.string.app_reset_state));
         list.add(getString(R.string.fingerprint));
+        list.add("Send Feedback");
+        list.add("Remote Support");
+        list.add("Contact Form");
+        list.add("Crash");
         if(ST.isLogin){
             list.add(getString(R.string.logout));
         }else{
@@ -328,6 +341,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                 break;
             case 8:
+                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
+                TestFairy.showFeedbackForm();
+                break;
+            case 9:
+                TestFairy.stop();
+                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
+                TestFairy.showFeedbackForm();
+                break;
+            case 10:
+                // Keys are what the user sees, values are what the server will receive
+                Map<String, String> topics = new HashMap<>();
+                topics.put("Support", "customer_support");
+                topics.put("Refund", "refund_request");
+                topics.put("Delivery", "delivery_track");
+                topics.put("Coupons", "coupons");
+                topics.put("Suggestion", "customer_feedback");
+
+                List<FeedbackFormField> fields = new ArrayList<>();
+                fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
+                fields.add(new SelectFeedbackFormField("topic", "Topic", topics, "Support" /*default value*/)); // A custom select field
+                fields.add(new TextAreaFeedbackFormField(":text", "Your message", "")); // :text is built-in for feedback messages
+
+                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                        .setFeedbackFormFields(fields)
+                        .build()
+                );
+
+                TestFairy.showFeedbackForm();
+                break;
+            case 11:
+                runOnUiThread(() -> Toast.makeText(getApplicationContext(), "The app is going to crash", Toast.LENGTH_LONG).show());
+
+                new Handler(getMainLooper()).postDelayed(() -> {
+                    String url = null;
+                    Log.d("MainActivity", url.toString());
+                }, 2000);
+
+                break;
+            case 12:
                 if (ST.isLogin) {
 //                    setFragment(FRAGMENT_CART, param1, param2, param3);
                     showLogoutAlertDialog();
@@ -335,9 +387,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_LOGIN,1));
                 }
 //                    setFragment(FRAGMENT_LOGIN, param1, param2, param3);
-                break;
-            case 9:
-                showLogoutAlertDialog();
                 break;
 
         }
@@ -381,6 +430,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         switch (requestCode) {
             case REQ_ID_MULTIPLE_PERMISSIONS: {
                 Map<String, Integer> perms = new HashMap<>();

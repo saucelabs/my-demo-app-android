@@ -5,6 +5,8 @@ import android.content.Context;
 import androidx.multidex.MultiDex;
 
 import com.saucelabs.mydemoapp.android.utils.SingletonClass;
+import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
+import com.testfairy.TestFairy;
 
 public class MyApplication extends android.app.Application {
 
@@ -15,6 +17,8 @@ public class MyApplication extends android.app.Application {
         super.onCreate();
         instance = this;
         SingletonClass.getInstance();
+
+        initializeTestFairy();
     }
 
     @Override
@@ -31,4 +35,9 @@ public class MyApplication extends android.app.Application {
         MultiDex.install(this);
     }
 
+    private void initializeTestFairy() {
+        TestFairyAssetReader.Data testFairyData = new TestFairyAssetReader().read(this);
+        TestFairy.setServerEndpoint(testFairyData.getServerEndpoint());
+        TestFairy.begin(this, testFairyData.getAppToken());
+    }
 }
