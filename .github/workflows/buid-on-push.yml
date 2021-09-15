@@ -1,17 +1,23 @@
-name: Android CI
+name: Build on push
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
-      - name: set up JDK 1.8
+
+      - name: Setup Java
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Gradle
-        run: ./gradlew app:build
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Compile
+        run: |
+          ./gradlew app:build
+        shell: bash
