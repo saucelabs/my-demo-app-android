@@ -226,6 +226,8 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     }
 
     private void handleRatting(int ratting) {
+        TestFairy.setAttribute("product.id." + selectedProduct.getId() + ".rating", "" + ratting);
+
         binding.rattingV.start1IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start2IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start3IV.setImageResource(R.drawable.ic_unselected_start);

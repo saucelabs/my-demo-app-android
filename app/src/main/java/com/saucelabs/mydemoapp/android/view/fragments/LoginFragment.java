@@ -97,7 +97,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View view) {
         if (view.equals(binding.loginBtn)) {
-            validate();
+            loginWithEmail();
         } else if (view.equals(binding.username1TV)) {
             binding.nameET.setText(binding.username1TV.getText().toString().trim());
             binding.passwordET.setText(binding.password1TV.getText().toString().trim());
@@ -108,7 +108,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             binding.passwordErrorTV.setVisibility(View.INVISIBLE);
             binding.passwordErrorIV.setVisibility(View.INVISIBLE);
         } else if (view.equals(binding.bioMetricIB)) {
-            biometricLogin();
+            loginWithBiometrics();
         } else if (view.equals(binding.username2TV)) {
             binding.nameET.setText("alice@example.com");
             binding.passwordET.setText(binding.password1TV.getText().toString().trim());
@@ -121,7 +121,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         }
     }
 
-    private void biometricLogin() {
+    private void loginWithBiometrics() {
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Biometric Login")
                 .setSubtitle("Login using you biometric credential")
@@ -171,7 +171,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     }
 
     @SuppressLint("NewApi")
-    private void validate() {
+    private void loginWithEmail() {
         if (binding.nameET.getText().toString().trim().isEmpty()) {
             binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
             binding.nameErrorTV.setVisibility(View.VISIBLE);
