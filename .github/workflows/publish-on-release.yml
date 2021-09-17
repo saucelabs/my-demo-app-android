@@ -1,0 +1,55 @@
+name: Publish APK
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Detect version from release tag
+        run: |
+          echo "CI_TAG=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Set app version and bump version code
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: app/build.gradle
+          versionCode: ${{ github.run_number }}
+          versionName: ${{ env.CI_TAG }}
+
+      - name: Compile APK
+        run: |
+          ./gradlew app:assembleDebug
+          mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/mda-${{ env.CI_TAG }}-${{ github.run_number }}.apk
+        shell: bash
+
+      - name: Upload release artifacts
+        uses: softprops/action-gh-release@v1
+        with:
+          name: Version ${{ env.CI_TAG }}
+          tag_name: ${{ env.CI_TAG }}
+          fail_on_unmatched_files: true
+          prerelease: false
+          files: |
+            app/build/outputs/apk/debug/mda-${{ env.CI_TAG }}-${{ github.run_number }}.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
