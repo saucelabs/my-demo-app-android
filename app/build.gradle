@@ -12,8 +12,8 @@ android {
         applicationId "com.saucelabs.mydemoapp.android"
         minSdkVersion 19
         targetSdkVersion 30
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 1 // CI automatically replaces this
+        versionName "0.0.0" // CI automatically replaces this
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
