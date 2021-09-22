@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.saucelabs.mydemoapp.android.BuildConfig;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.FragmentAboutBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
@@ -50,20 +51,28 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_about, container, false);
         setListeners();
 
+        binding.versionTV.setText(
+                String.format(
+                        "V.%s-build %d",
+                        BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE
+                )
+        );
+
         return binding.getRoot();
     }
 
     private void setListeners() {
         binding.webTV.setOnClickListener(this);
+        binding.versionTV.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-
         if(v.equals(binding.webTV)){
             openWebPage("https://saucelabs.com/");
+        } else if (v.equals(binding.versionTV)) {
+            openWebPage("https://github.com/saucelabs/my-demo-app-android/releases/tag/" + BuildConfig.VERSION_NAME);
         }
-
     }
 
     public void openWebPage(String url) {

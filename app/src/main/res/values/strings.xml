@@ -31,7 +31,6 @@
     <string name="url_hint">https://www.website.com</string>
     <string name="enter_an_https_url">Enter an HTTPS url</string>
     <string name="go_to_site">Go To Site</string>
-    <string name="version_1">V.1.0.0-build 73 by</string>
     <string name="go_to_website"><u>Go to the Sauce Labs website.</u></string>
     <string name="location_details">Below you will find the latitude and longitude. This screen will automatically start with observing the location. You can manually disable/enable  it by clicking on the buttons. It will automatically stop observing the location when you leave the screen.</string>
     <string name="link"><u>this link.</u></string>
