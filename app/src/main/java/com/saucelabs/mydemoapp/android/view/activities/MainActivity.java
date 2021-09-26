@@ -357,7 +357,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 TestFairy.showFeedbackForm();
                 break;
             case 11:
-                prepareSurveyForm();
+                prepareFeedbackForm();
 
                 TestFairy.showFeedbackForm();
                 break;
@@ -383,6 +383,60 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
 
         binding.container.closeDrawer(GravityCompat.START);
+    }
+
+    private void prepareFeedbackForm() {
+        Map<String, String> projects = new TreeMap<>();
+        projects.put("Bravo", "bravo");
+        projects.put("Fury", "fury");
+        projects.put("Roam", "roam");
+        projects.put("Wow Phase 2", "wow-phase-2");
+
+        Map<String, String> audio = new TreeMap<>();
+        audio.put("Stutter", "stutter");
+        audio.put("Skipping", "skipping");
+        audio.put("No Sound", "no-sound");
+        audio.put("Volume", "volume");
+        audio.put("Ramping", "ramping");
+        audio.put("Other", "other");
+
+        Map<String, String> frequency = new TreeMap<>();
+        frequency.put("Happens all the time", "all-the-time");
+        frequency.put("Happens sometimes", "sometimes");
+        frequency.put("Happened once", "once");
+
+        Map<String, String> dropoff = new TreeMap<>();
+        dropoff.put("On", "on");
+        dropoff.put("Off", "off");
+
+        Map<String, String> power = new TreeMap<>();
+        power.put("Battery", "battery");
+        power.put("Charging", "charging");
+
+        Map<String, String> desktop = new TreeMap<>();
+        desktop.put("Windows", "windows");
+        desktop.put("Mac", "mac");
+
+        Map<String, String> voice = new TreeMap<>();
+        voice.put("Alexa", "alexa");
+        voice.put("Google", "google");
+
+        List<FeedbackFormField> fields = new ArrayList<>();
+        fields.add(new SelectFeedbackFormField("project", "Project", projects, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("audio", "Audio Related", audio, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("frequency", "Frequency of Issue/Reproducibility", frequency, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("dropoff", "Hardware Dropped off – LED Status of player", dropoff, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("power", "Power Issue", power, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("desktop", "Which Desktop computer does this happen on", desktop, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("voice", "Voice Related", voice, "" /*default value*/));
+        fields.add(new TextAreaFeedbackFormField(":text", "Please describe your overall experience", ""));
+
+        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                .setFeedbackFormFields(fields)
+                .setRecordVideoButtonVisible(false)
+                .setTakeScreenshotButtonVisible(false)
+                .build()
+        );
     }
 
     private void prepareSurveyForm() {
