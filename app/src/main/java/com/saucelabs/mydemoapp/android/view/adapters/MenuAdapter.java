@@ -16,6 +16,7 @@ import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
+
     private List<String>  list;
     private Context context;
     private OnItemClickListener listener;

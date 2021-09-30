@@ -18,6 +18,7 @@ import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
 import com.saucelabs.mydemoapp.android.view.adapters.CartItemAdapter;
 
 public class CartFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentCartBinding binding;
     CartItemAdapter adapter;
 

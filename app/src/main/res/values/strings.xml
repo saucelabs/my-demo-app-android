@@ -18,20 +18,16 @@
     <string name="price_des">Price - Descending</string>
     <string name="login_title">Login</string>
     <string name="select_username_and_password_from_below">Select a username and password from the list below, or click on the username to automatically populate the username and password.</string>
-    <string name="username">Username</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="password">Password</string>
 
     <string name="add_to_cart">Add To Cart</string>
-
-    <string name="usernames">Usernames</string>
     <string name="webview_">Webview</string>
     <string name="url">URL</string>
     <string name="url_hint">https://www.website.com</string>
     <string name="enter_an_https_url">Enter an HTTPS url</string>
     <string name="go_to_site">Go To Site</string>
-    <string name="version_1">V.1.0.0-build 73 by</string>
     <string name="go_to_website"><u>Go to the Sauce Labs website.</u></string>
     <string name="location_details">Below you will find the latitude and longitude. This screen will automatically start with observing the location. You can manually disable/enable  it by clicking on the buttons. It will automatically stop observing the location when you leave the screen.</string>
     <string name="link"><u>this link.</u></string>
@@ -177,4 +173,7 @@
     <string name="displays_list_of_selected_products">Displays list of selected products</string>
     <string name="shows_current_sorting_order_and_displays_available_sorting_options">Shows current sorting order and displays available sorting options</string>
     <string name="background_for_drawing_pad">Background for drawing pad</string>
+    <string name="text_enter_msg">Your Message</string>
+    <string name="username">Username</string>
+    <string name="usernames">Username</string>
 </resources>

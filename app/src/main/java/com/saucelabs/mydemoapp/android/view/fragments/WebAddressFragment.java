@@ -16,6 +16,7 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentWebAddressBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
+import com.testfairy.TestFairy;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -71,7 +72,7 @@ public class WebAddressFragment extends BaseFragment implements View.OnClickList
             try {
                 sendLink();
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                TestFairy.logThrowable(e);
             }
         }
     }

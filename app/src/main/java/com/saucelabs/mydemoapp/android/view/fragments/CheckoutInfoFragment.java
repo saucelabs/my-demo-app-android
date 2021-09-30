@@ -25,6 +25,7 @@ import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
  * create an instance of this fragment.
  */
 public class CheckoutInfoFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentCheckoutInfoBinding binding;
 
     public static CheckoutInfoFragment newInstance(String param1, String param2, int param3) {

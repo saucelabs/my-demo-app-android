@@ -40,7 +40,7 @@
         android:id="@+id/versionTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/version_1"
+        android:text="V.1.0.0-build 1 by"
         android:textColor="@color/black"
         android:gravity="center"
         style="@style/TextViewStyle"
@@ -48,7 +48,8 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleIV" />
+        app:layout_constraintTop_toBottomOf="@+id/titleIV"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/teamIV"

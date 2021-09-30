@@ -18,6 +18,7 @@ import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 import java.util.List;
 
 public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder> {
+
     Activity mAct;
     List<ColorModel> list;
     OnItemClickListener clickListener;

@@ -18,6 +18,7 @@ import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 import java.util.List;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHolder> {
+
     Activity mAct;
     List<ProductModel> list;
     OnItemClickListener clickListener;

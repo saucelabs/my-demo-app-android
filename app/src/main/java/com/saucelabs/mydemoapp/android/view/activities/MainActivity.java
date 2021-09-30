@@ -9,10 +9,14 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GravityCompat;
 import androidx.core.app.ActivityCompat;
@@ -50,13 +54,22 @@ import java.util.ArrayList;
 import com.saucelabs.mydemoapp.android.view.fragments.ProductDetailFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.QRFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
+import com.testfairy.FeedbackFormField;
+import com.testfairy.FeedbackOptions;
+import com.testfairy.SelectFeedbackFormField;
+import com.testfairy.StringFeedbackFormField;
+import com.testfairy.TestFairy;
+import com.testfairy.TextAreaFeedbackFormField;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+
     public ActivityMainBinding binding;
     private Fragment currentFragment;
     private MenuAdapter menuAdapter;
@@ -240,6 +253,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         list.add(getString(R.string.about));
         list.add(getString(R.string.app_reset_state));
         list.add(getString(R.string.fingerprint));
+        list.add("Send Feedback");
+        list.add("Remote Support");
+        list.add("Contact Form");
+        list.add("Survey");
+        list.add("Crash");
         if(ST.isLogin){
             list.add(getString(R.string.logout));
         }else{
@@ -328,6 +346,36 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                 break;
             case 8:
+                feedbackForm();
+                TestFairy.showFeedbackForm();
+//                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
+//                TestFairy.showFeedbackForm();
+                break;
+            case 9:
+                TestFairy.stop();
+                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
+                TestFairy.showFeedbackForm();
+                break;
+            case 10:
+                prepareContactForm();
+                TestFairy.showFeedbackForm();
+                break;
+            case 11:
+                prepareFeedbackForm();
+                TestFairy.showFeedbackForm();
+                break;
+            case 12:
+                runOnUiThread(() ->
+                        Toast.makeText(getApplicationContext(), "The app is going to crash",
+                                Toast.LENGTH_LONG).show());
+
+                new Handler(getMainLooper()).postDelayed(() -> {
+                    String url = null;
+                    Log.d("MainActivity", url.toString());
+                }, 2000);
+
+                break;
+            case 13:
                 if (ST.isLogin) {
 //                    setFragment(FRAGMENT_CART, param1, param2, param3);
                     showLogoutAlertDialog();
@@ -336,13 +384,134 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 }
 //                    setFragment(FRAGMENT_LOGIN, param1, param2, param3);
                 break;
-            case 9:
-                showLogoutAlertDialog();
-                break;
 
         }
 
         binding.container.closeDrawer(GravityCompat.START);
+    }
+
+    private void feedbackForm() {
+
+        List<FeedbackFormField> fields = new ArrayList<>();
+        fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
+        fields.add(new TextAreaFeedbackFormField(":text", getResources().getString(R.string.text_enter_msg), "")); // :text is built-in for feedback messages
+
+        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                .setFeedbackFormFields(fields)
+                .build()
+        );
+    }
+
+    private void prepareFeedbackForm() {
+        Map<String, String> projects = new TreeMap<>();
+        projects.put("Bravo", "bravo");
+        projects.put("Fury", "fury");
+        projects.put("Roam", "roam");
+        projects.put("Wow Phase 2", "wow-phase-2");
+
+        Map<String, String> audio = new TreeMap<>();
+        audio.put("Stutter", "stutter");
+        audio.put("Skipping", "skipping");
+        audio.put("No Sound", "no-sound");
+        audio.put("Volume", "volume");
+        audio.put("Ramping", "ramping");
+        audio.put("Other", "other");
+
+        Map<String, String> frequency = new TreeMap<>();
+        frequency.put("Happens all the time", "all-the-time");
+        frequency.put("Happens sometimes", "sometimes");
+        frequency.put("Happened once", "once");
+
+        Map<String, String> dropoff = new TreeMap<>();
+        dropoff.put("On", "on");
+        dropoff.put("Off", "off");
+
+        Map<String, String> power = new TreeMap<>();
+        power.put("Battery", "battery");
+        power.put("Charging", "charging");
+
+        Map<String, String> desktop = new TreeMap<>();
+        desktop.put("Windows", "windows");
+        desktop.put("Mac", "mac");
+
+        Map<String, String> voice = new TreeMap<>();
+        voice.put("Alexa", "alexa");
+        voice.put("Google", "google");
+
+        List<FeedbackFormField> fields = new ArrayList<>();
+        fields.add(new SelectFeedbackFormField("project", "Project", projects, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("audio", "Audio Related", audio, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("frequency", "Frequency of Issue/Reproducibility", frequency, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("dropoff", "Hardware Dropped off – LED Status of player", dropoff, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("power", "Power Issue", power, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("desktop", "Which Desktop computer does this happen on", desktop, "" /*default value*/));
+        fields.add(new SelectFeedbackFormField("voice", "Voice Related", voice, "" /*default value*/));
+        fields.add(new TextAreaFeedbackFormField(":text", "Please describe your overall experience", ""));
+
+        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                .setFeedbackFormFields(fields)
+                .setRecordVideoButtonVisible(false)
+                .setTakeScreenshotButtonVisible(false)
+                .build()
+        );
+    }
+
+    private void prepareSurveyForm() {
+        // Keys are what the user sees, values are what the server will receive
+        Map<String, String> ratings = new TreeMap<>();
+        ratings.put("Satisfied", "3");
+        ratings.put("Neutral", "2");
+        ratings.put("Dissatisfied", "1");
+
+        Map<String, String> years = new TreeMap<>();
+        for (int i = 121; i >= 0; i--) {
+            String year = "" + (1900 + i);
+            years.put(year, year);
+        }
+
+        Map<String, String> yesNo = new TreeMap<>();
+        yesNo.put("Yes", "yes");
+        yesNo.put("No", "no");
+
+        List<FeedbackFormField> fields = new ArrayList<>();
+        fields.add(new StringFeedbackFormField("name", "Full name", ""));
+        fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
+        fields.add(new SelectFeedbackFormField("birthday", "Birthday", years, "" /*default value*/)); // A custom select field
+        fields.add(new StringFeedbackFormField("occupation", "Occupation", ""));
+        fields.add(new SelectFeedbackFormField("purchased", "Was your purchase successful?", new TreeMap<>(yesNo), "Yes" /*default value*/));
+        fields.add(new SelectFeedbackFormField("coupon", "Have you used a coupon code?", new TreeMap<>(yesNo), "" /*default value*/));
+        fields.add(new TextAreaFeedbackFormField(":text", "Please describe your overall experience", ""));
+        fields.add(new SelectFeedbackFormField("rating", "Rating", ratings, "Satisfied" /*default value*/)); // A custom select field
+        fields.add(new SelectFeedbackFormField("suggest", "Would you suggest us to a friend?", new TreeMap<>(yesNo), "" /*default value*/));
+        fields.add(new TextAreaFeedbackFormField("requests", "What kind of products would you like to see in the future?", ""));
+        fields.add(new SelectFeedbackFormField("subscribed", "Would you like to receive emails from us?", new TreeMap<>(yesNo), "No" /*default value*/));
+
+        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                .setFeedbackFormFields(fields)
+                .setRecordVideoButtonVisible(false)
+                .setTakeScreenshotButtonVisible(false)
+                .build()
+        );
+    }
+
+    private void prepareContactForm() {
+        // Keys are what the user sees, values are what the server will receive
+        Map<String, String> topics = new HashMap<>();
+        topics.put("Support", "customer_support");
+        topics.put("Refund", "refund_request");
+        topics.put("Delivery", "delivery_track");
+        topics.put("Coupons", "coupons");
+        topics.put("Suggestion", "customer_feedback");
+
+        List<FeedbackFormField> fields = new ArrayList<>();
+        fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
+        fields.add(new SelectFeedbackFormField("topic", "Topic", topics, "Support" /*default value*/)); // A custom select field
+        fields.add(new TextAreaFeedbackFormField(":text", "Your message", "")); // :text is built-in for feedback messages
+
+        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
+                .setFeedbackFormFields(fields)
+                .build()
+        );
     }
 
     private boolean checkAndRequestPermissions() {
@@ -381,6 +550,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
         switch (requestCode) {
             case REQ_ID_MULTIPLE_PERMISSIONS: {
                 Map<String, Integer> perms = new HashMap<>();

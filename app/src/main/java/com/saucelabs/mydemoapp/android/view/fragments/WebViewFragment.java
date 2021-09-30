@@ -24,6 +24,7 @@ import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 
 
 public class WebViewFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentWebViewBinding binding;
     private boolean isError = false;
 

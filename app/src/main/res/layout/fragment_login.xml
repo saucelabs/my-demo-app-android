@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,6 +16,7 @@
 
             <TextView
                 android:id="@+id/loginTV"
+                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -22,7 +24,6 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/titleTextSize"
                 android:textStyle="bold"
-                style="@style/TextViewStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -42,13 +43,13 @@
 
             <TextView
                 android:id="@+id/usernameTV"
+                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/username"
                 android:textColor="@color/black"
                 android:textSize="18dp"
-                style="@style/TextViewStyle"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -96,13 +97,14 @@
                 android:text="@string/username_is_required"
                 android:textColor="@color/red"
                 android:visibility="invisible"
-                app:layout_goneMarginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nameRL" />
+                app:layout_constraintTop_toBottomOf="@id/nameRL"
+                app:layout_goneMarginTop="8dp" />
 
             <TextView
                 android:id="@+id/passwordTV"
+                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -110,7 +112,6 @@
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                style="@style/TextViewStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/nameErrorTV" />
@@ -140,10 +141,10 @@
                     android:id="@+id/passwordErrorIV"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:contentDescription="@string/indicates_error"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="12dp"
+                    android:contentDescription="@string/indicates_error"
                     android:src="@drawable/alert"
                     android:visibility="gone" />
 
@@ -151,13 +152,13 @@
 
             <TextView
                 android:id="@+id/passwordErrorTV"
+                style="@style/TextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/password_is_required"
                 android:textColor="@color/red"
                 android:visibility="invisible"
-                style="@style/TextViewStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/passwordRL" />
@@ -179,8 +180,8 @@
                     android:layout_marginEnd="15dp"
                     android:layout_weight="5"
                     android:background="@drawable/login_button_bg"
-                    android:padding="10dp"
                     android:contentDescription="@string/tap_to_login_using_biometric_verification"
+                    android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/icon_touch_id"
                     android:textAllCaps="false"
@@ -188,13 +189,13 @@
 
                 <android.widget.Button
                     android:id="@+id/loginBtn"
+                    style="@style/TextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/login_button_bg"
-                    android:text="@string/login_title"
                     android:contentDescription="@string/tap_to_login_with_given_credentials"
-                    style="@style/TextViewStyle"
+                    android:text="@string/login_title"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="24dp" />
@@ -204,6 +205,7 @@
 
             <TextView
                 android:id="@+id/savedNamesTV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
@@ -212,38 +214,37 @@
                 android:textColor="@color/black"
                 android:textSize="22dp"
                 android:textStyle="bold"
-                style="@style/TextViewStyle"
-                app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintEnd_toStartOf="@+id/savedPasswordTV"
                 app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="2"
                 app:layout_constraintStart_toStartOf="@+id/buttonLL"
                 app:layout_constraintTop_toBottomOf="@id/buttonLL" />
 
             <TextView
                 android:id="@+id/savedPasswordTV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:text="@string/password"
                 android:textColor="@color/black"
                 android:textSize="22dp"
-                style="@style/TextViewStyle"
                 android:textStyle="bold"
-                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintEnd_toEndOf="@+id/buttonLL"
+                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toEndOf="@id/savedNamesTV"
                 app:layout_constraintTop_toBottomOf="@id/buttonLL" />
 
             <TextView
                 android:id="@+id/username1TV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:clickable="true"
+                android:contentDescription="@string/tap_to_use_this_username_for_login"
                 android:focusable="true"
                 android:text="@string/bod_example_com"
-                style="@style/TextViewStyle"
-                android:contentDescription="@string/tap_to_use_this_username_for_login"
                 android:textColor="@drawable/text_bg"
                 app:layout_constraintEnd_toStartOf="@+id/password1TV"
                 app:layout_constraintHorizontal_weight="1"
@@ -252,27 +253,27 @@
 
             <TextView
                 android:id="@+id/password1TV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="12345678"
                 app:layout_constraintEnd_toEndOf="@+id/savedPasswordTV"
                 app:layout_constraintHorizontal_weight="1"
-                style="@style/TextViewStyle"
                 app:layout_constraintStart_toStartOf="@+id/savedPasswordTV"
                 app:layout_constraintTop_toBottomOf="@id/savedPasswordTV" />
 
             <TextView
                 android:id="@+id/username2TV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clickable="true"
+                android:contentDescription="@string/tap_to_use_this_username_for_login"
                 android:focusable="true"
                 android:text="@string/alice_example_com_locked_out"
                 android:textColor="@drawable/text_bg"
-                style="@style/TextViewStyle"
-                android:contentDescription="@string/tap_to_use_this_username_for_login"
                 app:layout_constraintEnd_toStartOf="@+id/password1TV"
                 app:layout_constraintHorizontal_weight="1.5"
                 app:layout_constraintStart_toStartOf="@id/username1TV"
@@ -280,10 +281,10 @@
 
             <TextView
                 android:id="@+id/password2TV"
+                style="@style/TextViewStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                style="@style/TextViewStyle"
                 app:layout_constraintEnd_toEndOf="@+id/savedPasswordTV"
                 app:layout_constraintHorizontal_weight="0.8"
                 app:layout_constraintStart_toStartOf="@+id/savedPasswordTV"

@@ -23,9 +23,12 @@ import com.saucelabs.mydemoapp.android.view.adapters.ProductsAdapter;
 import com.saucelabs.mydemoapp.android.viewModel.ProductCatalogViewModel;
 import com.saucelabs.mydemoapp.android.viewModel.ProductCatalogViewModelFactory;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
 public class ProductCatalogFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentProductCatalogBinding binding;
     List<ProductModel> productList;
     ProductsAdapter adapter;
@@ -55,11 +58,14 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_catalog, container, false);
+    public View onCreateView
+            (@NotNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_catalog,
+                container, false);
 
-
-        viewModel = ViewModelProviders.of(this, new ProductCatalogViewModelFactory(app)).get(ProductCatalogViewModel.class);
+        viewModel = ViewModelProviders
+                .of(this, new ProductCatalogViewModelFactory(app))
+                .get(ProductCatalogViewModel.class);
         bindData();
         return binding.getRoot();
     }

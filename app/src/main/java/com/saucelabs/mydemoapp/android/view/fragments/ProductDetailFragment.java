@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.saucelabs.mydemoapp.android.MyApplication;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.database.AppDatabase;
 import com.saucelabs.mydemoapp.android.database.AppExecutors;
@@ -27,8 +28,15 @@ import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
 import com.saucelabs.mydemoapp.android.view.adapters.ColorsAdapter;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModel;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModelFactory;
+import com.testfairy.TestFairy;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentProductDetailBinding binding;
     ColorsAdapter adapter;
     ProductModel selectedProduct;
@@ -144,7 +152,6 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 binding.colorRV.setAdapter(adapter);
             }
         });
-
     }
 
 
@@ -213,13 +220,15 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         }
 
         if (mAct instanceof MainActivity) {
-
             ((MainActivity) mAct).setData();
-
         }
+
+        ST.syncCartToTestFairy(getContext());
     }
 
     private void handleRatting(int ratting) {
+        TestFairy.setAttribute("product.id." + selectedProduct.getId() + ".rating", "" + ratting);
+
         binding.rattingV.start1IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start2IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start3IV.setImageResource(R.drawable.ic_unselected_start);

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCatalogViewModel extends BaseViewModel {
+
     private AppDatabase mDb;
     private DatabaseRepository repository;
     public MutableLiveData<List<ProductModel>> allProducts = new MutableLiveData<>();

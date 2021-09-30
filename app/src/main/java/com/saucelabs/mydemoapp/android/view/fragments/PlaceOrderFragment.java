@@ -1,13 +1,12 @@
 package com.saucelabs.mydemoapp.android.view.fragments;
 
 import android.os.Bundle;
-
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.FragmentPlaceOrderBinding;
@@ -20,6 +19,7 @@ import com.saucelabs.mydemoapp.android.view.adapters.CartItemAdapter;
 
 
 public class PlaceOrderFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentPlaceOrderBinding binding;
     private CartItemAdapter adapter;
 

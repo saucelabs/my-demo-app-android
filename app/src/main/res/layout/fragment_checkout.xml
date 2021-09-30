@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragments.CheckoutFragment">
@@ -39,7 +39,7 @@
             android:id="@+id/enterPaymentMethodTV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:text="@string/enter_a_payment_method"
             android:textColor="@color/black"
             android:textSize="18dp"
@@ -65,9 +65,9 @@
             android:id="@+id/cardTV"
             android:text="@string/card"
             android:textColor="@color/black"
-            android:textSize="16dp"
+            android:textSize="16sp"
             style="@style/TextViewStyle"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@id/visaIV"
@@ -204,11 +204,13 @@
 
             <com.uphyca.creditcardedittext.CreditCardNumberEditText
                 android:id="@+id/cardNumberET"
-                android:hint="3258 1256 7568 7891"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@null"
-                android:textColor="@color/black"/>
+                android:hint="3258 1256 7568 7891"
+                android:maxLength="13"
+                android:textColor="@color/black"
+                android:inputType="text"/>
 
             <ImageView
                 android:id="@+id/cardNumberErrorIV"

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DrawingFragment extends BaseFragment implements View.OnClickListener {
+
     private FragmentDrawingBinding binding;
 
     public static DrawingFragment newInstance(String param1, String param2, int param3) {
@@ -49,7 +50,6 @@ public class DrawingFragment extends BaseFragment implements View.OnClickListene
             mParam3 = getArguments().getInt(Constants.ARG_PARAM3, -1);
         }
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
