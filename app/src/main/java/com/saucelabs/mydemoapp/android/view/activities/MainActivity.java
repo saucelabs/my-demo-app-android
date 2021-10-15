@@ -3,23 +3,21 @@ package com.saucelabs.mydemoapp.android.view.activities;
 import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.GravityCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -43,28 +41,21 @@ import com.saucelabs.mydemoapp.android.view.fragments.LocationFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.LoginFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.PlaceOrderFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.ProductCatalogFragment;
+import com.saucelabs.mydemoapp.android.view.fragments.ProductDetailFragment;
+import com.saucelabs.mydemoapp.android.view.fragments.QRFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.WebAddressFragment;
+import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
+import com.testfairy.FeedbackOptions;
+import com.testfairy.TestFairy;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-
-import com.saucelabs.mydemoapp.android.view.fragments.ProductDetailFragment;
-import com.saucelabs.mydemoapp.android.view.fragments.QRFragment;
-import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
-import com.testfairy.FeedbackFormField;
-import com.testfairy.FeedbackOptions;
-import com.testfairy.SelectFeedbackFormField;
-import com.testfairy.StringFeedbackFormField;
-import com.testfairy.TestFairy;
-import com.testfairy.TextAreaFeedbackFormField;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     public ActivityMainBinding binding;
@@ -134,8 +125,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             setFragment(reqFrag, param1, param2, param3);
         else
             setFragment(FRAGMENT_PRODUCT_CATAlOG, param1, param2, param3);
-
-        setListener();
     }
 
     @Override
@@ -250,11 +239,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         list.add(getString(R.string.about));
         list.add(getString(R.string.app_reset_state));
         list.add(getString(R.string.fingerprint));
-        list.add("Send Feedback");
-        list.add("Remote Support");
-        list.add("Contact Form");
-        list.add("Survey");
-        list.add("Crash");
+        list.add("Report a Bug");
+        list.add("Report a Bug (debug)");
         if(ST.isLogin){
             list.add(getString(R.string.logout));
         }else{
@@ -275,58 +261,58 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         switch (position) {
             case 0:
 //                setFragment(FRAGMENT_PRODUCT_CATAlOG, param1, param2, param3);
-                if( currentFragment instanceof ProductCatalogFragment) {
+                if (currentFragment instanceof ProductCatalogFragment) {
 
-                }else{
+                } else {
                     ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_PRODUCT_CATAlOG, 1));
                 }
                 break;
             case 1:
 //                setFragment(FRAGMENT_WEB_ADDRESS, param1, param2, param3);
-                if( currentFragment instanceof WebAddressFragment) {
+                if (currentFragment instanceof WebAddressFragment) {
 
-                }else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_WEB_ADDRESS,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_WEB_ADDRESS, 1));
                 }
 
                 break;
             case 2:
 //                setFragment(FRAGMENT_QR, param1, param2, param3);
 
-                if( currentFragment instanceof QRFragment) {
+                if (currentFragment instanceof QRFragment) {
 
-                }else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_QR,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_QR, 1));
                 }
 
 
                 break;
             case 3:
 //                setFragment(FRAGMENT_GEO_LOCATION, param1, param2, param3);
-                if( currentFragment instanceof LocationFragment) {
+                if (currentFragment instanceof LocationFragment) {
 
-                }else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_GEO_LOCATION,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_GEO_LOCATION, 1));
                 }
 
                 break;
             case 4:
 //                setFragment(FRAGMENT_DRAWING, param1, param2, param3);
 
-                if( currentFragment instanceof DrawingFragment) {
+                if (currentFragment instanceof DrawingFragment) {
 
-                }else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_DRAWING,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_DRAWING, 1));
                 }
 
                 break;
             case 5:
 //                setFragment(FRAGMENT_ABOUT, param1, param2, param3);
 
-                if( currentFragment instanceof AboutFragment) {
+                if (currentFragment instanceof AboutFragment) {
 
-                }else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_ABOUT,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_ABOUT, 1));
                 }
 
                 break;
@@ -347,35 +333,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 TestFairy.showFeedbackForm();
                 break;
             case 9:
-                TestFairy.stop();
-                TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
-                TestFairy.showFeedbackForm();
+                startActivity(new Intent(this, DebugFeedbackActivity.class));
                 break;
+//            case 10:
+//                prepareContactForm();
+//
+//                TestFairy.showFeedbackForm();
+//                break;
+//            case 11:
+//                prepareFeedbackForm();
+//
+//                TestFairy.showFeedbackForm();
+//                break;
+//            case 12:
+//                runOnUiThread(() -> Toast.makeText(getApplicationContext(), "The app is going to crash", Toast.LENGTH_LONG).show());
+//
+//                new Handler(getMainLooper()).postDelayed(() -> {
+//                    String url = null;
+//                    Log.d("MainActivity", url.toString());
+//                }, 2000);
+//
+//                break;
             case 10:
-                prepareContactForm();
-
-                TestFairy.showFeedbackForm();
-                break;
-            case 11:
-                prepareFeedbackForm();
-
-                TestFairy.showFeedbackForm();
-                break;
-            case 12:
-                runOnUiThread(() -> Toast.makeText(getApplicationContext(), "The app is going to crash", Toast.LENGTH_LONG).show());
-
-                new Handler(getMainLooper()).postDelayed(() -> {
-                    String url = null;
-                    Log.d("MainActivity", url.toString());
-                }, 2000);
-
-                break;
-            case 13:
                 if (ST.isLogin) {
 //                    setFragment(FRAGMENT_CART, param1, param2, param3);
                     showLogoutAlertDialog();
-                } else{
-                    ST.startMainActivity(mAct , ST.getBundle(FRAGMENT_LOGIN,1));
+                } else {
+                    ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_LOGIN, 1));
                 }
 //                    setFragment(FRAGMENT_LOGIN, param1, param2, param3);
                 break;
@@ -383,118 +367,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
 
         binding.container.closeDrawer(GravityCompat.START);
-    }
-
-    private void prepareFeedbackForm() {
-        Map<String, String> projects = new TreeMap<>();
-        projects.put("Bravo", "bravo");
-        projects.put("Fury", "fury");
-        projects.put("Roam", "roam");
-        projects.put("Wow Phase 2", "wow-phase-2");
-
-        Map<String, String> audio = new TreeMap<>();
-        audio.put("Stutter", "stutter");
-        audio.put("Skipping", "skipping");
-        audio.put("No Sound", "no-sound");
-        audio.put("Volume", "volume");
-        audio.put("Ramping", "ramping");
-        audio.put("Other", "other");
-
-        Map<String, String> frequency = new TreeMap<>();
-        frequency.put("Happens all the time", "all-the-time");
-        frequency.put("Happens sometimes", "sometimes");
-        frequency.put("Happened once", "once");
-
-        Map<String, String> dropoff = new TreeMap<>();
-        dropoff.put("On", "on");
-        dropoff.put("Off", "off");
-
-        Map<String, String> power = new TreeMap<>();
-        power.put("Battery", "battery");
-        power.put("Charging", "charging");
-
-        Map<String, String> desktop = new TreeMap<>();
-        desktop.put("Windows", "windows");
-        desktop.put("Mac", "mac");
-
-        Map<String, String> voice = new TreeMap<>();
-        voice.put("Alexa", "alexa");
-        voice.put("Google", "google");
-
-        List<FeedbackFormField> fields = new ArrayList<>();
-        fields.add(new SelectFeedbackFormField("project", "Project", projects, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("audio", "Audio Related", audio, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("frequency", "Frequency of Issue/Reproducibility", frequency, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("dropoff", "Hardware Dropped off – LED Status of player", dropoff, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("power", "Power Issue", power, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("desktop", "Which Desktop computer does this happen on", desktop, "" /*default value*/));
-        fields.add(new SelectFeedbackFormField("voice", "Voice Related", voice, "" /*default value*/));
-        fields.add(new TextAreaFeedbackFormField(":text", "Please describe your overall experience", ""));
-
-        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
-                .setFeedbackFormFields(fields)
-                .setRecordVideoButtonVisible(false)
-                .setTakeScreenshotButtonVisible(false)
-                .build()
-        );
-    }
-
-    private void prepareSurveyForm() {
-        // Keys are what the user sees, values are what the server will receive
-        Map<String, String> ratings = new TreeMap<>();
-        ratings.put("Satisfied", "3");
-        ratings.put("Neutral", "2");
-        ratings.put("Dissatisfied", "1");
-
-        Map<String, String> years = new TreeMap<>();
-        for (int i = 121; i >= 0; i--) {
-            String year = "" + (1900 + i);
-            years.put(year, year);
-        }
-
-        Map<String, String> yesNo = new TreeMap<>();
-        yesNo.put("Yes", "yes");
-        yesNo.put("No", "no");
-
-        List<FeedbackFormField> fields = new ArrayList<>();
-        fields.add(new StringFeedbackFormField("name", "Full name", ""));
-        fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
-        fields.add(new SelectFeedbackFormField("birthday", "Birthday", years, "" /*default value*/)); // A custom select field
-        fields.add(new StringFeedbackFormField("occupation", "Occupation", ""));
-        fields.add(new SelectFeedbackFormField("purchased", "Was your purchase successful?", new TreeMap<>(yesNo), "Yes" /*default value*/));
-        fields.add(new SelectFeedbackFormField("coupon", "Have you used a coupon code?", new TreeMap<>(yesNo), "" /*default value*/));
-        fields.add(new TextAreaFeedbackFormField(":text", "Please describe your overall experience", ""));
-        fields.add(new SelectFeedbackFormField("rating", "Rating", ratings, "Satisfied" /*default value*/)); // A custom select field
-        fields.add(new SelectFeedbackFormField("suggest", "Would you suggest us to a friend?", new TreeMap<>(yesNo), "" /*default value*/));
-        fields.add(new TextAreaFeedbackFormField("requests", "What kind of products would you like to see in the future?", ""));
-        fields.add(new SelectFeedbackFormField("subscribed", "Would you like to receive emails from us?", new TreeMap<>(yesNo), "No" /*default value*/));
-
-        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
-                .setFeedbackFormFields(fields)
-                .setRecordVideoButtonVisible(false)
-                .setTakeScreenshotButtonVisible(false)
-                .build()
-        );
-    }
-
-    private void prepareContactForm() {
-        // Keys are what the user sees, values are what the server will receive
-        Map<String, String> topics = new HashMap<>();
-        topics.put("Support", "customer_support");
-        topics.put("Refund", "refund_request");
-        topics.put("Delivery", "delivery_track");
-        topics.put("Coupons", "coupons");
-        topics.put("Suggestion", "customer_feedback");
-
-        List<FeedbackFormField> fields = new ArrayList<>();
-        fields.add(new StringFeedbackFormField(":userId", "Email", "")); // :userId is built-in for emails
-        fields.add(new SelectFeedbackFormField("topic", "Topic", topics, "Support" /*default value*/)); // A custom select field
-        fields.add(new TextAreaFeedbackFormField(":text", "Your message", "")); // :text is built-in for feedback messages
-
-        TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
-                .setFeedbackFormFields(fields)
-                .build()
-        );
     }
 
     private boolean checkAndRequestPermissions() {
