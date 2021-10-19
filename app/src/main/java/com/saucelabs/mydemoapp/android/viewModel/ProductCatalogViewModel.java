@@ -24,8 +24,6 @@ public class ProductCatalogViewModel extends BaseViewModel {
         getAllProducts(MainActivity.NAME_ASC);
     }
 
-
-
     public void getAllProducts(int type) {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
@@ -48,7 +46,4 @@ public class ProductCatalogViewModel extends BaseViewModel {
             }
         });
     }
-
-
-
 }

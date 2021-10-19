@@ -6,6 +6,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.saucelabs.mydemoapp.android.R;
+import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -33,7 +34,6 @@ public class WebviewTest {
     public void setUp(){
         activityRule.getScenario().moveToState(Lifecycle.State.RESUMED);
         url="https://www.google.com";
-
     }
 
     @Test
@@ -42,15 +42,12 @@ public class WebviewTest {
         onView(withId(R.id.menuIV)).perform(click());
 
         onView(withId(R.id.menuRV)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(1,
-                        SideNavView.clickChildViewWithId(R.id.itemTV)));
+                RecyclerViewActions.actionOnItemAtPosition(1, new SideNavClickAction()));
 
         onView(withId(R.id.goBtn))
                 .perform(click());
 
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
-
-
     }
 
     @Test
@@ -59,8 +56,7 @@ public class WebviewTest {
         onView(withId(R.id.menuIV)).perform(click());
 
         onView(withId(R.id.menuRV)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(1,
-                        SideNavView.clickChildViewWithId(R.id.itemTV)));
+                RecyclerViewActions.actionOnItemAtPosition(1, new SideNavClickAction()));
 
         onView(withId(R.id.urlET))
                 .perform(typeText(url),closeSoftKeyboard());
@@ -68,7 +64,5 @@ public class WebviewTest {
                 .perform(click());
 
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
-
-
     }
 }

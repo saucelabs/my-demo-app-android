@@ -1,0 +1,24 @@
+name: Test with Saucectl
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+env:
+  SAUCE_USERNAME: ${{secrets.SAUCE_USERNAME}}
+  SAUCE_ACCESS_KEY: ${{secrets.SAUCE_ACCESS_KEY}}
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Saucectl RUN Docker and Cloud
+        uses: saucelabs/saucectl-run-action@v1
+        with:
+          testing-environment: ""
+          concurrency: 10
