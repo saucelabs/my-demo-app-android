@@ -23,10 +23,11 @@ jobs:
 
       - name: Compile
         run: |
-          ./gradlew app:build
+          ./gradlew app:assembleDebug
+          ./gradlew app:assembleDebugAndroidTests
         shell: bash
 
-      - name: Saucectl RUN Docker and Cloud
+      - name: Test espresso with saucectl
         uses: saucelabs/saucectl-run-action@v1
         with:
           testing-environment: ""
