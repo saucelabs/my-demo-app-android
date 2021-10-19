@@ -13,6 +13,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+
+      - name: Compile
+        run: |
+          ./gradlew app:build
+        shell: bash
+
       - name: Saucectl RUN Docker and Cloud
         uses: saucelabs/saucectl-run-action@v1
         with:
