@@ -78,6 +78,10 @@ public class BaseActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+    protected void onBackPressedDefault() {
+        super.onBackPressed();
+    }
+
     @Override
     protected void onPause() {
         if (receiver != null)
