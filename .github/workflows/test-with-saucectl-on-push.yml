@@ -24,7 +24,7 @@ jobs:
       - name: Compile
         run: |
           ./gradlew app:assembleDebug
-          ./gradlew app:assembleDebugAndroidTests
+          ./gradlew app:assembleDebugAndroidTest
         shell: bash
 
       - name: Test espresso with saucectl
