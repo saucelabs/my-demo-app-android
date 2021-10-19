@@ -103,7 +103,7 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         });
     }
 
-    public void upDateData() {
+    public void updateData() {
         viewModel.getAllProducts(MainActivity.selectedSort);
 //        AppExecutors.getInstance().diskIO().execute(new Runnable() {
 //            @Override

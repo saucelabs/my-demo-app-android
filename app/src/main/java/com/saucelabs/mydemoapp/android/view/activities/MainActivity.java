@@ -454,7 +454,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 					binding.header.sortIV.setImageResource(R.drawable.price_des);
 				}
 
-				((ProductCatalogFragment) currentFragment).upDateData();
+				((ProductCatalogFragment) currentFragment).updateData();
 
 				dialog.dismiss();
 			}
