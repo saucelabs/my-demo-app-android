@@ -8,7 +8,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
-import com.saucelabs.mydemoapp.android.TestOnlyThis;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Before;
@@ -60,7 +59,6 @@ public class WebviewTest {
 
     @Test
     @HappyFlow
-    @TestOnlyThis
     public void webViewTest() {
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
