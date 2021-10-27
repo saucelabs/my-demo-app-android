@@ -17,7 +17,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
-import com.saucelabs.mydemoapp.android.TestOnlyThis;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Rule;
@@ -36,8 +35,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         onView(withId(R.id.loginBtn)).perform(click());
 
@@ -53,8 +51,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String pass = "10203040";
 
@@ -76,8 +73,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
 
@@ -102,8 +98,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
         String pass = "10203040";

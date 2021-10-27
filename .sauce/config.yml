@@ -16,10 +16,10 @@ espresso:
   testApp: ./app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 suites:
   - name: "Main suite"
-    emulators:
-      - name: "Android GoogleApi Emulator"
-        platformVersions:
-          - "11.0"
+    devices:
+      - name: "Google Pixel 3a"
+        platformVersion: 11
+      - id: Google_Pixel_3a_real
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 artifacts:

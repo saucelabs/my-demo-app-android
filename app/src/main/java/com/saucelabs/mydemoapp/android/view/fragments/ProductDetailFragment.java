@@ -13,7 +13,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.saucelabs.mydemoapp.android.MyApplication;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.database.AppDatabase;
 import com.saucelabs.mydemoapp.android.database.AppExecutors;
@@ -29,11 +28,6 @@ import com.saucelabs.mydemoapp.android.view.adapters.ColorsAdapter;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModel;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModelFactory;
 import com.testfairy.TestFairy;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
     private FragmentProductDetailBinding binding;
@@ -197,6 +191,11 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     }
 
     private void addToCart(ProductModel productModel, int number) {
+        // Intentionally introduced bug for demos
+        if (productModel.getTitle().equals("Sauce Lab Bolt T-Shirt")) {
+            number = 10;
+        }
+
         boolean isAvailable = false;
         if (ST.cartItemList != null) {
             for (int pos = 0; pos < ST.cartItemList.size(); pos++) {
@@ -215,6 +214,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
             model.setProductModel(productModel);
             model.setColor(selectedColor.getColorImg());
             model.setNumberOfProduct(number);
+
             ST.cartItemList.add(model);
         }
 

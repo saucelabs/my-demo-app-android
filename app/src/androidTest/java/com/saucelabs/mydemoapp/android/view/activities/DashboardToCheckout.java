@@ -40,8 +40,8 @@ public class DashboardToCheckout {
 
     }
 
-    @HappyFlow
     @Test
+    @HappyFlow
     public void dashboard_Product_Test() throws InterruptedException {
         // Splash screen
         Thread.sleep(5000);
@@ -103,34 +103,39 @@ public class DashboardToCheckout {
         String country="United Kingdom";
 
         onView(withId(R.id.fullNameET))
+                .perform(scroll)
                 .perform(typeText(uName))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.address1ET))
+                .perform(scroll)
                 .perform(typeText(address1))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.address2ET))
+                .perform(scroll)
                 .perform(typeText(address2))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.cityET))
+                .perform(scroll)
                 .perform(typeText(city))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.stateET))
+                .perform(scroll)
                 .perform(typeText(state))
                 .perform(closeSoftKeyboard());
 
         onView(withId(R.id.zipET))
+                .perform(scroll)
                 .perform(typeText(zipCode))
-                .perform(closeSoftKeyboard())
-                .perform(scroll);
+                .perform(closeSoftKeyboard());
 
         onView(withId(R.id.countryET))
+                .perform(scroll)
                 .perform(typeText(country))
-                .perform(closeSoftKeyboard())
-                .perform(scroll);
+                .perform(closeSoftKeyboard());
 
         onView(withId(R.id.paymentBtn))
                 .perform(scroll)

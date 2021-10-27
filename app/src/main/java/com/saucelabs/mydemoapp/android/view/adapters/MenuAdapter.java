@@ -74,4 +74,9 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             this.binding = binding;
         }
     }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 }
