@@ -50,6 +50,7 @@ public class SingletonClass extends Methods {
                 fos.close();
 
                 TestFairy.attachFile(file);
+                TestFairy.addEvent("Number of items in cart: " + cartItemList.size());
             } catch (IOException e) {
                 TestFairy.logThrowable(e);
             }

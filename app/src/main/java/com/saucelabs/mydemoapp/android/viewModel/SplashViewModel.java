@@ -42,9 +42,7 @@ public class SplashViewModel extends BaseViewModel {
         AppExecutors.getInstance().diskIO().execute(new Runnable() {
             @Override
             public void run() {
-
                 allProducts.postValue(mDb.personDao().getAllProducts());
-
             }
         });
     }
