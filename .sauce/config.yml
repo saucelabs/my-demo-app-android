@@ -1,0 +1,30 @@
+apiVersion: v1alpha
+kind: espresso
+sauce:
+  region: us-west-1
+  # Controls how many suites are executed at the same time (sauce test env only).
+  concurrency: 2
+  metadata:
+    name: Testing My Demo App Android with espresso
+    tags:
+      - e2e
+      - release team
+      - other tag
+    build: Release $CI_COMMIT_SHORT_SHA
+espresso:
+  app: ./app/build/outputs/apk/debug/app-debug.apk
+  testApp: ./app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+suites:
+  - name: "Main suite"
+    emulators:
+      - name: "Android GoogleApi Emulator"
+        platformVersions:
+          - "11.0"
+
+# Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
+artifacts:
+  download:
+    when: always
+    match:
+      - junit.xml
+    directory: ./artifacts/

@@ -35,7 +35,6 @@ public class SplashViewModelFactory implements   ViewModelProvider.Factory {
 
     public SplashViewModelFactory(Application application) {
         mApplication = application;
-
     }
 
 

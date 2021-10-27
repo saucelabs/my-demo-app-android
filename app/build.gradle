@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {}
 
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "29.0.3"
     useLibrary 'org.apache.http.legacy'
     ndkVersion '21.3.6528147'
@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.saucelabs.mydemoapp.android"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1 // CI automatically replaces this
         versionName "1.0.0" // CI automatically replaces this
         multiDexEnabled true
@@ -49,6 +49,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Libraries For Testing
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test:rules:1.4.0'
+    implementation 'com.android.support.test.espresso:espresso-idling-resource:3.0.2'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

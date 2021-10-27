@@ -21,7 +21,6 @@ public class SplashViewModel extends BaseViewModel {
     public MutableLiveData<List<ProductModel>> allProducts = new MutableLiveData<>();
 
     public SplashViewModel(Application app) {
-
         this.pb = new MutableLiveData<>();
         pb.setValue(View.VISIBLE);
 //        repository = new DatabaseRepository(app);
@@ -31,23 +30,12 @@ public class SplashViewModel extends BaseViewModel {
     }
 
     public void addDelays() {
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 pb.setValue(View.GONE);
             }
         }, 1000);
-    }
-
-    public void insertProducts(List<ProductModel> list) {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
-            @Override
-            public void run() {
-                mDb.personDao().insertProduct(list);
-                pb.postValue(View.GONE);
-            }
-        });
     }
 
     public void getAllProducts() {
@@ -61,4 +49,13 @@ public class SplashViewModel extends BaseViewModel {
         });
     }
 
+    public void insertProducts(List<ProductModel> list) {
+        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+                mDb.personDao().insertProduct(list);
+                pb.postValue(View.GONE);
+            }
+        });
+    }
 }

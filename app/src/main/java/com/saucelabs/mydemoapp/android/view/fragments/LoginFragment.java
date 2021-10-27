@@ -81,9 +81,9 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             binding.bioMetricIB.setVisibility(View.GONE);
         }
 
-        if (mParam1.equals(ST.LOGOUT)) {
-            showAlert();
-        }
+//        if (mParam1.equals(ST.LOGOUT)) {
+//            showAlert();
+//        }
     }
 
     private void setListeners() {
@@ -148,7 +148,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 TestFairy.setUserId(getMockBiometricUserName());
                 TestFairy.addEvent("User signed in with biometrics");
 
-                ST.isLogin = true;
+//                ST.isLogin = true;
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
             }
 
@@ -195,7 +195,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             TestFairy.setUserId(binding.nameET.getText().toString().trim());
             TestFairy.addEvent("User signed in with password");
 
-            ST.isLogin = true;
+//            ST.isLogin = true;
             if (mParam1.equals(ST.CHECKOUT)) {
                 Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
                 ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
