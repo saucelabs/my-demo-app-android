@@ -17,6 +17,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
+import com.saucelabs.mydemoapp.android.TestOnlyThis;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Rule;
@@ -55,7 +56,7 @@ public class LoginTest {
         onView(withId(R.id.menuRV))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
 
-        String pass = "12345678";
+        String pass = "10203040";
 
         // enter a name
         onView(withId(R.id.passwordET)).perform(typeText(pass), closeSoftKeyboard());
@@ -89,7 +90,7 @@ public class LoginTest {
 
         onView(withId(R.id.loginBtn)).perform(click());
 
-        onView(withText("Password is required")).check(matches(isDisplayed()));
+        onView(withText("Enter Password")).check(matches(isDisplayed()));
 
         Espresso.pressBack();
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
@@ -105,7 +106,7 @@ public class LoginTest {
                 .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
 
         String name = "bod@example.com";
-        String pass = "12345678";
+        String pass = "10203040";
 
         // enter a name
         onView(withId(R.id.nameET)).perform(typeText(name));

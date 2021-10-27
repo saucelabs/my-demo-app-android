@@ -76,7 +76,7 @@ public class DashboardToCheckout {
 
         // Login User Fragment
         String name = "bod@example.com";
-        String pass = "12345678";
+        String pass = "10203040";
 
         onView(withId(R.id.nameET))
                 .perform(typeText(name))
