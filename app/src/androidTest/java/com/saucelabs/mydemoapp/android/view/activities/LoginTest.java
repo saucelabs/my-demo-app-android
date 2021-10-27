@@ -35,9 +35,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.scrollToPosition(13))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         onView(withId(R.id.loginBtn)).perform(click());
 
@@ -53,9 +51,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.scrollToPosition(13))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String pass = "10203040";
 
@@ -77,9 +73,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.scrollToPosition(13))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
 
@@ -104,9 +98,7 @@ public class LoginTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.scrollToPosition(13))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(13, new SideNavClickAction()));
+        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
         String pass = "10203040";
