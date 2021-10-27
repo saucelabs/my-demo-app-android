@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.saucelabs.mydemoapp.android.view.activities.SplashActivity">
+        <activity android:exported="true" android:name="com.saucelabs.mydemoapp.android.view.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
