@@ -5,7 +5,10 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.saucelabs.mydemoapp.android.ErrorFlow;
+import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
+import com.saucelabs.mydemoapp.android.TestOnlyThis;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Before;
@@ -17,9 +20,11 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
 public class WebviewTest {
@@ -37,6 +42,7 @@ public class WebviewTest {
     }
 
     @Test
+    @ErrorFlow
     public void withoutUrlTest() {
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
@@ -48,9 +54,13 @@ public class WebviewTest {
                 .perform(click());
 
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
+
+        onView(withText("Please provide a correct https url.")).check(matches(isDisplayed()));
     }
 
     @Test
+    @HappyFlow
+    @TestOnlyThis
     public void webViewTest() {
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
@@ -62,6 +72,8 @@ public class WebviewTest {
                 .perform(typeText(url),closeSoftKeyboard());
         onView(withId(R.id.goBtn))
                 .perform(click());
+
+        onView(withText("Please provide a correct https url.")).check(doesNotExist());
 
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
     }

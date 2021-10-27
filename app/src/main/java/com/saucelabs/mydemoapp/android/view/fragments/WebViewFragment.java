@@ -52,7 +52,6 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_web_view, container, false);
         init();
         setListeners();
@@ -97,15 +96,12 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
                 });
                 alertDialog.show();
 
-                binding.errorCodeTV.setText("Error Code: "+errorCode);
-                binding.errorNameTV.setText("Description: "+description);
+                binding.errorCodeTV.setText("Error Code: " + errorCode);
+                binding.errorNameTV.setText("Description: " + description);
 
                 binding.errorCL.setVisibility(View.VISIBLE);
                 binding.webView.setVisibility(View.GONE);
-               hideLoading();
-
-
-
+                hideLoading();
             }
         });
 

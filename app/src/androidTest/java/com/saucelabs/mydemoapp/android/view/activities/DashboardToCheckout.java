@@ -6,6 +6,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 
@@ -39,6 +40,7 @@ public class DashboardToCheckout {
 
     }
 
+    @HappyFlow
     @Test
     public void dashboard_Product_Test() throws InterruptedException {
         // Splash screen
@@ -74,7 +76,7 @@ public class DashboardToCheckout {
 
         // Login User Fragment
         String name = "bod@example.com";
-        String pass = "12345678";
+        String pass = "10203040";
 
         onView(withId(R.id.nameET))
                 .perform(typeText(name))

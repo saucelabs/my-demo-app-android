@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {}
 
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "29.0.3"
     useLibrary 'org.apache.http.legacy'
     ndkVersion '21.3.6528147'
@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.saucelabs.mydemoapp.android"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1 // CI automatically replaces this
         versionName "1.0.0" // CI automatically replaces this
         multiDexEnabled true
