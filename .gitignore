@@ -48,6 +48,10 @@ Thumbs.db
 *.mov
 *.wmv
 
+# Android Studio
 local.properties
 .gradle/
+
+# saucectl
+artifacts
 

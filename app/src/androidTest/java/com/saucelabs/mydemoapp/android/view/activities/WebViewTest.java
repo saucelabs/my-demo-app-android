@@ -5,11 +5,13 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.saucelabs.mydemoapp.android.BaseTest;
 import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,23 +28,29 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
-public class WebviewTest {
+public class WebViewTest extends BaseTest {
 
     String url;
 
     @Rule
-    public ActivityScenarioRule<MainActivity> activityRule
-            = new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<SplashActivity> activityRule
+            = new ActivityScenarioRule<>(SplashActivity.class);
 
     @Before
     public void setUp(){
-        activityRule.getScenario().moveToState(Lifecycle.State.RESUMED);
         url="https://www.google.com";
+    }
+
+    @After
+    public void cleanup() {
+
     }
 
     @Test
     @ErrorFlow
     public void withoutUrlTest() {
+        waitView(withId(R.id.menuIV));
+
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
 
@@ -60,6 +68,8 @@ public class WebviewTest {
     @Test
     @HappyFlow
     public void webViewTest() {
+        waitView(withId(R.id.menuIV));
+
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
 
