@@ -63,7 +63,15 @@ public class DebugFeedbackActivity extends BaseActivity {
 		binding.customFieldsReportButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				prepareFeedbackForm();
+				prepareFeedbackForm(false);
+				TestFairy.showFeedbackForm();
+			}
+		});
+
+		binding.customFieldsReportButtonWithSession.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				prepareFeedbackForm(true);
 				TestFairy.showFeedbackForm();
 			}
 		});
@@ -74,7 +82,7 @@ public class DebugFeedbackActivity extends BaseActivity {
 		onBackPressedDefault();
 	}
 
-	private void prepareFeedbackForm() {
+	private void prepareFeedbackForm(boolean enableRecording) {
 		Map<String, String> projects = new TreeMap<>();
 		projects.put("Bravo", "bravo");
 		projects.put("Fury", "fury");
@@ -121,13 +129,13 @@ public class DebugFeedbackActivity extends BaseActivity {
 
 		TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
 				.setFeedbackFormFields(fields)
-				.setRecordVideoButtonVisible(false)
-				.setTakeScreenshotButtonVisible(false)
+				.setRecordVideoButtonVisible(enableRecording)
+				.setTakeScreenshotButtonVisible(enableRecording)
 				.build()
 		);
 	}
 
-	private void prepareSurveyForm() {
+	private void prepareSurveyForm(boolean enableRecording) {
 		// Keys are what the user sees, values are what the server will receive
 		Map<String, String> ratings = new TreeMap<>();
 		ratings.put("Satisfied", "3");
@@ -159,8 +167,8 @@ public class DebugFeedbackActivity extends BaseActivity {
 
 		TestFairy.setFeedbackOptions(new FeedbackOptions.Builder()
 				.setFeedbackFormFields(fields)
-				.setRecordVideoButtonVisible(false)
-				.setTakeScreenshotButtonVisible(false)
+				.setRecordVideoButtonVisible(enableRecording)
+				.setTakeScreenshotButtonVisible(enableRecording)
 				.build()
 		);
 	}
