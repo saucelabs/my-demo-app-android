@@ -10,13 +10,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.saucelabs.mydemoapp.android.BaseTest;
 import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
+import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
 
 import org.junit.Rule;
@@ -24,22 +27,33 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class LoginTest {
+public class LoginTest extends BaseTest {
+
+    //This ViewAction For Nested ScrollView
+    private final ViewAction scroll = new NestingAwareScrollAction();
 
     @Rule
-    public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
+    public ActivityScenarioRule<SplashActivity> activityRule = new ActivityScenarioRule<>(SplashActivity.class);
 
     @Test
     @ErrorFlow
     public void noCredentialLoginTest() {
+        waitView(withId(R.id.menuIV));
+
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
+        onView(withId(R.id.menuRV))
+                .perform(RecyclerViewActions.scrollToPosition(10))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
-        onView(withId(R.id.loginBtn)).perform(click());
+        onView(withId(R.id.loginBtn))
+                .perform(scroll)
+                .perform(click());
 
-        onView(withText("Username is required")).check(matches(isDisplayed()));
+        onView(withText("Username is required"))
+                .perform(scroll)
+                .check(matches(isDisplayed()));
 
         Espresso.pressBack();
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
@@ -48,10 +62,14 @@ public class LoginTest {
     @Test
     @ErrorFlow
     public void noUsernameLoginTest() {
+        waitView(withId(R.id.menuIV));
+
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
+        onView(withId(R.id.menuRV))
+                .perform(RecyclerViewActions.scrollToPosition(10))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String pass = "10203040";
 
@@ -59,9 +77,13 @@ public class LoginTest {
         onView(withId(R.id.passwordET)).perform(typeText(pass), closeSoftKeyboard());
         onView(withId(R.id.passwordET)).check(matches(withText(pass)));
 
-        onView(withId(R.id.loginBtn)).perform(click());
+        onView(withId(R.id.loginBtn))
+                .perform(scroll)
+                .perform(click());
 
-        onView(withText("Username is required")).check(matches(isDisplayed()));
+        onView(withText("Username is required"))
+                .perform(scroll)
+                .check(matches(isDisplayed()));
 
         Espresso.pressBack();
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
@@ -70,23 +92,30 @@ public class LoginTest {
     @Test
     @ErrorFlow
     public void noPasswordLoginTest() {
+        waitView(withId(R.id.menuIV));
+
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
+        onView(withId(R.id.menuRV))
+                .perform(RecyclerViewActions.scrollToPosition(10))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
 
         // enter a name
         onView(withId(R.id.nameET))
-                .perform(typeText(name))
-                .perform(closeSoftKeyboard());
+                .perform(typeText(name), closeSoftKeyboard());
 
         onView(withId(R.id.nameET)).check(matches(withText(name)));
 
-        onView(withId(R.id.loginBtn)).perform(click());
+        onView(withId(R.id.loginBtn))
+                .perform(scroll)
+                .perform(click());
 
-        onView(withText("Enter Password")).check(matches(isDisplayed()));
+        onView(withText("Enter Password"))
+                .perform(scroll)
+                .check(matches(isDisplayed()));
 
         Espresso.pressBack();
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
@@ -95,22 +124,28 @@ public class LoginTest {
     @Test
     @HappyFlow
     public void succesfulLoginTest() {
+        waitView(withId(R.id.menuIV));
+
         onView(withId(R.id.menuIV))
                 .perform(click());
 
-        onView(withId(R.id.menuRV)).perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
+        onView(withId(R.id.menuRV))
+                .perform(RecyclerViewActions.scrollToPosition(10))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
 
         String name = "bod@example.com";
         String pass = "10203040";
 
         // enter a name
-        onView(withId(R.id.nameET)).perform(typeText(name));
+        onView(withId(R.id.nameET)).perform(typeText(name), closeSoftKeyboard());
         onView(withId(R.id.passwordET)).perform(typeText(pass),closeSoftKeyboard());
 
         onView(withId(R.id.nameET)).check(matches(withText(name)));
         onView(withId(R.id.passwordET)).check(matches(withText(pass)));
 
-        onView(withId(R.id.loginBtn)).perform(click());
+        onView(withId(R.id.loginBtn))
+                .perform(scroll)
+                .perform(click());
 
         Espresso.pressBack();
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));

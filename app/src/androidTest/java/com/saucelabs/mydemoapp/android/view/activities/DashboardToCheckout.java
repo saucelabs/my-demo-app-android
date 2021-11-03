@@ -1,11 +1,21 @@
 package com.saucelabs.mydemoapp.android.view.activities;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
+
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 
+import com.saucelabs.mydemoapp.android.BaseTest;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
@@ -15,19 +25,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.action.ViewActions.typeText;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class DashboardToCheckout {
+public class DashboardToCheckout extends BaseTest {
 
     //This ViewAction For Nested ScrollView
     private final ViewAction scroll = new NestingAwareScrollAction();
@@ -42,9 +42,9 @@ public class DashboardToCheckout {
 
     @Test
     @HappyFlow
-    public void dashboard_Product_Test() throws InterruptedException {
+    public void dashboardProductTest() {
         // Splash screen
-        Thread.sleep(5000);
+        waitView(withId(R.id.menuIV));
 
         // Check RecyclerView
         onView(withId(R.id.productRV)).check(matches(isDisplayed()));
@@ -58,12 +58,12 @@ public class DashboardToCheckout {
 
         // Click To Increment
         onView(withId(R.id.plusIV))
-                .perform(scrollTo())
+                .perform(scroll)
                 .perform(click());
 
         // Click To Add to cart
         onView(withId(R.id.cartBt))
-                .perform(scrollTo())
+                .perform(scroll)
                 .perform(click());
 
         // Click On Cart Item
@@ -90,7 +90,9 @@ public class DashboardToCheckout {
         onView(withId(R.id.nameET)).check(matches(withText(name)));
         onView(withId(R.id.passwordET)).check(matches(withText(pass)));
 
-        onView(withId(R.id.loginBtn)).perform(click());
+        onView(withId(R.id.loginBtn))
+                .perform(scroll)
+                .perform(click());
         // End................................................
 
         // Fragment Check Out Info
@@ -149,25 +151,37 @@ public class DashboardToCheckout {
         String date="03/25";
         String securityCode="123";
 
-        onView(withId(R.id.nameET)).perform(typeText(name_Checkout),closeSoftKeyboard());
-        onView(withId(R.id.cardNumberET)).perform(typeText(card_no),closeSoftKeyboard());
+        onView(withId(R.id.nameET))
+                .perform(scroll)
+                .perform(typeText(name_Checkout), closeSoftKeyboard());
+        onView(withId(R.id.cardNumberET))
+                .perform(scroll)
+                .perform(typeText(card_no), closeSoftKeyboard());
 
-        onView(withId(R.id.expirationDateET)).perform(typeText(date),closeSoftKeyboard());
+        onView(withId(R.id.expirationDateET))
+                .perform(scroll)
+                .perform(typeText(date), closeSoftKeyboard());
         onView(withId(R.id.securityCodeET))
-                .perform(typeText(securityCode),closeSoftKeyboard());
+                .perform(scroll)
+                .perform(typeText(securityCode), closeSoftKeyboard());
 
-        onView(withId(R.id.paymentBtn)).perform(click());
+        onView(withText("Review Order"))
+                .perform(click());
         // End................................................
 
         // Place Order Fragment
-        onView(withId(R.id.paymentBtn)).perform(click());
+        onView(withText("Place Order"))
+                .perform(click());
         // End................................................
 
         // CheckOut Complete
-        onView(withId(R.id.shoopingBt)).perform(click());
+        onView(withText("Continue Shopping"))
+                .perform(scroll)
+                .perform(click());
         // End................................................
 
         // Assert we are back to main page
-        onView(withId(R.id.productRV)).check(matches(isDisplayed()));
+        onView(withId(R.id.productRV))
+                .check(matches(isDisplayed()));
     }
 }

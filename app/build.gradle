@@ -4,7 +4,7 @@ android {
     signingConfigs {}
 
     compileSdkVersion 31
-    buildToolsVersion "29.0.3"
+    buildToolsVersion "30.0.2"
     useLibrary 'org.apache.http.legacy'
     ndkVersion '21.3.6528147'
 
@@ -17,6 +17,15 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+    }
+
+    testOptions {
+        animationsDisabled true
+
+        unitTests {
+            includeAndroidResources true
+        }
     }
 
     buildTypes {
