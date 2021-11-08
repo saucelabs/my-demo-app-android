@@ -25,47 +25,51 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/cartIV"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/cartInfoLL"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40"
-                android:src="@drawable/cart"
-                android:contentDescription="@string/image_of_cart"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/noItemTitleTV" />
+                app:layout_constraintTop_toBottomOf="@+id/noItemTitleTV">
 
-            <TextView
-                android:id="@+id/emptyTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20"
-                android:layout_marginTop="@dimen/_40"
-                android:layout_marginEnd="@dimen/_20"
-                android:gravity="center"
-                android:text="@string/oh_no_your_cart_is_empty_fill_it_up_with_swag_to_complete_your_purchase"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cartIV" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_40"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/cart" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20"
+                    android:layout_marginTop="@dimen/_40"
+                    android:layout_marginEnd="@dimen/_20"
+                    android:paddingLeft="@dimen/_20"
+                    android:paddingRight="@dimen/_20"
+                    android:gravity="center"
+                    android:text="@string/oh_no_your_cart_is_empty_fill_it_up_with_swag_to_complete_your_purchase"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/shoppingBt"
                 android:layout_width="200dp"
                 android:layout_height="58dp"
                 android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
                 android:layout_marginTop="@dimen/_30"
                 android:backgroundTint="@color/red"
                 android:text="@string/go_shopping"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16dp"
-                android:contentDescription="@string/tap_to_open_catalog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/emptyTV" />
+                app:layout_constraintTop_toBottomOf="@id/cartInfoLL" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
