@@ -18,17 +18,12 @@ public class Constants {
 
     public static boolean is_biometric = false;
 
-    public final int TAB_NONE = 1000;
-
-
     public int CURRENT_FRAGMENT = -1;
     public int PREVIOUS_FRAGMENT = -1;
     public int PREVIOUS_TAB = -1;
 
     //Preferences
     public final String APP_SHARED_PREFERENCE = "SAMIRA_SHARED_PREFERENCE";
-
-    public String URL_IMAGE = "";
 
     public final int BLACK = 1;
     public final int BLUE = 2;
