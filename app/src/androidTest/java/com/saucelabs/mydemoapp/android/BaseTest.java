@@ -21,11 +21,12 @@ public class BaseTest {
 				onView(viewMatcher).check(matches(isDisplayed()));
 				break;
 			} catch (Throwable t) {
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					throw new RuntimeException(e);
-				}
+			}
+
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
 			}
 		}
 	}

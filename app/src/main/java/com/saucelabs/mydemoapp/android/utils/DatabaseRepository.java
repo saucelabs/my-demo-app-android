@@ -22,8 +22,6 @@ public class DatabaseRepository {
 
     }
 
-
-
     public void insert(ProductModel note) {
         new InsertNoteAsyncTask(noteDao).execute(note);
     }
@@ -33,17 +31,18 @@ public class DatabaseRepository {
         new InsertProductListAsyncTask(noteDao,note).execute();
     }
 
-
-
     public void update(ProductModel note) {
         new UpdateNoteAsyncTask(noteDao).execute(note);
     }
+
     public void delete(ProductModel note) {
         new DeleteNoteAsyncTask(noteDao).execute(note);
     }
+
     public void deleteAllNotes() {
         new DeleteAllNotesAsyncTask(noteDao).execute();
     }
+
     public LiveData<List<ProductModel>> getAllNotes() {
         return allNotes;
     }
@@ -75,6 +74,7 @@ public class DatabaseRepository {
             return null;
         }
     }
+
     private static class UpdateNoteAsyncTask extends AsyncTask<ProductModel, Void, Void> {
         private AppDao noteDao;
         private UpdateNoteAsyncTask(AppDao noteDao) { //constructor as the class is static
@@ -86,6 +86,7 @@ public class DatabaseRepository {
             return null;
         }
     }
+
     private static class DeleteNoteAsyncTask extends AsyncTask<ProductModel, Void, Void> {
         private AppDao noteDao;
         private DeleteNoteAsyncTask(AppDao noteDao) {
@@ -97,6 +98,7 @@ public class DatabaseRepository {
             return null;
         }
     }
+
     private static class DeleteAllNotesAsyncTask extends AsyncTask<Void, Void, Void> {
         private AppDao noteDao;
         private DeleteAllNotesAsyncTask(AppDao noteDao) {

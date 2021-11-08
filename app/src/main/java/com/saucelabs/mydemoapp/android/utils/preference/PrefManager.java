@@ -84,8 +84,4 @@ public class PrefManager extends Methods {
     public void removePref(Activity mAct, String prefName) {
         getPrefs(mAct).edit().remove(prefName).apply();
     }
-
-
-
-
 }

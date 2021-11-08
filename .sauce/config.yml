@@ -19,7 +19,9 @@ suites:
     devices:
       - name: "Google Pixel 3a"
         platformVersion: 11
-      - id: Google_Pixel_3a_real
+      - name: "Motorola Nexus 6"
+        platformVersion: 7
+
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
 artifacts:
