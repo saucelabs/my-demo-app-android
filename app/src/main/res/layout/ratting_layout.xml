@@ -10,40 +10,38 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:orientation="horizontal">
+
+<!--        We intentionally removed all content descriptions on images to showcase how accessibility bugs look -->
+
             <ImageView
                 android:id="@+id/start1IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
-                android:src="@drawable/ic_unselected_start"
-                android:contentDescription="@string/tap_to_rate_an_item_1_star" />
+                android:src="@drawable/ic_unselected_start" />
             <ImageView
                 android:id="@+id/start2IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"
-                android:contentDescription="@string/tap_to_rate_an_item_2_star" />
+                android:src="@drawable/ic_unselected_start" />
             <ImageView
                 android:id="@+id/start3IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"
-                android:contentDescription="@string/tap_to_rate_an_item_3_star" />
+                android:src="@drawable/ic_unselected_start" />
             <ImageView
                 android:id="@+id/start4IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"
-                android:contentDescription="@string/tap_to_rate_an_item_4_star" />
+                android:src="@drawable/ic_unselected_start" />
             <ImageView
                 android:id="@+id/start5IV"
                 android:layout_width="@dimen/dimen_size"
                 android:layout_height="@dimen/dimen_size"
                 android:layout_marginStart="5sp"
-                android:src="@drawable/ic_unselected_start"
-                android:contentDescription="@string/tap_to_rate_an_item_5_star" />
+                android:src="@drawable/ic_unselected_start" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
