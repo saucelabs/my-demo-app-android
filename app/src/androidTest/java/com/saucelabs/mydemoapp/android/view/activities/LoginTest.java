@@ -43,6 +43,8 @@ public class LoginTest extends BaseTest {
         onView(withId(R.id.menuIV))
                 .perform(click());
 
+        waitView(withId(R.id.menuRV));
+
         onView(withId(R.id.menuRV))
                 .perform(RecyclerViewActions.scrollToPosition(10))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(10, new SideNavClickAction()));
@@ -66,6 +68,8 @@ public class LoginTest extends BaseTest {
 
         onView(withId(R.id.menuIV))
                 .perform(click());
+
+        waitView(withId(R.id.menuRV));
 
         onView(withId(R.id.menuRV))
                 .perform(RecyclerViewActions.scrollToPosition(10))
@@ -96,6 +100,8 @@ public class LoginTest extends BaseTest {
 
         onView(withId(R.id.menuIV))
                 .perform(click());
+
+        waitView(withId(R.id.menuRV));
 
         onView(withId(R.id.menuRV))
                 .perform(RecyclerViewActions.scrollToPosition(10))
@@ -128,6 +134,8 @@ public class LoginTest extends BaseTest {
 
         onView(withId(R.id.menuIV))
                 .perform(click());
+
+        waitView(withId(R.id.menuRV));
 
         onView(withId(R.id.menuRV))
                 .perform(RecyclerViewActions.scrollToPosition(10))

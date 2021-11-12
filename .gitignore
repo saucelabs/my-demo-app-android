@@ -51,6 +51,8 @@ Thumbs.db
 # Android Studio
 local.properties
 .gradle/
+build/*
+app/build/*
 
 # saucectl
 artifacts
