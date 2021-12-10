@@ -1,5 +1,6 @@
 package com.saucelabs.mydemoapp.android.view.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         CartItemModel model = list.get(position);
         ProductModel productModel = model.getProductModel();
         holder.binding.titleTV.setText(productModel.getTitle());

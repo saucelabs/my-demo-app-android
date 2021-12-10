@@ -1,5 +1,6 @@
 package com.saucelabs.mydemoapp.android.view.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         ColorModel model = list.get(position);
         holder.binding.colorIV.setImageResource(model.getColorImg());
 
