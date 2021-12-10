@@ -1,5 +1,6 @@
 package com.saucelabs.mydemoapp.android.view.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MenuAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         if(position == 0){
             holder.binding.topViewTV.setVisibility(View.VISIBLE);
