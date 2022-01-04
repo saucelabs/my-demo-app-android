@@ -41,7 +41,6 @@ public class AboutFragment extends BaseFragment implements View.OnClickListener 
             mParam2 = getArguments().getString(Constants.ARG_PARAM2, "");
             mParam3 = getArguments().getInt(Constants.ARG_PARAM3, -1);
         }
-
     }
 
     @Override
