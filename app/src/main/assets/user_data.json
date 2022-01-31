@@ -1,4 +1,5 @@
 {
   "appToken": "SDK-XXXX",
-  "serverEndpoint": "https://app.testfairy.com/services/"
+  "serverEndpoint": "https://app.testfairy.com/services/",
+  "encryptionPublicKey": ""
 }

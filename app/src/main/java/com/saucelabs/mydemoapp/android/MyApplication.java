@@ -55,14 +55,27 @@ public class MyApplication extends android.app.Application {
 	private void initializeTestFairy() {
 		TestFairyAssetReader.Data testFairyData = new TestFairyAssetReader().read(this);
 
+		// Set server endpoint (private cloud only)
 		TestFairy.setServerEndpoint(testFairyData.getServerEndpoint());
+
+		// Set E2E encryption, see "https://docs.testfairy.com/Security/End_to_End_Data_Encryption.html"
+		String encryptionPublicKey = testFairyData.getEncryptionPublicKey();
+		if (encryptionPublicKey != null && !encryptionPublicKey.trim().equals("")) {
+			TestFairy.setPublicKey(encryptionPublicKey);
+		}
+
+		// Listen for session state changes
 		TestFairy.addSessionStateListener(new SessionStateListener() {
 			@Override
 			public void onSessionStarted(String s) {
 				fetchToS();
 			}
 		});
+
+		// Set session user
 		TestFairy.setUserId(getRandomUserId());
+
+		// Start session
 		TestFairy.begin(this, testFairyData.getAppToken());
 	}
 
