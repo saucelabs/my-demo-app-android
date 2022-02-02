@@ -58,11 +58,10 @@ public class MyApplication extends android.app.Application {
 		// Set server endpoint (private cloud only)
 		TestFairy.setServerEndpoint(testFairyData.getServerEndpoint());
 
-		// Set E2E encryption, see "https://docs.testfairy.com/Security/End_to_End_Data_Encryption.html"
-		String encryptionPublicKey = testFairyData.getEncryptionPublicKey();
-		if (encryptionPublicKey != null && !encryptionPublicKey.trim().equals("")) {
-			TestFairy.setPublicKey(encryptionPublicKey);
-		}
+		// Set encryption key
+		String encryptionPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvQj4t+PAjVq6cd8UoyyuYIQhB4GytHF4TG/V/r9Tta9Wyyxk/hcb6dMAMDVvEyk59basQurRgcG3Gl1bsItt2V61Wb81oX0FMFnLFWG65HtXKrn+F6L4R1tBSBZQDJaofODpF1XFQdzpax+DR+ZXzqxqGx02atLBg5eU5RBPAi37smaQSYzMFJtAnLC97UzFEgzoyM5+fQpxXyVBznk4X1MW9aOoja+W2821EuqGMAWTo68Rt3MbRwCgGTkd6eq1zvnKEWVIMzTrZPu+aZ6wMDck2IiALZxBoLrLxEeCsZYAZrQSaypodTZD4t8EBXa/BkbRmGdExMVBiOBy/BKUawIDAQAB";
+		TestFairy.setPublicKey(encryptionPublicKey);
+		
 
 		// Listen for session state changes
 		TestFairy.addSessionStateListener(new SessionStateListener() {
