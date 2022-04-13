@@ -70,13 +70,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
         return binding.getRoot();
     }
-
-
-    @Override
-    public void onResume (){
-        super.onResume();
-
-    }
+    
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
