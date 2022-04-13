@@ -1,5 +1,7 @@
 package com.saucelabs.mydemoapp.android.view.fragments;
 
+import static com.saucelabs.mydemoapp.android.utils.Network.fetch;
+
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -67,6 +69,13 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         bindData();
 
         return binding.getRoot();
+    }
+
+
+    @Override
+    public void onResume (){
+        super.onResume();
+        fetch("https://my-demo-app.net/api/item-load");
     }
 
     @Override
@@ -205,6 +214,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                     model.setNumberOfProduct(totalNumber);
                     ST.cartItemList.set(pos, model);
                     isAvailable = true;
+                    fetch("https://my-demo-app.net/api/add-item");
                 }
             }
         }
@@ -216,6 +226,8 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
             model.setNumberOfProduct(number);
 
             ST.cartItemList.add(model);
+            fetch("https://my-demo-app.net/api/add-item");
+
         }
 
         if (mAct instanceof MainActivity) {

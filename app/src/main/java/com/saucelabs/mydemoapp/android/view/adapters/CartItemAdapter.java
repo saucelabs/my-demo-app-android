@@ -1,5 +1,7 @@
 package com.saucelabs.mydemoapp.android.view.adapters;
 
+import static com.saucelabs.mydemoapp.android.utils.Network.fetch;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -106,6 +108,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             if (cartItemModel.getProductModel().getId() == ST.cartItemList.get(pos).getProductModel().getId()) {
                 ST.cartItemList.remove(cartItemModel);
                 ST.syncCartToTestFairy(mAct);
+                fetch("https://my-demo-app.net/api/remove-item");
             }
         }
         notifyDataSetChanged();

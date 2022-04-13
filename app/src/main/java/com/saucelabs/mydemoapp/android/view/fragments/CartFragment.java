@@ -1,5 +1,7 @@
 package com.saucelabs.mydemoapp.android.view.fragments;
 
+import static com.saucelabs.mydemoapp.android.utils.Network.fetch;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -116,6 +118,8 @@ public class CartFragment extends BaseFragment implements View.OnClickListener {
                 ST.startMainActivity(mAct, bundle);
 
             }
+            fetch("https://my-demo-app.net/api/checkout");
+
         }
 
     }
