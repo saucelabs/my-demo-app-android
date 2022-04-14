@@ -60,6 +60,7 @@ public class MyApplication extends android.app.Application {
 			@Override
 			public void onSessionStarted(String s) {
 				fetchToS();
+				fetch("https://my-demo-app.net/api/init");
 			}
 		});
 		TestFairy.setUserId(getRandomUserId());
