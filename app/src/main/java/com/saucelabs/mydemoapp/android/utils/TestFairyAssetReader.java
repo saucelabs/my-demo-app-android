@@ -54,6 +54,7 @@ public class TestFairyAssetReader {
 		private final String TAG = getClass().getSimpleName();
 		private String appToken;
 		private String serverEndpoint;
+		private String encryptionPublicKey;
 
 		public String getAppToken() {
 			return this.appToken;
@@ -63,13 +64,17 @@ public class TestFairyAssetReader {
 			return this.serverEndpoint;
 		}
 
+		public String getEncryptionPublicKey() {
+			return this.encryptionPublicKey;
+		}
+
 		public Data setData(String str) {
 			try {
 
 				JSONObject obj = new JSONObject(str);
 				this.appToken = obj.getString("appToken");
 				this.serverEndpoint = obj.getString("serverEndpoint");
-
+				this.encryptionPublicKey = obj.optString("encryptionPublicKey", null);
 
 			} catch (Throwable t) {
 				Log.e(TAG, "Could not parse malformed JSON: \"" + str + "\"");
