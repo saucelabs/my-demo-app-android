@@ -75,6 +75,14 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             public void onClick(View view) {
                 removeItem(model);
                 clickListener.OnClick(position, 1);
+
+                // For testing purposes, when removing an item from the shopping cart
+                // we're blocking the ui thread for 2 seconds. This will show up in both
+                // Sauce Labs and TestFairy as high latency in responsiveness of UI thread.
+                long end = System.currentTimeMillis() + 2000;
+                while (System.currentTimeMillis() < end) {
+                    // try again and again!
+                }
             }
         });
 
