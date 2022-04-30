@@ -27,6 +27,7 @@ import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.ActivityMainBinding;
 import com.saucelabs.mydemoapp.android.databinding.SortDialogBinding;
 import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
+import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseActivity;
 import com.saucelabs.mydemoapp.android.utils.base.BaseModel;
 import com.saucelabs.mydemoapp.android.view.adapters.MenuAdapter;
@@ -100,31 +101,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	private void initialize() {
 		init();
 		setMenu();
-//        checkAndRequestPermissions();
+//		checkAndRequestPermissions();
 		setListener();
 		setData();
 	}
 
 	private void init() {
-		param1 = getIntent().getStringExtra(ST.ARG_PARAM1);
+		param1 = getIntent().getStringExtra(Constants.ARG_PARAM1);
 
-		if (param1 == null)
+		if (param1 == null) {
 			param1 = "";
+		}
 
-		param2 = getIntent().getStringExtra(ST.ARG_PARAM2);
-		if (param2 == null)
+		param2 = getIntent().getStringExtra(Constants.ARG_PARAM2);
+		if (param2 == null) {
 			param2 = "";
+		}
 
-
-		int selectedTab = getIntent().getIntExtra(ST.SELECTED_TAB, -1);
-		param3 = getIntent().getIntExtra(ST.ARG_PARAM3, -1);
-		int reqFrag = getIntent().getIntExtra(ST.REQUEST_FRAGMENT, -1);
+		int selectedTab = getIntent().getIntExtra(Constants.SELECTED_TAB, -1);
+		param3 = getIntent().getIntExtra(Constants.ARG_PARAM3, -1);
+		int reqFrag = getIntent().getIntExtra(Constants.REQUEST_FRAGMENT, -1);
 		ST.PREVIOUS_TAB = selectedTab;
 
-		if (reqFrag != -1)
+		if (reqFrag != -1) {
 			setFragment(reqFrag, param1, param2, param3);
-		else
+		} else {
 			setFragment(FRAGMENT_PRODUCT_CATAlOG, param1, param2, param3);
+		}
 	}
 
 	@Override
@@ -204,18 +207,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	}
 
 	public void setData() {
-		binding.header.cartTV.setText(ST.getTotalNum() + "");
-		if (ST.getTotalNum() == 0) {
-			((MainActivity) mAct).binding.header.cartCircleRL.setVisibility(View.GONE);
-		} else {
-			((MainActivity) mAct).binding.header.cartCircleRL.setVisibility(View.VISIBLE);
-		}
-	}
-
-	@Override
-	protected void onResume() {
-		super.onResume();
-//        setData();
+		binding.header.cartTV.setText("" + ST.getTotalNum());
+		int visibility = (ST.getTotalNum() == 0) ? View.GONE : View.VISIBLE;
+		((MainActivity) mAct).binding.header.cartCircleRL.setVisibility(visibility);
 	}
 
 	@Override
@@ -241,6 +235,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		list.add(getString(R.string.fingerprint));
 		list.add("Report a Bug");
 		list.add("Report a Bug (debug)");
+		list.add("Crash app (debug)");
 		if (ST.isLogin) {
 			list.add(getString(R.string.logout));
 		} else {
@@ -253,6 +248,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				handleMenuClick(position);
 			}
 		});
+
 		binding.drawerMenu.menuRV.setLayoutManager(new LinearLayoutManager(this));
 		binding.drawerMenu.menuRV.setAdapter(menuAdapter);
 	}
@@ -336,6 +332,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				startActivity(new Intent(this, DebugFeedbackActivity.class));
 				break;
 			case 10:
+				startActivity(new Intent(this, DebugCrashActivity.class));
+				break;
+			case 11:
 				if (ST.isLogin) {
 //                    setFragment(FRAGMENT_CART, param1, param2, param3);
 					showLogoutAlertDialog();
@@ -388,23 +387,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-		switch (requestCode) {
-			case REQ_ID_MULTIPLE_PERMISSIONS: {
-				Map<String, Integer> perms = new HashMap<>();
-				perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
-				perms.put(Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
-				if (grantResults.length > 0) {
-					for (int i = 0; i < permissions.length; i++)
-						perms.put(permissions[i], grantResults[i]);
-					// Check for both permissions
-					if (perms.get(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
-							&& perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-
-					} else {
-//                        singleton.showCommonDialog(null, "Permission Denied!", "Please go to settings and enable permissions.", getString(R.string.ok), true);
-					}
-
+		if (requestCode == REQ_ID_MULTIPLE_PERMISSIONS) {
+			Map<String, Integer> perms = new HashMap<>();
+			perms.put(Manifest.permission.WRITE_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+			perms.put(Manifest.permission.READ_EXTERNAL_STORAGE, PackageManager.PERMISSION_GRANTED);
+			if (grantResults.length > 0) {
+				for (int i = 0; i < permissions.length; i++) {
+					perms.put(permissions[i], grantResults[i]);
 				}
+
+				// Check for both permissions
+				if (perms.get(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+					&& perms.get(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+				} else {
+//					singleton.showCommonDialog(null, "Permission Denied!", "Please go to settings and enable permissions.", getString(R.string.ok), true);
+				}
+
 			}
 		}
 	}
@@ -480,42 +478,42 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 	private void showLogoutAlertDialog() {
 		new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
-				.setTitle("Log Out")
-				.setMessage("Are you sure you want to logout")
-				.setNegativeButton("CANCEL", null)
-				.setPositiveButton("LOGOUT", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialogInterface, int i) {
-						ST.isLogin = false;
-						setMenu();
-						Bundle bundle = ST.getBundle(FRAGMENT_LOGIN, 1);
-						bundle.putString(ST.ARG_PARAM1, ST.LOGOUT);
-						ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
-					}
-				})
-				.setCancelable(false)
-				.show();
+			.setTitle("Log Out")
+			.setMessage("Are you sure you want to logout")
+			.setNegativeButton("CANCEL", null)
+			.setPositiveButton("LOGOUT", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialogInterface, int i) {
+					ST.isLogin = false;
+					setMenu();
+					Bundle bundle = ST.getBundle(FRAGMENT_LOGIN, 1);
+					bundle.putString(Constants.ARG_PARAM1, ST.LOGOUT);
+					ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
+				}
+			})
+			.setCancelable(false)
+			.show();
 	}
 
 	private void showResetDialog() {
 		new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
-				.setTitle("Reset App State")
-				.setMessage("Are you sure you want to Reset the App")
-				.setNegativeButton("CANCEL", null)
-				.setPositiveButton("RESET APP", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialogInterface, int i) {
-						ST.isLogin = false;
-						ST.cartItemList = new ArrayList<>();
-						setData();
+			.setTitle("Reset App State")
+			.setMessage("Are you sure you want to Reset the App")
+			.setNegativeButton("CANCEL", null)
+			.setPositiveButton("RESET APP", new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialogInterface, int i) {
+					ST.isLogin = false;
+					ST.cartItemList = new ArrayList<>();
+					setData();
 
-						ST.showDialog(null, mAct, "", "App State has been reset.", getString(R.string.ok));
+					ST.showDialog(null, mAct, "", "App State has been reset.", getString(R.string.ok));
 
 //                        ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_FINISH);
-					}
-				})
-				.setCancelable(false)
-				.show();
+				}
+			})
+			.setCancelable(false)
+			.show();
 	}
 
 	public void saveFile(Bitmap bitmap) {
@@ -529,7 +527,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		path = "IMAGE_" + path + ".jpg";
 		File f = new File(myDir.getAbsolutePath() + File.separator + path);
 
-		if (f.exists()) f.delete();
+		if (f.exists()) {
+			f.delete();
+		}
+
 		try {
 			showAlert();
 			FileOutputStream out = new FileOutputStream(f);
@@ -543,10 +544,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 	private void showAlert() {
 		new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
-				.setTitle("Save drawing")
-				.setMessage("Drawing saved successfully to gallery")
-				.setPositiveButton("Ok", null)
-				.setCancelable(false)
-				.show();
+			.setTitle("Save drawing")
+			.setMessage("Drawing saved successfully to gallery")
+			.setPositiveButton("Ok", null)
+			.setCancelable(false)
+			.show();
 	}
 }
