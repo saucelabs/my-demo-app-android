@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.saucelabs.mydemoapp.android"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 1 // CI automatically replaces this
         versionName "1.0.0" // CI automatically replaces this
@@ -102,8 +102,9 @@ dependencies {
     // TestFairy SDK
     //noinspection GradleDynamicVersion
     implementation 'com.testfairy:testfairy-android-sdk:1.+@aar'
-    //noinspection GradleDynamicVersion
-    implementation 'com.testfairy:testfairy-android-ndk:1.+@aar'
+
+    // Backtrace SDK
+    implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
