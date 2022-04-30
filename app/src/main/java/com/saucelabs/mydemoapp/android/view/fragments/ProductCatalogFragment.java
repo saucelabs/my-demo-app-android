@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.saucelabs.mydemoapp.android.MyApplication;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.database.AppDatabase;
 import com.saucelabs.mydemoapp.android.database.AppExecutors;
@@ -123,16 +124,21 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
     }
 
     private void setAdapter() {
+
         final Integer[] meta = new Integer[] {
                 0, null, 2, 3, 4, 5 // null is an intentionally introduced bug for demos
         };
 
         mAct.runOnUiThread(() -> {
             adapter = new ProductsAdapter(mAct, productList, (position, status) -> {
-                Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_PRODUCT_DETAIL, 1);
 
-                bundle.putString("meta", meta[position].toString());
-                bundle.putString(ST.ARG_PARAM1, String.valueOf(productList.get(position).getId()));
+//                if (position == 1) {
+//                    MyApplication.backtraceClient.nativeCrash();
+//                }
+
+                Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_PRODUCT_DETAIL, 1);
+                bundle.putString("meta", "" + meta[position].intValue());
+                bundle.putString(Constants.ARG_PARAM1, String.valueOf(productList.get(position).getId()));
 
                 ST.startMainActivity(mAct, bundle);
             });

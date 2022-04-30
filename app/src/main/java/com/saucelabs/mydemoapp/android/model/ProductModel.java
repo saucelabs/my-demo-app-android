@@ -12,7 +12,7 @@ public class ProductModel {
     int id;
     String title;
     double price;
-    int ratting;
+    int rating;
     int colors;
     String desc;
     String currency;
@@ -45,12 +45,12 @@ public class ProductModel {
         this.price = price;
     }
 
-    public int getRatting() {
-        return ratting;
+    public int getRating() {
+        return rating;
     }
 
-    public void setRatting(int ratting) {
-        this.ratting = ratting;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public int getColors() {

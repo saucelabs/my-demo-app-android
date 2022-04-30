@@ -112,7 +112,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Sauce Lab Bolt T-Shirt");
         model.setPrice(15.99);
         model.setColors(3);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("Get your testing superhero on with the sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
         model.setImageVal(R.drawable.ic_product2);
@@ -127,7 +127,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Sauce Lab Fleece T-Shirt");
         model.setPrice(49.99);
         model.setColors(1);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("Its not everyday that you come across a midweight quarter-zip fleece jacket capable of handling everythinh from a relaxing day outdoors to a busy day at the office.");
         model.setImageVal(R.drawable.ic_product3);
@@ -142,7 +142,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Sauce Lab Onesie");
         model.setPrice(7.99);
         model.setColors(1);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("The Sauce Labs Backpack is the best of all worlds - infinite capacity and endless style.\n" +
                 "Fits in comfortably a laptop up to 15 inch. Never leave a thing behind and forget you have your world on your shoulders.");
@@ -165,7 +165,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Sauce Lab Back Packs");
         model.setPrice(29.99);
         model.setColors(3);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
         model.setImageVal(R.drawable.ic_product4);
@@ -190,7 +190,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Sauce Lab Bike Light");
         model.setPrice(9.99);
         model.setColors(1);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("A red light isn't the desire state in testing but it sure helps when riding your bike at night. Water-resistance with 3 lighting modes, 1 AAA battery included.");
         model.setImageVal(R.drawable.ic_product6);
@@ -212,7 +212,7 @@ public class BaseActivity extends AppCompatActivity {
         model.setTitle("Test.sllTheThings() T-Shirt");
         model.setPrice(15.99);
         model.setColors(3);
-        model.setRatting(4);
+        model.setRating(4);
         model.setCurrency("$");
         model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
         model.setImageVal(R.drawable.ic_product5);

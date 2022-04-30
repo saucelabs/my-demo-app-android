@@ -25,10 +25,10 @@ public class Constants {
     //Preferences
     public final String APP_SHARED_PREFERENCE = "SAMIRA_SHARED_PREFERENCE";
 
-    public final int BLACK = 1;
-    public final int BLUE = 2;
-    public final int GRAY = 3;
-    public final int RED = 4;
+    public static final int BLACK = 1;
+    public static final int BLUE = 2;
+    public static final int GRAY = 3;
+    public static final int RED = 4;
 
     public final String LOGOUT = "LOGOUT";
     public final String CHECKOUT = "CHECKOUT";

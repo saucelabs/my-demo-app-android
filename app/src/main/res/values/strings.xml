@@ -118,8 +118,8 @@
     <string name="tap_to_view_menu">Tap to view menu</string>
     <string name="displays_selected_product">Displays selected product</string>
     <string name="shows_rating_of_product">Shows rating of product</string>
-    <string name="reduces_number_of_products">Reduces number of products</string>
-    <string name="increases_number_of_products">Increases number of products</string>
+    <string name="decrease_item_quantity">Decrease item quantity</string>
+    <string name="increase_item_quantity">Increase item quantity</string>
     <string name="remove_item">Remove Item</string>
     <string name="removes_product_from_cart">Removes product from cart</string>
     <string name="displays_color_of_selected_product">Displays color of selected product</string>

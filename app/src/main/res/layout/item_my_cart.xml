@@ -106,7 +106,7 @@
                     android:layout_width="@dimen/_25"
                     android:layout_height="@dimen/_25"
                     android:padding="@dimen/_6"
-                    android:contentDescription="@string/reduces_number_of_products"
+                    android:contentDescription="@string/decrease_item_quantity"
                     android:src="@drawable/ic_minus" />
 
                 <TextView
@@ -124,7 +124,7 @@
                     android:layout_width="@dimen/_25"
                     android:layout_height="@dimen/_25"
                     android:padding="@dimen/_6"
-                    android:contentDescription="@string/increases_number_of_products"
+                    android:contentDescription="@string/increase_item_quantity"
                     android:src="@drawable/ic_plus" />
             </LinearLayout>
 

@@ -125,7 +125,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
             binding.priceTV.setText(selectedProduct.getCurrency() + " " + selectedProduct.getPrice());
             binding.descTV.setText(selectedProduct.getDesc());
             binding.productIV.setImageResource(selectedProduct.getImageVal());
-            handleRatting(selectedProduct.getRatting());
+            handleRatting(selectedProduct.getRating());
             setAdapter();
         }
 
