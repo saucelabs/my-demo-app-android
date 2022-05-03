@@ -1,5 +1,7 @@
 package com.saucelabs.mydemoapp.android;
 
+import android.util.Log;
+
 import com.saucelabs.mydemoapp.android.utils.Network;
 
 import java.util.ArrayList;
@@ -36,7 +38,13 @@ public class DeviceVitalsDemo {
 
 		@Override
 		public void run() {
-			String randomness = UUID.randomUUID().toString();
+			String randomness = "";
+			while (randomness.length() < 4096) {
+				String chunk = UUID.randomUUID().toString().replace("-", "");
+				randomness = randomness.concat(chunk);
+			}
+
+			Log.v("gilm", randomness);
 			Network.post(url, randomness, "application/text");
 		}
 	};
@@ -46,15 +54,23 @@ public class DeviceVitalsDemo {
 		private int step = 0;
 		private final List<Byte[]> items = new ArrayList<>();
 
+		private static final int ONE_MEGABYTE = 1024 * 1024;
+
 		@Override
 		public void run() {
-			step++;
-			if (step == 10) {
+			if (step < 32) {
+				// [0 .. 31] we add one megabyte
+				step++;
+				items.add(new Byte[ONE_MEGABYTE]);
+			} else if (step < 64) {
+				// [ 32 .. 63] we remove one megabyte
+				step++;
+				items.remove(0);
+			} else if (step == 64) {
 				step = 0;
-				items.clear();
 			}
 
-			items.add(new Byte[2 * 1024 * 1024]);
+			System.gc();
 		}
 	};
 
@@ -63,6 +79,6 @@ public class DeviceVitalsDemo {
 		timer.schedule(fetchJavascript, 2000);
 		timer.schedule(fetchImage, 4000);
 		timer.schedule(postAnalytics, 5000);
-		timer.schedule(memorySawtooth, 0, 1000);
+		timer.schedule(memorySawtooth, 1000, 500);
 	}
 }
