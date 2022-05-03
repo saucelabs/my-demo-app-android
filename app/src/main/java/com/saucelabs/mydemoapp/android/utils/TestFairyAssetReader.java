@@ -33,14 +33,12 @@ public class TestFairyAssetReader {
 				//process line
 				str.append(mLine);
 			}
-		} catch (IOException e) {
-			//log the exception
+		} catch (IOException ignored) {
 		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
-				} catch (IOException e) {
-					//log the exception
+				} catch (IOException ignored) {
 				}
 			}
 		}
@@ -65,12 +63,9 @@ public class TestFairyAssetReader {
 
 		public Data setData(String str) {
 			try {
-
 				JSONObject obj = new JSONObject(str);
 				this.appToken = obj.getString("appToken");
 				this.serverEndpoint = obj.getString("serverEndpoint");
-
-
 			} catch (Throwable t) {
 				Log.e(TAG, "Could not parse malformed JSON: \"" + str + "\"");
 			}
