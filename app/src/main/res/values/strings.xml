@@ -23,7 +23,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="password">Password</string>
 
-    <string name="add_to_cart">Add To Cart</string>
+    <string name="add_to_cart">Add to cart</string>
 
     <string name="usernames">Usernames</string>
     <string name="webview_">Webview</string>
@@ -114,8 +114,8 @@
     <string name="descending_order_by_price">Descending order by price</string>
     <string name="recycler_view_for_menu">Recycler view for menu</string>
     <string name="displays_number_of_items_in_your_cart">Displays number of items in your cart</string>
-    <string name="tap_to_view_you_cart">Tap to view you cart</string>
-    <string name="tap_to_view_menu">Tap to view menu</string>
+    <string name="tap_to_view_you_cart">View cart</string>
+    <string name="tap_to_view_menu">View menu</string>
     <string name="displays_selected_product">Displays selected product</string>
     <string name="shows_rating_of_product">Shows rating of product</string>
     <string name="decrease_item_quantity">Decrease item quantity</string>
