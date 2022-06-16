@@ -16,6 +16,7 @@ import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 import backtraceio.library.BacktraceClient;
 import backtraceio.library.BacktraceCredentials;
 import backtraceio.library.models.BacktraceExceptionHandler;
+import backtraceio.library.models.database.BacktraceDatabaseSettings;
 
 public class MyApplication extends android.app.Application {
 
@@ -45,17 +46,22 @@ public class MyApplication extends android.app.Application {
 	}
 
 	private void initializeBacktrace() {
-		/*
+
+		// replace with your endpoint url and token
 		BacktraceCredentials credentials = new BacktraceCredentials(
-			"<url>",
-			"<token>"
+				"https://cd03.sp.backtrace.io:6098",
+				"7197fa84a54cec280e7fa377f5d7beb572aab141d0c310a2bf8f11873822d2ef"
 		);
 
-		BacktraceClient backtraceClient = new BacktraceClient(getApplicationContext(), credentials);
+		String dbPath = getApplicationContext().getFilesDir().getAbsolutePath(); // any path, eg. absolute path to the internal storage
+		BacktraceDatabaseSettings settings = new BacktraceDatabaseSettings(dbPath);
+		BacktraceClient backtraceClient = new BacktraceClient(getApplicationContext(), credentials, settings);
+		backtraceClient.enableBreadcrumbs(getApplicationContext());
+		backtraceClient.enableAnr();
+		backtraceClient.enableNativeIntegration(true);
 		BacktraceExceptionHandler.enable(backtraceClient);
 
 		MyApplication.backtraceClient = backtraceClient;
-		*/
 	}
 
 	private void initializeTestFairy() {
