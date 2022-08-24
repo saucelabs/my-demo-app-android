@@ -21,7 +21,6 @@ import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
-import com.saucelabs.mydemoapp.android.screenshot.SauceLabsCustomScreenshot;
 
 import org.junit.Rule;
 import org.junit.Test;
