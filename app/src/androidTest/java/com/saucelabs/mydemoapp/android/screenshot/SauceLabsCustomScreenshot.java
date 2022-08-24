@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class SauceLabsCustomScreenshot {
 
-		private static final AtomicInteger screenshotId = new AtomicInteger();
+		private static final AtomicInteger screenshotId = new AtomicInteger(1);
 
 		public static void capture(String screenshotName) {
 			try {
