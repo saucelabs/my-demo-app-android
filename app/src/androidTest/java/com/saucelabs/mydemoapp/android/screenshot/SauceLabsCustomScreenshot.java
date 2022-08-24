@@ -9,7 +9,6 @@ import androidx.test.runner.screenshot.ScreenCapture;
 import androidx.test.runner.screenshot.Screenshot;
 
 import java.io.File;
-import java.nio.file.Path;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SauceLabsCustomScreenshot {
@@ -27,9 +26,9 @@ public class SauceLabsCustomScreenshot {
 				SauceLabsScreenCaptureProcessor processor = new SauceLabsScreenCaptureProcessor();
 				processor.process(capture);
 
-				Path savedScreenshotPath = new File(processor.getPathForFile(screenshotName) + ".png").toPath();
+				String savedScreenshotPath = new File(processor.getPathForFile(screenshotName) + ".png").getPath();
 
-				Log.i("SauceLabs", String.format("Screenshot saved to %s", savedScreenshotPath.toString()));
+				Log.i("SauceLabs", String.format("Screenshot saved to %s", savedScreenshotPath));
 			} catch (Exception e) {
 				Log.e("SauceLabs", "Failed to capture screenshot", e);
 			}

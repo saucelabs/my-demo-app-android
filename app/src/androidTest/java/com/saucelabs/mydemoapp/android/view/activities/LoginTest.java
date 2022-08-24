@@ -145,13 +145,9 @@ public class LoginTest extends BaseTest {
         String name = "bod@example.com";
         String pass = "10203040";
 
-        SauceLabsCustomScreenshot.capture("before_login_input");
-
         // enter a name
         onView(withId(R.id.nameET)).perform(typeText(name), closeSoftKeyboard());
         onView(withId(R.id.passwordET)).perform(typeText(pass),closeSoftKeyboard());
-
-        SauceLabsCustomScreenshot.capture("after_login_input");
 
         onView(withId(R.id.nameET)).check(matches(withText(name)));
         onView(withId(R.id.passwordET)).check(matches(withText(pass)));
