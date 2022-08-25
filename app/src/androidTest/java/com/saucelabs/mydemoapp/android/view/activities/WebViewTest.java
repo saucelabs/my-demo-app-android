@@ -10,6 +10,7 @@ import com.saucelabs.mydemoapp.android.ErrorFlow;
 import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
+import com.saucelabs.mydemoapp.android.screenshot.SauceLabsCustomScreenshot;
 
 import org.junit.After;
 import org.junit.Before;
@@ -51,6 +52,8 @@ public class WebViewTest extends BaseTest {
     public void withoutUrlTest() {
         waitView(withId(R.id.menuIV));
 
+        SauceLabsCustomScreenshot.capture("launch-screen");
+
         // Open Drawer to click on navigation.
         onView(withId(R.id.menuIV)).perform(click());
 
@@ -61,6 +64,8 @@ public class WebViewTest extends BaseTest {
                 .perform(click());
 
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
+
+        SauceLabsCustomScreenshot.capture("error-screen");
 
         onView(withText("Please provide a correct https url.")).check(matches(isDisplayed()));
     }

@@ -44,7 +44,7 @@ public class DeviceVitalsDemo {
 				randomness = randomness.concat(chunk);
 			}
 
-			Log.v("gilm", randomness);
+			Log.v("SauceLabs", randomness);
 			Network.post(url, randomness, "application/text");
 		}
 	};
