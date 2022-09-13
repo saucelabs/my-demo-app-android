@@ -255,10 +255,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     }
 
     private void fetchWiki() {
-        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + getRandomMathTopic());
+//        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + getRandomMathTopic());
     }
 
     private void fetch404() {
-        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/AdminLogin");
+//        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/AdminLogin");
     }
 }

@@ -24,7 +24,7 @@ public class DeviceVitalsDemo {
 
 	private final TimerTask fetchImage = new TimerTask() {
 
-		private static final String url = "https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png";
+		private static final String url = "https://my-demo-app.net/logo.png";
 
 		@Override
 		public void run() {
@@ -77,7 +77,7 @@ public class DeviceVitalsDemo {
 	public void kickstart() {
 		Timer timer = new Timer();
 		timer.schedule(fetchJavascript, 2000);
-		timer.schedule(fetchImage, 4000);
+//		timer.schedule(fetchImage, 4000);
 		timer.schedule(postAnalytics, 5000);
 		timer.schedule(memorySawtooth, 1000, 500);
 	}

@@ -86,6 +86,6 @@ public class MyApplication extends android.app.Application {
 	}
 
 	private void fetchToS() {
-		Network.fetch("https://saucelabs.com/terms-of-service");
+		Network.fetch("https://my-demo-app.net/terms-of-service");
 	}
 }
