@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -49,7 +50,7 @@ public class WebViewTest extends BaseTest {
 
     @Test
     @ErrorFlow
-    public void withoutUrlTest() {
+    public void withoutUrlTest() throws InterruptedException {
         waitView(withId(R.id.menuIV));
 
         SauceLabsCustomScreenshot.capture("launch-screen");
@@ -60,9 +61,7 @@ public class WebViewTest extends BaseTest {
         onView(withId(R.id.menuRV)).perform(
                 RecyclerViewActions.actionOnItemAtPosition(1, new SideNavClickAction()));
 
-        onView(withId(R.id.goBtn))
-                .perform(click());
-
+        onView(withId(R.id.goBtn)).perform(click());
         onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
 
         SauceLabsCustomScreenshot.capture("error-screen");
@@ -87,7 +86,5 @@ public class WebViewTest extends BaseTest {
                 .perform(click());
 
         onView(withText("Please provide a correct https url.")).check(doesNotExist());
-
-        onView(withId(R.id.fragment_container)).check(matches((isDisplayed())));
     }
 }
