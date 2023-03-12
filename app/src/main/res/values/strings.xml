@@ -97,6 +97,7 @@
 	<string name="you_have_successfully_loggedout">You are Successfully logged out.</string>
 	<string name="sauce_labs_all_rights_reserved_terms_of_service_privacy_policy">&#169; 2021 Sauce Labs All Rights Reserved. Terms of Service | Privacy Policy</string>
 	<string name="fingerprint">FingerPrint</string>
+	<string name="virtual_usb">Virtual USB</string>
 	<string name="_continue">Continue</string>
 	<string name="tap_to_rate_an_item_1_star">Tap to rate an item 1 star</string>
 	<string name="tap_to_rate_an_item_2_star">Tap to rate an item 2 star</string>
