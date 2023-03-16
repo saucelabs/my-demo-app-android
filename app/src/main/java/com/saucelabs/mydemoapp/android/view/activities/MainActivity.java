@@ -233,6 +233,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		list.add(getString(R.string.about));
 		list.add(getString(R.string.app_reset_state));
 		list.add(getString(R.string.fingerprint));
+		list.add(getString(R.string.virtual_usb));
 		list.add("Report a Bug");
 		list.add("Report a Bug (debug)");
 		list.add("Crash app (debug)");
@@ -256,58 +257,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	private void handleMenuClick(int position) {
 		switch (position) {
 			case 0:
-//                setFragment(FRAGMENT_PRODUCT_CATAlOG, param1, param2, param3);
-				if (currentFragment instanceof ProductCatalogFragment) {
-
-				} else {
+				if (!(currentFragment instanceof ProductCatalogFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_PRODUCT_CATAlOG, 1));
 				}
 				break;
 			case 1:
-//                setFragment(FRAGMENT_WEB_ADDRESS, param1, param2, param3);
-				if (currentFragment instanceof WebAddressFragment) {
-
-				} else {
+				if (!(currentFragment instanceof WebAddressFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_WEB_ADDRESS, 1));
 				}
-
 				break;
 			case 2:
-//                setFragment(FRAGMENT_QR, param1, param2, param3);
-
-				if (currentFragment instanceof QRFragment) {
-
-				} else {
+				if (!(currentFragment instanceof QRFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_QR, 1));
 				}
-
-
 				break;
 			case 3:
-//                setFragment(FRAGMENT_GEO_LOCATION, param1, param2, param3);
-				if (currentFragment instanceof LocationFragment) {
-
-				} else {
+				if (!(currentFragment instanceof LocationFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_GEO_LOCATION, 1));
 				}
-
 				break;
 			case 4:
-//                setFragment(FRAGMENT_DRAWING, param1, param2, param3);
-
-				if (currentFragment instanceof DrawingFragment) {
-
-				} else {
+				if (!(currentFragment instanceof DrawingFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_DRAWING, 1));
 				}
 
 				break;
 			case 5:
-//                setFragment(FRAGMENT_ABOUT, param1, param2, param3);
-
-				if (currentFragment instanceof AboutFragment) {
-
-				} else {
+				if (!(currentFragment instanceof AboutFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_ABOUT, 1));
 				}
 
@@ -316,32 +292,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				showResetDialog();
 				break;
 			case 7:
-//                setFragment(FRAGMENT_BIOMETRICS, param1, param2, param3);
-				if (currentFragment instanceof BiometricFragment) {
-
-				} else {
+				if (!(currentFragment instanceof BiometricFragment)) {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_BIOMETRICS, 1));
 				}
 
 				break;
 			case 8:
+				startActivity(new Intent(this, VirtualUsbActivity.class));
+				break;
+			case 9:
 				TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
 				TestFairy.showFeedbackForm();
 				break;
-			case 9:
+			case 10:
 				startActivity(new Intent(this, DebugFeedbackActivity.class));
 				break;
-			case 10:
+			case 11:
 				startActivity(new Intent(this, DebugCrashActivity.class));
 				break;
-			case 11:
+			case 12:
 				if (ST.isLogin) {
-//                    setFragment(FRAGMENT_CART, param1, param2, param3);
+					// setFragment(FRAGMENT_CART, param1, param2, param3);
 					showLogoutAlertDialog();
 				} else {
 					ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_LOGIN, 1));
 				}
-//                    setFragment(FRAGMENT_LOGIN, param1, param2, param3);
+				// setFragment(FRAGMENT_LOGIN, param1, param2, param3);
 				break;
 
 		}

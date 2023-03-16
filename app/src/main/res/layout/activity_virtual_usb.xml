@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textSize="20dp"
+                android:text="Virtual USB is a tool developed by Sauce Labs, to allow you 'adb' access to the device. With it, you can use your development suite with a remote device, as if it were connected physically to your computer."
+                android:textColor="@color/black"
+                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="20dp"
+                android:text="To use this part of the demo, make sure you started this session using virtual-usb-client.jar"
+                android:textColor="@color/black"
+                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="20dp"
+                android:text="Next, run these commands from your terminal:"
+                android:textColor="@color/black"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="18dp"
+                android:text="adb forward tcp:40000 tcp:50000\necho GOOSE | nc localhost 40000"
+                android:textColor="@color/white"
+                android:background="@color/dark_gray"
+                android:fontFamily="monospace"
+                android:padding="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="12dp"
+                android:background="#000" />
+
+            <TextView
+                android:textSize="20dp"
+                android:text="DUCK DUCK"
+                android:id="@+id/virtual_usb_message"
+                android:textColor="@color/red"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+</layout>
