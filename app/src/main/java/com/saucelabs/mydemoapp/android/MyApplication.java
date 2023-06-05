@@ -71,10 +71,7 @@ public class MyApplication extends android.app.Application {
 		});
 
 		TestFairy.setUserId(getRandomUserId());
-
-		// Uncomment the following line to start a session in specific folder
-		// TestFairy.setFolderName("EU/Germany/Beta");
-
+		
 		TestFairy.begin(this, testFairyData.getAppToken());
 	}
 
