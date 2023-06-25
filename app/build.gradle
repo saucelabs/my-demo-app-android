@@ -30,7 +30,8 @@ android {
     }
 
     buildTypes {
-        debug{
+        debug {
+            debuggable true
             testCoverageEnabled true
         }
         release {
