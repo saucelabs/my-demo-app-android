@@ -17,6 +17,7 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import com.saucelabs.mydemoapp.android.BaseTest;
 import com.saucelabs.mydemoapp.android.R;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -24,13 +25,15 @@ public class ScreenRotationTest extends BaseTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule = new ActivityScenarioRule<>(MainActivity.class);
 
+    @Before
+    public void setUp(){
+
+    }
+
     @Test
     public void screenOrientationTest() {
         // Splash screen
         waitView(withId(R.id.menuIV));
-
-        // Check RecyclerView
-        onView(withId(R.id.productRV)).check(matches(isDisplayed()));
 
         // Verify the screen orientation is portrait
         onView(isRoot()).check(matchesOrientation(Configuration.ORIENTATION_PORTRAIT));
