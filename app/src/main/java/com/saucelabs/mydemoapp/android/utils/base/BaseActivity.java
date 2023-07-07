@@ -154,7 +154,7 @@ public class BaseActivity extends AppCompatActivity {
         colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_red_circle, ST.RED);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -179,7 +179,7 @@ public class BaseActivity extends AppCompatActivity {
         colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_red_circle, ST.RED);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -201,7 +201,7 @@ public class BaseActivity extends AppCompatActivity {
         colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_red_circle, ST.RED);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);

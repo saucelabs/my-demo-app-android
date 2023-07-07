@@ -14,13 +14,13 @@
             android:contentDescription="@string/indicates_when_color_is_selected"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_red_circle_side"/>
+            android:src="@drawable/ic_green_circle_side"/>
 
         <ImageView
             android:id="@+id/colorIV"
             android:layout_width="@dimen/_25"
             android:layout_height="@dimen/_25"
-            android:src="@drawable/ic_red_circle"
+            android:src="@drawable/ic_green_circle"
             android:contentDescription="@string/displays_color_of_product"
             app:layout_constraintTop_toTopOf="@+id/aroundIV"
             app:layout_constraintEnd_toEndOf="@+id/aroundIV"
