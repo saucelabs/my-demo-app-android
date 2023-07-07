@@ -170,9 +170,9 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
             cartNo += 1;
             binding.cartBt.setEnabled(true);
             binding.noTV.setText(String.valueOf(cartNo));
-            binding.cartBt.setBackgroundColor(getResources().getColor(R.color.red));
+            binding.cartBt.setBackgroundColor(getResources().getColor(R.color.green));
             binding.cartBt.setTextColor(getResources().getColor(R.color.white));
-            binding.cartBt.getBackground().setColorFilter(ContextCompat.getColor(mAct, R.color.red), PorterDuff.Mode.MULTIPLY);
+            binding.cartBt.getBackground().setColorFilter(ContextCompat.getColor(mAct, R.color.green), PorterDuff.Mode.MULTIPLY);
 
         } else if (view.equals(binding.cartBt)) {
             addToCart(selectedProduct, cartNo);

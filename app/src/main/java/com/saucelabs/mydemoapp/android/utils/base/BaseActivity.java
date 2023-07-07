@@ -1,5 +1,10 @@
 package com.saucelabs.mydemoapp.android.utils.base;
 
+import static com.saucelabs.mydemoapp.android.utils.Constants.BLACK;
+import static com.saucelabs.mydemoapp.android.utils.Constants.BLUE;
+import static com.saucelabs.mydemoapp.android.utils.Constants.GRAY;
+import static com.saucelabs.mydemoapp.android.utils.Constants.GREEN;
+
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -111,12 +116,12 @@ public class BaseActivity extends AppCompatActivity {
         ProductModel model = new ProductModel();
         model.setTitle("Sauce Labs Bolt T-Shirt");
         model.setPrice(15.99);
-        model.setColors(3);
+        model.setColors(BLACK);
         model.setRating(4);
         model.setCurrency("$");
         model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
         model.setImageVal(R.drawable.ic_product2);
-        colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -124,14 +129,14 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Sauce Labs Fleece T-Shirt");
+        model.setTitle("Sauce Labs Fleece Jacket");
         model.setPrice(49.99);
-        model.setColors(1);
+        model.setColors(GRAY);
         model.setRating(4);
         model.setCurrency("$");
         model.setDesc("Its not everyday that you come across a midweight quarter-zip fleece jacket capable of handling everythinh from a relaxing day outdoors to a busy day at the office.");
         model.setImageVal(R.drawable.ic_product3);
-        colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
+        colorModel = new ColorModel(R.drawable.ic_gray_circle, GRAY);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -141,20 +146,19 @@ public class BaseActivity extends AppCompatActivity {
         colorList = new ArrayList<>();
         model.setTitle("Sauce Labs Onesie");
         model.setPrice(7.99);
-        model.setColors(1);
+        model.setColors(BLACK);
         model.setRating(4);
         model.setCurrency("$");
-        model.setDesc("The Sauce Labs Backpack is the best of all worlds - infinite capacity and endless style.\n" +
-                "Fits in comfortably a laptop up to 15 inch. Never leave a thing behind and forget you have your world on your shoulders.");
+        model.setDesc("Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.");
         model.setImageVal(R.drawable.ic_product1);
 
-        colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
+        colorModel = new ColorModel(R.drawable.ic_gray_circle, GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -164,22 +168,22 @@ public class BaseActivity extends AppCompatActivity {
         colorList = new ArrayList<>();
         model.setTitle("Sauce Labs Backpack");
         model.setPrice(29.99);
-        model.setColors(3);
+        model.setColors(GRAY);
         model.setRating(4);
         model.setCurrency("$");
         model.setDesc("carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
         model.setImageVal(R.drawable.ic_product4);
 
-        colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_blue_circle, ST.BLUE);
+        colorModel = new ColorModel(R.drawable.ic_blue_circle, BLUE);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
+        colorModel = new ColorModel(R.drawable.ic_gray_circle, GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -189,19 +193,19 @@ public class BaseActivity extends AppCompatActivity {
         colorList = new ArrayList<>();
         model.setTitle("Sauce Labs Bike Light");
         model.setPrice(9.99);
-        model.setColors(1);
+        model.setColors(BLACK);
         model.setRating(4);
         model.setCurrency("$");
         model.setDesc("A red light isn't the desire state in testing but it sure helps when riding your bike at night. Water-resistance with 3 lighting modes, 1 AAA battery included.");
         model.setImageVal(R.drawable.ic_product6);
 
-        colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_gray_circle, ST.GRAY);
+        colorModel = new ColorModel(R.drawable.ic_gray_circle, GRAY);
         colorList.add(colorModel);
 
-        colorModel = new ColorModel(R.drawable.ic_green_circle, ST.GREEN);
+        colorModel = new ColorModel(R.drawable.ic_green_circle, GREEN);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
@@ -211,13 +215,13 @@ public class BaseActivity extends AppCompatActivity {
         colorList = new ArrayList<>();
         model.setTitle("Test.sllTheThings() T-Shirt");
         model.setPrice(15.99);
-        model.setColors(3);
+        model.setColors(BLACK);
         model.setRating(4);
         model.setCurrency("$");
         model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
         model.setImageVal(R.drawable.ic_product5);
 
-        colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
