@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="@color/light_red_bg"
+                android:background="@color/light_green_bg"
                 android:paddingStart="@dimen/_20"
                 android:paddingEnd="@dimen/_20"
                 android:paddingTop="@dimen/_10"

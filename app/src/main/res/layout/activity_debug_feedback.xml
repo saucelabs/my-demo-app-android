@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
 	<ScrollView
-		xmlns:android="http://schemas.android.com/apk/res/android"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent">
 
@@ -14,15 +13,15 @@
 			android:layout_height="match_parent">
 
 			<TextView
-				android:textSize="24dp"
-				android:text="Debug"
-				android:textColor="@color/red"
-				android:paddingTop="20dp"
-				android:paddingBottom="20dp"
-				android:paddingLeft="2dp"
-				android:paddingRight="5dp"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content" />
+				android:layout_height="wrap_content"
+				android:paddingLeft="2dp"
+				android:paddingTop="20dp"
+				android:paddingRight="5dp"
+				android:paddingBottom="20dp"
+				android:text="Debug"
+				android:textColor="@color/green"
+				android:textSize="24dp" />
 
 			<LinearLayout
 				android:orientation="vertical"
@@ -36,15 +35,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/yes_screenshot_report_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"
@@ -63,15 +63,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/no_screenshot_report_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"
@@ -90,15 +91,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/stop_report_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"
@@ -117,15 +119,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/custom_fields_report_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"
@@ -144,15 +147,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/custom_fields_report_button_with_session"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"
@@ -173,15 +177,16 @@
 					android:textIsSelectable="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content" />
+
 				<Button
 					android:id="@+id/custom_activity_report_button_with_session"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="5dp"
+					android:backgroundTint="@color/green"
 					android:text="Report a bug"
 					android:textColor="@color/white"
-					android:backgroundTint="@color/red"
-					android:textSize="14dp"
-					android:layout_margin="5dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" />
+					android:textSize="14dp" />
 				<View
 					android:background="@color/black"
 					android:layout_width="match_parent"

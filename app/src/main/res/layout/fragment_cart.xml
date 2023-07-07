@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -62,7 +62,7 @@
                 android:layout_marginStart="40dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginTop="@dimen/_30"
-                android:backgroundTint="@color/red"
+                android:backgroundTint="@color/green"
                 android:text="@string/go_shopping"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -229,17 +229,17 @@
 
                     <Button
                         android:id="@+id/cartBt"
+                        style="@style/TextViewStyle"
                         android:layout_width="match_parent"
                         android:layout_height="58dp"
                         android:layout_marginTop="@dimen/_15"
                         android:layout_marginBottom="@dimen/_25"
-                        android:backgroundTint="@color/red"
+                        android:backgroundTint="@color/green"
+                        android:contentDescription="@string/confirms_products_for_checkout"
                         android:text="@string/proceed_to_checkout"
                         android:textAllCaps="false"
-                        style="@style/TextViewStyle"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14"
-                        android:contentDescription="@string/confirms_products_for_checkout"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />

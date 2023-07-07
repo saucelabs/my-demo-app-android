@@ -73,7 +73,7 @@
         android:id="@+id/urlErrorTV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/red"
+        android:textColor="@color/green"
         android:text="@string/please_provide_a_correct_https_url"
         android:visibility="invisible"
         android:layout_marginTop="4dp"

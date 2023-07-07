@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -113,16 +113,16 @@
 
                 <Button
                     android:id="@+id/cartBt"
+                    style="@style/TextViewStyle"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
                     android:layout_marginStart="40dp"
-                    android:backgroundTint="@color/red"
+                    android:backgroundTint="@color/green"
+                    android:contentDescription="@string/tap_to_add_product_to_cart"
                     android:text="@string/add_to_cart"
                     android:textAllCaps="false"
-                    style="@style/TextViewStyle"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_16"
-                    android:contentDescription="@string/tap_to_add_product_to_cart"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />

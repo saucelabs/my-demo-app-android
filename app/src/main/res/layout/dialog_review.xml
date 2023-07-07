@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -33,13 +33,13 @@
                 android:id="@+id/closeBt"
                 android:layout_width="200dp"
                 android:layout_height="58dp"
-                android:backgroundTint="@color/red"
                 android:layout_marginTop="@dimen/_20"
+                android:backgroundTint="@color/green"
+                android:contentDescription="@string/closes_review_dialog"
                 android:text="@string/_continue"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14"
-                android:contentDescription="@string/closes_review_dialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sortTV" />
