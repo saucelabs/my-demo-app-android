@@ -196,7 +196,7 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
     private void addToCart(ProductModel productModel, int number) {
         // Intentionally introduced bug for demos
-        if (productModel.getTitle().equals("Sauce Lab Bolt T-Shirt")) {
+        if (productModel.getTitle().equals("Sauce Labs Bolt T-Shirt")) {
             number = 10;
         }
 

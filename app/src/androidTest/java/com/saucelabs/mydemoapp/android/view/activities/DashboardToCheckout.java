@@ -54,7 +54,7 @@ public class DashboardToCheckout extends BaseTest {
                 RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         // Confirm That On First Item Click
-        onView(withId(R.id.productTV)).check(matches(withText("Sauce Lab Back Packs")));
+        onView(withId(R.id.productTV)).check(matches(withText("Sauce Labs Backpack")));
 
         // Click To Increment
         onView(withId(R.id.plusIV))

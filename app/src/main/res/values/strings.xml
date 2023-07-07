@@ -83,7 +83,7 @@
 	<string name="deliver_address">Deliver Address</string>
 	<string name="payment_method">Payment Method</string>
 	<string name="dhl_standard_delivery">DHL Standard Delivery</string>
-	<string name="social_text">2021 Sauce Labs All Rights Reserved Terms of Services | Privacy Policy</string>
+	<string name="social_text">2023 Sauce Labs All Rights Reserved Terms of Services | Privacy Policy</string>
 	<string name="total">Total:</string>
 	<string name="place_order">Place Order</string>
 	<string name="continue_shopping">Continue Shopping</string>
@@ -95,7 +95,7 @@
 	<string name="enter_password">Enter Password</string>
 	<string name="soory_this_user_has_been_locked_out">Sorry this user has been locked out.</string>
 	<string name="you_have_successfully_loggedout">You are Successfully logged out.</string>
-	<string name="sauce_labs_all_rights_reserved_terms_of_service_privacy_policy">&#169; 2021 Sauce Labs All Rights Reserved. Terms of Service | Privacy Policy</string>
+	<string name="sauce_labs_all_rights_reserved_terms_of_service_privacy_policy">&#169; 2023 Sauce Labs All Rights Reserved. Terms of Service | Privacy Policy</string>
 	<string name="fingerprint">FingerPrint</string>
 	<string name="virtual_usb">Virtual USB</string>
 	<string name="_continue">Continue</string>
@@ -162,7 +162,7 @@
 	<string name="image_of_cart">Image of cart</string>
 	<string name="proceed_to_checkout">Proceed To Checkout</string>
 	<string name="enable_or_disable_biometric_login">Enable or disable biometric login</string>
-	<string name="sauce_labs_mascot">Sauce labs mascot</string>
+	<string name="sauce_labs_mascot">Sauce Labs mascot</string>
 	<string name="app_logo_and_name">App logo and name</string>
 	<string name="container_for_fragments">Container for fragments</string>
 	<string name="closes_review_dialog">Closes review dialog</string>

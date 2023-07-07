@@ -85,7 +85,7 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder
 					return "Black color";
 
 				case Constants.GREEN:
-					return "Red color";
+					return "Green color";
 
 				case Constants.GRAY:
 					return "Gray color";

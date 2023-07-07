@@ -109,12 +109,12 @@ public class BaseActivity extends AppCompatActivity {
         ColorModel colorModel;
 
         ProductModel model = new ProductModel();
-        model.setTitle("Sauce Lab Bolt T-Shirt");
+        model.setTitle("Sauce Labs Bolt T-Shirt");
         model.setPrice(15.99);
         model.setColors(3);
         model.setRating(4);
         model.setCurrency("$");
-        model.setDesc("Get your testing superhero on with the sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+        model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
         model.setImageVal(R.drawable.ic_product2);
         colorModel = new ColorModel(R.drawable.ic_black_circle, ST.BLACK);
         colorList.add(colorModel);
@@ -124,7 +124,7 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Sauce Lab Fleece T-Shirt");
+        model.setTitle("Sauce Labs Fleece T-Shirt");
         model.setPrice(49.99);
         model.setColors(1);
         model.setRating(4);
@@ -139,7 +139,7 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Sauce Lab Onesie");
+        model.setTitle("Sauce Labs Onesie");
         model.setPrice(7.99);
         model.setColors(1);
         model.setRating(4);
@@ -162,7 +162,7 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Sauce Lab Back Packs");
+        model.setTitle("Sauce Labs Backpack");
         model.setPrice(29.99);
         model.setColors(3);
         model.setRating(4);
@@ -187,7 +187,7 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Sauce Lab Bike Light");
+        model.setTitle("Sauce Labs Bike Light");
         model.setPrice(9.99);
         model.setColors(1);
         model.setRating(4);
