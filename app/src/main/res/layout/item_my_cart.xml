@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp">
@@ -132,16 +133,16 @@
                 android:id="@+id/removeBt"
                 android:layout_width="@dimen/_0"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="40dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/removes_product_from_cart"
                 android:gravity="center"
-                android:layout_gravity="center"
-                android:text="@string/remove_item"
                 android:paddingTop="@dimen/_8"
                 android:paddingBottom="@dimen/_8"
-                android:textColor="@color/red"
+                android:text="@string/remove_item"
+                android:textColor="@color/green"
                 android:textSize="16dp"
-                android:contentDescription="@string/removes_product_from_cart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />

@@ -84,8 +84,8 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder
 				case Constants.BLACK:
 					return "Black color";
 
-				case Constants.RED:
-					return "Red color";
+				case Constants.GREEN:
+					return "Green color";
 
 				case Constants.GRAY:
 					return "Gray color";
@@ -103,8 +103,8 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ViewHolder
 				case Constants.BLACK:
 					return R.drawable.ic_black_circle_side;
 
-				case Constants.RED:
-					return R.drawable.ic_red_circle_side;
+				case Constants.GREEN:
+					return R.drawable.ic_green_circle_side;
 
 				case Constants.GRAY:
 					return R.drawable.ic_gray_circle_side;

@@ -4,17 +4,16 @@ import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
 
 import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.databinding.DataBindingUtil;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+
+import androidx.annotation.NonNull;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.databinding.DataBindingUtil;
 
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.FragmentBiometricBinding;
@@ -84,7 +83,7 @@ public class BiometricFragment extends BaseFragment implements View.OnClickListe
         binding.bioMetricSw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b == true){
+                if(b){
                     Constants.is_biometric = true;
 //                    BiometricLogin();
                 }else{
@@ -98,8 +97,12 @@ public class BiometricFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View v) {
         if(v.equals(binding.bioMetricSw)){
             if(binding.bioMetricSw.isChecked()){
+                binding.bioMetricSw.getThumbDrawable().setTint(getResources().getColor(R.color.green));
+                binding.bioMetricSw.getTrackDrawable().setTint(getResources().getColor(R.color.switch_green_bg));
                 Constants.is_biometric = true;
             }else{
+                binding.bioMetricSw.getThumbDrawable().setTint(getResources().getColor(R.color.light_grey));
+                binding.bioMetricSw.getTrackDrawable().setTint(getResources().getColor(R.color.grey));
                 Constants.is_biometric = false;
             }
         }

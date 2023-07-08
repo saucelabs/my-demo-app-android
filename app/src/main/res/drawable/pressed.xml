@@ -4,7 +4,7 @@
 
     <!-- unselected tab background -->
     <solid
-        android:color="@color/light_red_bg" />
+        android:color="@color/light_green_bg" />
 
 
     <corners

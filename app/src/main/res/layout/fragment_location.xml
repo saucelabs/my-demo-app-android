@@ -53,14 +53,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:contentDescription="@string/tap_to_visit_given_web_address"
         android:paddingStart="4dp"
         android:text="@string/link"
-        android:contentDescription="@string/tap_to_visit_given_web_address"
-        android:textColor="@color/red"
-        app:layout_constraintStart_toEndOf="@id/linkTV"
+        android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="@+id/linkTV"
-        app:layout_constraintTop_toBottomOf="@+id/locationDetailsTV"
-        tools:layout_editor_absoluteX="337dp" />
+        app:layout_constraintStart_toEndOf="@id/linkTV"
+        app:layout_constraintTop_toBottomOf="@+id/locationDetailsTV" />
 
     <TextView
         android:id="@+id/extraTextTV"
@@ -109,11 +108,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/latitude"
-                android:textColor="@color/red"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22dp"/>
+                android:text="@string/latitude"
+                android:textColor="@color/green"
+                android:textSize="22dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -141,11 +140,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/longitude"
-                android:textColor="@color/red"
-                android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="22dp"/>
+                android:text="@string/longitude"
+                android:textColor="@color/green"
+                android:textSize="22dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -210,19 +209,19 @@
 
         <android.widget.Button
             android:id="@+id/stopBtn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/passwordErrorTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:contentDescription="@string/stop_observation_of_user_location"
             android:text="@string/stop_observing"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="18dp"
-            android:contentDescription="@string/stop_observation_of_user_location"
-            android:layout_marginStart="4dp"
-            android:textAllCaps="false"
-            android:layout_weight="1"
-            android:background="@color/red_"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/passwordErrorTV" />
 
     </LinearLayout>
 

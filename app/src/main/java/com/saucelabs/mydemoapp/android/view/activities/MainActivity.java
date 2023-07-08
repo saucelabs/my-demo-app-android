@@ -408,22 +408,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 				if (view.equals(sortDialogBinding.nameAscCL)) {
 					selectedSort = NAME_ASC;
-					sortDialogBinding.nameAscCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_red_bg));
+					sortDialogBinding.nameAscCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_green_bg));
 					sortDialogBinding.tickNameAscIV.setVisibility(View.VISIBLE);
 					binding.header.sortIV.setImageResource(R.drawable.sort_asc);
 				} else if (view.equals(sortDialogBinding.nameDesCL)) {
 					selectedSort = NAME_DESC;
-					sortDialogBinding.nameDesCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_red_bg));
+					sortDialogBinding.nameDesCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_green_bg));
 					sortDialogBinding.tickNameDesIV.setVisibility(View.VISIBLE);
 					binding.header.sortIV.setImageResource(R.drawable.sort_des);
 				} else if (view.equals(sortDialogBinding.priceAscCL)) {
 					selectedSort = PRICE_ASC;
-					sortDialogBinding.priceAscCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_red_bg));
+					sortDialogBinding.priceAscCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_green_bg));
 					sortDialogBinding.tickPriceAscIV.setVisibility(View.VISIBLE);
 					binding.header.sortIV.setImageResource(R.drawable.price_asc);
 				} else if (view.equals(sortDialogBinding.priceDesCL)) {
 					selectedSort = PRICE_DESC;
-					sortDialogBinding.priceDesCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_red_bg));
+					sortDialogBinding.priceDesCL.setBackgroundColor(mAct.getResources().getColor(R.color.light_green_bg));
 					sortDialogBinding.tickPriceDscIV.setVisibility(View.VISIBLE);
 					binding.header.sortIV.setImageResource(R.drawable.price_des);
 				}

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.fragments.CheckoutFragment">
@@ -376,15 +376,16 @@
 
         <CheckBox
             android:id="@+id/billingAddressCB"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/securityCodeErrorTV"
-            android:text="@string/billing_address_same"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:buttonTint="@color/green"
             android:checked="true"
             android:contentDescription="@string/select_if_user_billing_address_and_shipping_address_are_same"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:text="@string/billing_address_same"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/securityCodeErrorTV" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/checkoutInfoCL"
