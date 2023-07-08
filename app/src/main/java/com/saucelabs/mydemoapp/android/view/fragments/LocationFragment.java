@@ -241,7 +241,7 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
                 binding.startBtn.setTextColor(requireActivity().getColor(R.color.white));
                 binding.stopBtn.setTextColor(requireActivity().getColor(R.color.grey));
                 binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.button_grey));
-                binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.red_));
+                binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.green));
 
                 TestFairy.addEvent("Location permission denied");
             }
@@ -264,7 +264,7 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
             if (getActivity() != null) {
                 binding.startBtn.setTextColor(requireActivity().getColor(R.color.grey));
                 binding.stopBtn.setTextColor(requireActivity().getColor(R.color.white));
-                binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.red_));
+                binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.green));
                 binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.button_grey));
                 requestNewLocationData();
                 getLastLocation();
@@ -278,7 +278,7 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
                 binding.startBtn.setTextColor(requireActivity().getColor(R.color.white));
                 binding.stopBtn.setTextColor(requireActivity().getColor(R.color.grey));
                 binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.button_grey));
-                binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.red_));
+                binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.green));
                 mFusedLocationClient.removeLocationUpdates(mLocationCallback);
 
             }
