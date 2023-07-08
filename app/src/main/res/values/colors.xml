@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/white</color>
     <color name="colorPrimaryDark">@color/white</color>
-    <color name="colorAccent">@color/red_</color>
+    <color name="colorAccent">@color/red</color>
 
     <color name="defaultColor">#5d5089</color>
     <color name="defaultLightColor">#c0aeee</color>
@@ -45,6 +45,7 @@
     <color name="light_grey">#f2f2f2</color>
     <color name="light_red_bg">#fde2dc</color>
     <color name="light_green_bg">#D8F8E9</color>
+    <color name="switch_green_bg">#8BEABD</color>
     <color name="white_bg">#f2f2f2</color>
     <color name="red">#E2231A</color>
     <color name="red_">#E2231A</color>
