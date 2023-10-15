@@ -129,7 +129,7 @@ dependencies {
     implementation 'com.testfairy:testfairy-android-sdk:1.+@aar'
 
     // Backtrace SDK
-    implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.0'
+    implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.1'
 }
 
 apply plugin: 'com.google.gms.google-services'
