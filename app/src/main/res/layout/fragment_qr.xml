@@ -16,8 +16,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/leftGuideline"/>
 
-        <FrameLayout
-            android:id="@+id/cameraFL"
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="30dp"
@@ -33,7 +33,7 @@
             android:layout_height="0dp"
             app:layout_constraintVertical_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cameraFL"/>
+            app:layout_constraintTop_toBottomOf="@+id/previewView"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/leftGuideline"

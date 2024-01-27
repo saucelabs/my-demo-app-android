@@ -11,6 +11,15 @@ This app is part of a set of demo apps.
 
 [My Demo App - React Native](https://github.com/saucelabs/my-demo-app-rn)
 
+### QR code scanner
+
+This app has a QR code scanner.
+You can find it in the menu under the option "QR CODE SCANNER".
+This page opens the camera (you first need to allow the app to use the camera) which can be used to scan a QR Code.
+If the QR code holds an URL it will automatically open it in a browser. The [following image](./docs/assets/qr-code.png)
+can be used to demo this option.
+
+![QR Code](./docs/assets/qr-code.png)
 
 ## Publish
 
