@@ -95,7 +95,7 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 
 	private void checkPermission() {
 		if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-			requestPermissions( new String[]{Manifest.permission.CAMERA}, 1002);
+			requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS);
 		} else {
 			TestFairy.addEvent("Location permission granted");
 		}
@@ -104,7 +104,7 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 	@Override
 	public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		if (requestCode == 1002) {
+		if (requestCode == REQUEST_CODE_PERMISSIONS) {
 
 			if (allPermissionsGranted()) {
 				TestFairy.addEvent("Camera permission granted");
@@ -140,7 +140,7 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 				ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
 				startCamera(cameraProvider);
 			} catch (Exception e) {
-				e.printStackTrace();
+				Log.e("Sauce", "Can't start camera", e);
 			}
 		}, ContextCompat.getMainExecutor(requireContext()));
 	}
@@ -153,8 +153,6 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 		Display display = requireActivity().getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		display.getSize(size);
-		int screen_width = size.x;
-		int screen_height = size.y;
 
 		Size cameraSize = new Size(size.x, size.y);
 		Preview preview = new Preview.Builder()
@@ -193,7 +191,7 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 			Camera camera = cameraProvider.bindToLifecycle(requireActivity(), cameraSelector, preview, imageAnalysis);
 			preview.setSurfaceProvider(binding.previewView.getSurfaceProvider());
 		} catch (Exception e) {
-			e.printStackTrace();
+			Log.e("Sauce", "Can't start camera", e);
 		}
 	}
 
