@@ -22,11 +22,11 @@ suites:
           - "8.1"
     devices:
       - name: "Google.*"
-        platformVersion: 14
+        platformVersion: "14"
       - name: "Motorola Nexus 6"
-        platformVersion: 7
+        platformVersion: "7"
       - name: "Samsung.*"
-        platformVersion: 11
+        platformVersion: "11"
 
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
