@@ -9,8 +9,6 @@ This app is part of a set of demo apps.
 
 [My Demo App - iOS](https://github.com/saucelabs/my-demo-app-ios)
 
-[My Demo App - React Native](https://github.com/saucelabs/my-demo-app-rn)
-
 ### QR code scanner
 
 This app has a QR code scanner.
