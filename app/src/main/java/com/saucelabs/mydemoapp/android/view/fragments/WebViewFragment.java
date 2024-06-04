@@ -67,6 +67,8 @@ public class WebViewFragment extends BaseFragment implements View.OnClickListene
         rotation.setFillAfter(true);
         binding.loadingIV.startAnimation(rotation);
         binding.webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        binding.webView.getSettings().setDomStorageEnabled(true);
+        binding.webView.getSettings().setJavaScriptEnabled(true);
         final AlertDialog alertDialog = new AlertDialog.Builder(requireActivity()).create();
 
         binding.webView.setWebViewClient(new WebViewClient() {
