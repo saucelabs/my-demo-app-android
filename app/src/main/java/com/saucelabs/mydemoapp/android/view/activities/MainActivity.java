@@ -5,11 +5,13 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -23,11 +25,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.saucelabs.mydemoapp.android.Config;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.ActivityMainBinding;
 import com.saucelabs.mydemoapp.android.databinding.SortDialogBinding;
 import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
 import com.saucelabs.mydemoapp.android.utils.Constants;
+import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 import com.saucelabs.mydemoapp.android.utils.base.BaseActivity;
 import com.saucelabs.mydemoapp.android.utils.base.BaseModel;
 import com.saucelabs.mydemoapp.android.view.adapters.MenuAdapter;
@@ -49,8 +53,15 @@ import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
 import com.testfairy.FeedbackOptions;
 import com.testfairy.TestFairy;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,6 +107,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 		initialize();
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+
+		// sample code for checking new version available for distribution through `Mobile Beta Testing`.
+		// uncomment the following line to disable an alert dialog if current version has expired or deleted
+		// checkVersionIsStillSupported();
 	}
 
 	private void initialize() {
@@ -525,5 +545,87 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			.setPositiveButton("Ok", null)
 			.setCancelable(false)
 			.show();
+	}
+
+	/**
+	 * This is a sample function that checks if the current version of this app is still
+	 * available for distribution. If an admin disables distribution or deletes the current
+	 * version, then this function will return (false).
+	 */
+	private boolean isThisVersionStillSupported() {
+		try {
+			TestFairyAssetReader.Data testFairyData = new TestFairyAssetReader().read(this);
+			String appToken = testFairyData.getAppToken();
+
+			PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+
+			URL url = new URL("https://mobile.saucelabs.com/services/?method=testfairy.session.getDistributionStatus");
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+			connection.setRequestMethod("POST");
+			connection.setDoInput(true);
+			connection.setDoOutput(true);
+			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+			String urlParameters = "token=" + appToken +
+				"&bundleVersion=" + packageInfo.versionCode +
+				"&bundleIdentifier=" + packageInfo.packageName +
+				"&bundleShortVersion=" + packageInfo.versionName +
+				"&platform=0";
+
+			OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+			writer.write(urlParameters);
+			writer.flush();
+			writer.close();
+
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuffer response = new StringBuffer();
+
+			while (true) {
+				String inputLine = in.readLine();
+				if (inputLine == null) {
+					break;
+				}
+
+				response.append(inputLine);
+			}
+
+			in.close();
+			Log.i(Config.TAG, "Received a response from getDistributionStatus: " + response);
+
+			JSONObject obj = new JSONObject(response.toString());
+			boolean distributionEnabled = "enabled".equals(obj.optString("status"));
+			Log.i(Config.TAG, "Is distribution enabled: " + distributionEnabled);
+			return distributionEnabled;
+
+		} catch (Exception e) {
+			Log.e(Config.TAG, "Failed to check for new beta version with exception", e);
+			return true;
+		}
+	}
+
+	private void showVersionExpiredAlert() {
+		runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
+					.setTitle("Version no longer supported")
+					.setMessage("This version has expired. Please upgrade to latest.")
+					.setPositiveButton("Ok", null)
+					.setCancelable(false)
+					.show();
+			}
+		});
+	}
+
+	private void checkVersionIsStillSupported() {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				boolean isValid = isThisVersionStillSupported();
+				if (!isValid) {
+					showVersionExpiredAlert();
+				}
+			}
+		}).start();
 	}
 }
