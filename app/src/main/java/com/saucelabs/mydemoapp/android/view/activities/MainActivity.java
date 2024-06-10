@@ -604,28 +604,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	}
 
 	private void showVersionExpiredAlert() {
-		runOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
-					.setTitle("Version no longer supported")
-					.setMessage("This version has expired. Please upgrade to latest.")
-					.setPositiveButton("Ok", null)
-					.setCancelable(false)
-					.show();
-			}
+		runOnUiThread(() -> {
+			new AlertDialog.Builder(mAct, R.style.MyDialogTheme)
+				.setTitle("Version no longer supported")
+				.setMessage("This version has expired. Please upgrade to latest.")
+				.setPositiveButton("Ok", null)
+				.setCancelable(false)
+				.show();
 		});
 	}
 
 	private void checkVersionIsStillSupported() {
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				boolean isValid = isThisVersionStillSupported();
-				if (!isValid) {
-					showVersionExpiredAlert();
-				}
+		Thread thread = new Thread(() -> {
+			if (!isThisVersionStillSupported()) {
+				showVersionExpiredAlert();
 			}
-		}).start();
+		});
+
+		thread.start();
 	}
 }
