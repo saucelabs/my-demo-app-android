@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.saucelabs.mydemoapp.android.Config;
 import com.saucelabs.mydemoapp.android.R;
 
 import java.io.BufferedReader;
@@ -67,7 +68,7 @@ public class VirtualUsbActivity extends Activity {
 				in.close();
 				clientSocket.close();
 			} catch (IOException e) {
-				Log.e("SauceLabs", "Exception while reading from socket", e);
+				Log.e(Config.TAG, "Exception while reading from socket", e);
 			}
 		});
 
@@ -89,7 +90,7 @@ public class VirtualUsbActivity extends Activity {
 				}
 			}
 		} catch (IOException e) {
-			Log.e("SauceLabs", "Exception during virtual-usb demo", e);
+			Log.e(Config.TAG, "Exception during virtual-usb demo", e);
 		}
 	}
 
