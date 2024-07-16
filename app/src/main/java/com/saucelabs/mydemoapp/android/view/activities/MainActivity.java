@@ -481,6 +481,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				@Override
 				public void onClick(DialogInterface dialogInterface, int i) {
 					ST.isLogin = false;
+					ST.hasVisualChanges = false;
 					setMenu();
 					Bundle bundle = ST.getBundle(FRAGMENT_LOGIN, 1);
 					bundle.putString(Constants.ARG_PARAM1, ST.LOGOUT);

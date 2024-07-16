@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.FragmentLoginBinding;
@@ -92,6 +93,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         binding.username1TV.setOnClickListener(this);
         binding.bioMetricIB.setOnClickListener(this);
         binding.username2TV.setOnClickListener(this);
+        binding.username3TV.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -99,27 +101,26 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View view) {
         if (view.equals(binding.loginBtn)) {
             loginWithEmail();
-        } else if (view.equals(binding.username1TV)) {
-            binding.nameET.setText(binding.username1TV.getText().toString().trim());
-            binding.passwordET.setText(binding.password1TV.getText().toString().trim());
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.nameErrorTV.setVisibility(View.INVISIBLE);
-            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
         } else if (view.equals(binding.bioMetricIB)) {
             loginWithBiometrics();
+        } else if (view.equals(binding.username1TV)) {
+            fillForm(binding.username1TV, binding.password1TV);
+        } else if (view.equals(binding.username3TV)) {
+            fillForm(binding.username3TV, binding.password1TV);
         } else if (view.equals(binding.username2TV)) {
-            binding.nameET.setText("alice@example.com");
-            binding.passwordET.setText(binding.password1TV.getText().toString().trim());
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.nameErrorTV.setVisibility(View.INVISIBLE);
-            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
+            fillForm(binding.username2TV, binding.password1TV);
         }
+    }
+
+    private void fillForm(TextView username, TextView password) {
+        binding.nameET.setText(username.getText().toString().trim());
+        binding.passwordET.setText(password.getText().toString().trim());
+        binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+        binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+        binding.nameErrorTV.setVisibility(View.INVISIBLE);
+        binding.usernameErrorIV.setVisibility(View.INVISIBLE);
+        binding.passwordErrorTV.setVisibility(View.INVISIBLE);
+        binding.passwordErrorIV.setVisibility(View.INVISIBLE);
     }
 
     private void loginWithBiometrics() {
@@ -138,8 +139,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 super.onAuthenticationError(errorCode, errString);
                 Log.e(TAG, "onAuthenticationError: ");
 
-                fetch404();
-
                 TestFairy.addEvent("Authentication errored with biometrics");
             }
 
@@ -148,12 +147,10 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 super.onAuthenticationSucceeded(result);
                 Log.e(TAG, "onAuthenticationSucceeded: ");
 
-                fetchWiki();
-
                 TestFairy.setUserId(getMockBiometricUserName());
                 TestFairy.addEvent("User signed in with biometrics");
 
-//                ST.isLogin = true;
+                ST.isLogin = true;
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
             }
 
@@ -161,8 +158,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             public void onAuthenticationFailed() {
                 super.onAuthenticationFailed();
                 Log.e(TAG, "onAuthenticationFailed: ");
-
-                fetch404();
 
                 TestFairy.addEvent("Authentication failed with biometrics");
             }
@@ -179,86 +174,49 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     @SuppressLint("NewApi")
     private void loginWithEmail() {
-        if (binding.nameET.getText().toString().trim().isEmpty()) {
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
-            binding.nameErrorTV.setVisibility(View.VISIBLE);
-            binding.usernameErrorIV.setVisibility(View.VISIBLE);
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
-        } else if (binding.passwordET.getText().toString().trim().isEmpty()) {
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.nameErrorTV.setVisibility(View.INVISIBLE);
-            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
-            binding.passwordErrorTV.setVisibility(View.VISIBLE);
-            binding.passwordErrorIV.setVisibility(View.VISIBLE);
-            binding.passwordErrorTV.setText(getString(R.string.enter_password));
-        } else if (binding.nameET.getText().toString().contains("alice@example.com")) {
+        String username = binding.nameET.getText().toString().trim();
+        String password = binding.passwordET.getText().toString().trim();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            if (username.isEmpty()) {
+                binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
+                binding.nameErrorTV.setVisibility(View.VISIBLE);
+                binding.usernameErrorIV.setVisibility(View.VISIBLE);
+                binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+                binding.passwordErrorTV.setVisibility(View.INVISIBLE);
+                binding.passwordErrorIV.setVisibility(View.INVISIBLE);
+            }
+            if (password.isEmpty()) {
+                binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+                binding.nameErrorTV.setVisibility(View.INVISIBLE);
+                binding.usernameErrorIV.setVisibility(View.INVISIBLE);
+                binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
+                binding.passwordErrorTV.setVisibility(View.VISIBLE);
+                binding.passwordErrorIV.setVisibility(View.VISIBLE);
+                binding.passwordErrorTV.setText(getString(R.string.enter_password));
+            }
+            return;
+        }
+
+        if (username.contains("alice@example.com")) {
             binding.passwordErrorTV.setText(getString(R.string.soory_this_user_has_been_locked_out));
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
 
-            fetch404();
-
             TestFairy.addEvent("Authentication failed for locked user");
-        } else {
-            fetchWiki();
-
-            TestFairy.setUserId(binding.nameET.getText().toString().trim());
-            TestFairy.addEvent("User signed in with password");
-
-//            ST.isLogin = true;
-            if (mParam1.equals(ST.CHECKOUT)) {
-                Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
-                ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
-            } else
-                ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
+            return;
         }
-    }
 
-    private void showAlert() {
-        new AlertDialog.Builder(requireActivity(), R.style.MyDialogTheme)
-                .setTitle("")
-                .setMessage(getString(R.string.you_have_successfully_loggedout))
-                .setPositiveButton(getString(R.string.ok), null)
-                .setCancelable(false)
-                .show();
-    }
+        TestFairy.setUserId(binding.nameET.getText().toString().trim());
+        TestFairy.addEvent("User signed in with password");
 
-    private String getRandomMathTopic() {
-        String[] topics = new String[] {
-                "Complex_number",
-                "Polar_coordinate_system",
-                "Spherical_coordinate_system",
-                "Trigonometric_functions",
-                "Hyperbolic_functions",
-                "De_Moivre's_formula",
-                "Spherical_harmonics",
-                "Inverse_trigonometric_functions",
-                "Borel–Kolmogorov_paradox",
-                "Theta_function",
-                "Tangent_half-angle_formula",
-                "Table_of_spherical_harmonics",
-                "Leibniz_integral_rule",
-                "Multiple_integral",
-                "List_of_common_coordinate_transformations",
-                "Sine_and_cosine",
-                "Proofs_of_trigonometric_identities",
-                "Vector_spherical_harmonics",
-                "List_of_trigonometric_identities",
-                "Trigonometric_functions_of_matrices"
-        };
+        ST.isLogin = true;
+        ST.hasVisualChanges = username.equals("visual@example.com");
 
-        Random random = new Random();
-
-        return topics[random.nextInt(topics.length)];
-    }
-
-    private void fetchWiki() {
-//        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + getRandomMathTopic());
-    }
-
-    private void fetch404() {
-//        fetch("https://en.wikipedia.org/api/rest_v1/page/summary/AdminLogin");
+        if (mParam1.equals(ST.CHECKOUT)) {
+            Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
+            ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
+        } else {
+            ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
+        }
     }
 }
