@@ -8,11 +8,13 @@ import com.saucelabs.mydemoapp.android.database.AppDatabase;
 import com.saucelabs.mydemoapp.android.database.AppExecutors;
 import com.saucelabs.mydemoapp.android.model.ProductModel;
 import com.saucelabs.mydemoapp.android.utils.DatabaseRepository;
+import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 import com.saucelabs.mydemoapp.android.utils.base.BaseViewModel;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class ProductCatalogViewModel extends BaseViewModel {
     private AppDatabase mDb;
@@ -41,9 +43,41 @@ public class ProductCatalogViewModel extends BaseViewModel {
                     productList = mDb.personDao().getPersonsSortByDescPrice();
                 }
 
+                // Alter prices if needed
+                SingletonClass ST = SingletonClass.getInstance();
+                if (ST.hasVisualChanges) {
+                    productList = generateVisualChanges(productList);
+                }
                 allProducts.postValue(productList);
-
             }
         });
+    }
+
+    private List<ProductModel> generateVisualChanges(List<ProductModel> productList) {
+        Random random = new Random();
+
+        // Replaces prices by Random ones
+        for (int i = 0; i < productList.size(); i++) {
+            double randomPrice = 1 + (100 - 1) * random.nextDouble();
+            randomPrice = (double) Math.round(randomPrice * 100) / 100;
+            productList.get(i).setPrice(randomPrice);
+        }
+
+        // Replace 2 first item by Onesie image.
+        ProductModel onesie = findOnesie(productList);
+        productList.get(0).setImage(onesie.getImage());
+        productList.get(0).setImageVal(onesie.getImageVal());
+        productList.get(1).setImage(onesie.getImage());
+        productList.get(1).setImageVal(onesie.getImageVal());
+        return productList;
+    }
+
+    private ProductModel findOnesie(List<ProductModel> productList) {
+        for (ProductModel product: productList) {
+            if (product.getTitle().toLowerCase().contains("onesie")) {
+                return product;
+            }
+        }
+        throw new RuntimeException("Unexpected absence of onesie");
     }
 }
