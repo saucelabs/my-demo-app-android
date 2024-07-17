@@ -5,7 +5,6 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
-import static androidx.test.espresso.matcher.RootMatchers.isDialog;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -22,7 +21,9 @@ import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
+import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,6 +36,12 @@ public class LoginTest extends BaseTest {
 
     @Rule
     public ActivityScenarioRule<SplashActivity> activityRule = new ActivityScenarioRule<>(SplashActivity.class);
+
+    @Before
+    public void removeLogin() {
+        SingletonClass.getInstance().isLogin = false;
+        SingletonClass.getInstance().hasVisualChanges = false;
+    }
 
     @Test
     @ErrorFlow
@@ -154,20 +161,6 @@ public class LoginTest extends BaseTest {
 
         onView(withId(R.id.loginBtn))
                 .perform(scroll)
-                .perform(click());
-
-        // Logout
-        onView(withId(R.id.menuIV))
-                .perform(click());
-
-        waitView(withId(R.id.menuRV));
-
-        onView(withId(R.id.menuRV))
-                .perform(RecyclerViewActions.scrollToPosition(10))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(12, new SideNavClickAction()));
-        onView(withText("LOGOUT"))
-                .inRoot(isDialog())
-                .check(matches(isDisplayed()))
                 .perform(click());
     }
 }
