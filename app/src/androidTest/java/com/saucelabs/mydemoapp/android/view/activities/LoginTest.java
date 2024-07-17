@@ -162,5 +162,8 @@ public class LoginTest extends BaseTest {
         onView(withId(R.id.loginBtn))
                 .perform(scroll)
                 .perform(click());
+
+        Espresso.pressBack();
+        onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
     }
 }
