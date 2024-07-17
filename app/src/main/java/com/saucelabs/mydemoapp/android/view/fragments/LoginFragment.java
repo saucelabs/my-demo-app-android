@@ -177,46 +177,39 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         String username = binding.nameET.getText().toString().trim();
         String password = binding.passwordET.getText().toString().trim();
 
-        if (username.isEmpty() || password.isEmpty()) {
-            if (username.isEmpty()) {
-                binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
-                binding.nameErrorTV.setVisibility(View.VISIBLE);
-                binding.usernameErrorIV.setVisibility(View.VISIBLE);
-                binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-                binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-                binding.passwordErrorIV.setVisibility(View.INVISIBLE);
-            }
-            if (password.isEmpty()) {
-                binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-                binding.nameErrorTV.setVisibility(View.INVISIBLE);
-                binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-                binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
-                binding.passwordErrorTV.setVisibility(View.VISIBLE);
-                binding.passwordErrorIV.setVisibility(View.VISIBLE);
-                binding.passwordErrorTV.setText(getString(R.string.enter_password));
-            }
-            return;
-        }
-
-        if (username.contains("alice@example.com")) {
+        if (username.isEmpty()) {
+            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
+            binding.nameErrorTV.setVisibility(View.VISIBLE);
+            binding.usernameErrorIV.setVisibility(View.VISIBLE);
+            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
+            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
+        } else if (password.isEmpty()) {
+            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+            binding.nameErrorTV.setVisibility(View.INVISIBLE);
+            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
+            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
+            binding.passwordErrorTV.setVisibility(View.VISIBLE);
+            binding.passwordErrorIV.setVisibility(View.VISIBLE);
+            binding.passwordErrorTV.setText(getString(R.string.enter_password));
+        } else if (username.contains("alice@example.com")) {
             binding.passwordErrorTV.setText(getString(R.string.soory_this_user_has_been_locked_out));
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
 
             TestFairy.addEvent("Authentication failed for locked user");
-            return;
-        }
-
-        TestFairy.setUserId(binding.nameET.getText().toString().trim());
-        TestFairy.addEvent("User signed in with password");
-
-        ST.isLogin = true;
-        ST.hasVisualChanges = username.equals("visual@example.com");
-
-        if (mParam1.equals(ST.CHECKOUT)) {
-            Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
-            ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
         } else {
-            ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
+            TestFairy.setUserId(binding.nameET.getText().toString().trim());
+            TestFairy.addEvent("User signed in with password");
+
+            ST.isLogin = true;
+            ST.hasVisualChanges = username.equals("visual@example.com");
+
+            if (mParam1.equals(ST.CHECKOUT)) {
+                Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
+                ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
+            } else {
+                ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
+            }
         }
     }
 }
