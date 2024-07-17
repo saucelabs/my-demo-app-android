@@ -1,7 +1,6 @@
 package com.saucelabs.mydemoapp.android.view.fragments;
 
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         // Add visual changes
         if (this.addVisualChanges) {
             ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)binding.productTV.getLayoutParams();
-            DisplayMetrics dm = new DisplayMetrics();
             params.setMarginStart(400);
             binding.productTV.requestLayout();;
         }
