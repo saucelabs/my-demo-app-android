@@ -42,12 +42,15 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 		ProductModel model = list.get(position);
+		String productRoot = "product-" + position;
 
 		holder.binding.titleTV.setText(model.getTitle());
+		holder.binding.titleTV.setContentDescription(productRoot+"-title");
 //		holder.binding.productIV.setImageBitmap(ST.getImage(model.getImage()));
 		holder.binding.priceTV.setText(model.getCurrency() + " " + model.getPrice());
+		holder.binding.priceTV.setContentDescription(productRoot+"-price");
 		holder.handleRating(model.getRating());
-		holder.binding.productIV.setContentDescription(model.getTitle());
+		holder.binding.productIV.setContentDescription(productRoot+"-image");
 		holder.binding.productIV.setImageResource(model.getImageVal());
 
 		holder.binding.productIV.setOnClickListener(new View.OnClickListener() {
