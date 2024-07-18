@@ -30,6 +30,7 @@ import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.ActivityMainBinding;
 import com.saucelabs.mydemoapp.android.databinding.SortDialogBinding;
 import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
+import com.saucelabs.mydemoapp.android.model.MenuItem;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 import com.saucelabs.mydemoapp.android.utils.base.BaseActivity;
@@ -244,23 +245,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	}
 
 	private void setMenu() {
-		List<String> list = new ArrayList<>();
-		list.add(getString(R.string.catalog));
-		list.add(getString(R.string.webview));
-		list.add(getString(R.string.qr_code_scanner));
-		list.add(getString(R.string.geo_location));
-		list.add(getString(R.string.drawing));
-		list.add(getString(R.string.about));
-		list.add(getString(R.string.app_reset_state));
-		list.add(getString(R.string.fingerprint));
-		list.add(getString(R.string.virtual_usb));
-		list.add("Report a Bug");
-		list.add("Report a Bug (debug)");
-		list.add("Crash app (debug)");
+		List<MenuItem> list = new ArrayList<>();
+		list.add(new MenuItem(getString(R.string.catalog)));
+		list.add(new MenuItem(getString(R.string.webview)));
+		list.add(new MenuItem(getString(R.string.qr_code_scanner)));
+		list.add(new MenuItem(getString(R.string.geo_location)));
+		list.add(new MenuItem(getString(R.string.drawing)));
+		list.add(new MenuItem(getString(R.string.about)));
+		list.add(new MenuItem(getString(R.string.app_reset_state)));
+		list.add(new MenuItem(getString(R.string.fingerprint)));
+		list.add(new MenuItem(getString(R.string.virtual_usb)));
+		list.add(new MenuItem("Report a Bug"));
+		list.add(new MenuItem("Report a Bug (debug)"));
+		list.add(new MenuItem("Crash app (debug)"));
 		if (ST.isLogin) {
-			list.add(getString(R.string.logout));
+			list.add(new MenuItem(getString(R.string.logout), "Logout Menu Item"));
 		} else {
-			list.add(getString(R.string.login));
+			list.add(new MenuItem(getString(R.string.login), "Login Menu Item"));
 		}
 
 		menuAdapter = new MenuAdapter(list, this, new OnItemClickListener() {

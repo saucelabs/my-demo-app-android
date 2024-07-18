@@ -296,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clickable="true"
-                android:contentDescription="@string/tap_to_use_this_username_for_login"
+                android:contentDescription="@string/visual_user_login"
                 android:focusable="true"
                 android:text="@string/visual_example_com"
                 android:textColor="@drawable/text_bg"
