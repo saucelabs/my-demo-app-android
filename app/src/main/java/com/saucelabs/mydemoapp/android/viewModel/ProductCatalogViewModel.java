@@ -66,7 +66,7 @@ public class ProductCatalogViewModel extends BaseViewModel {
         }
 
         // Replace 2 first item by Onesie image.
-        ProductModel onesie = findOnesie(productList);
+        ProductModel onesie = findProductByName(productList, "Sauce Labs Onesie");
         productList.get(0).setImage(onesie.getImage());
         productList.get(0).setImageVal(onesie.getImageVal());
         productList.get(1).setImage(onesie.getImage());
@@ -74,12 +74,12 @@ public class ProductCatalogViewModel extends BaseViewModel {
         return productList;
     }
 
-    private ProductModel findOnesie(List<ProductModel> productList) {
+    private ProductModel findProductByName(List<ProductModel> productList, String name) {
         for (ProductModel product: productList) {
-            if (product.getTitle().toLowerCase().contains("onesie")) {
+            if (product.getTitle().equals(name)) {
                 return product;
             }
         }
-        throw new RuntimeException("Unexpected absence of onesie");
+        return null;
     }
 }
