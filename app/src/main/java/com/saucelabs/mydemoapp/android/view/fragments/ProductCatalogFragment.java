@@ -47,7 +47,6 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
     }
 
     public ProductCatalogFragment(boolean addVisualChanges) {
-        super();
         this.addVisualChanges = addVisualChanges;
     }
 
