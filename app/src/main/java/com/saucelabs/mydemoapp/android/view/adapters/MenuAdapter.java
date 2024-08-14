@@ -13,15 +13,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.MenuItemBinding;
 import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
+import com.saucelabs.mydemoapp.android.model.MenuItem;
 
 import java.util.List;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
-    private List<String>  list;
+    private List<MenuItem>  list;
     private Context context;
     private OnItemClickListener listener;
 
-    public MenuAdapter(List<String> list, Context context, OnItemClickListener listener) {
+    public MenuAdapter(List<MenuItem> list, Context context, OnItemClickListener listener) {
         this.list = list;
         this.context = context;
         this.listener = listener;
@@ -51,7 +52,12 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             holder.binding.itemV.setVisibility(View.INVISIBLE);
         }
 
-        holder.binding.itemTV.setText(list.get(position));
+        holder.binding.itemTV.setText(list.get(position).name);
+        String contentDescr = list.get(position).contentDescription;
+        if (contentDescr != null) {
+            holder.binding.itemTV.setContentDescription(contentDescr);
+            holder.binding.itemTV.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
+        }
 
         holder.binding.itemTV.setOnClickListener(new View.OnClickListener() {
             @Override

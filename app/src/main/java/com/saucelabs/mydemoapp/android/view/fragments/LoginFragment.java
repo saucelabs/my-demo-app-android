@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.FragmentLoginBinding;
@@ -92,6 +93,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         binding.username1TV.setOnClickListener(this);
         binding.bioMetricIB.setOnClickListener(this);
         binding.username2TV.setOnClickListener(this);
+        binding.username3TV.setOnClickListener(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -99,27 +101,26 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View view) {
         if (view.equals(binding.loginBtn)) {
             loginWithEmail();
-        } else if (view.equals(binding.username1TV)) {
-            binding.nameET.setText(binding.username1TV.getText().toString().trim());
-            binding.passwordET.setText(binding.password1TV.getText().toString().trim());
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.nameErrorTV.setVisibility(View.INVISIBLE);
-            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
         } else if (view.equals(binding.bioMetricIB)) {
             loginWithBiometrics();
+        } else if (view.equals(binding.username1TV)) {
+            fillForm(binding.username1TV, binding.password1TV);
+        } else if (view.equals(binding.username3TV)) {
+            fillForm(binding.username3TV, binding.password1TV);
         } else if (view.equals(binding.username2TV)) {
-            binding.nameET.setText("alice@example.com");
-            binding.passwordET.setText(binding.password1TV.getText().toString().trim());
-            binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
-            binding.nameErrorTV.setVisibility(View.INVISIBLE);
-            binding.usernameErrorIV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorTV.setVisibility(View.INVISIBLE);
-            binding.passwordErrorIV.setVisibility(View.INVISIBLE);
+            fillForm(binding.username2TV, binding.password1TV);
         }
+    }
+
+    private void fillForm(TextView username, TextView password) {
+        binding.nameET.setText(username.getText().toString().trim());
+        binding.passwordET.setText(password.getText().toString().trim());
+        binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+        binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
+        binding.nameErrorTV.setVisibility(View.INVISIBLE);
+        binding.usernameErrorIV.setVisibility(View.INVISIBLE);
+        binding.passwordErrorTV.setVisibility(View.INVISIBLE);
+        binding.passwordErrorIV.setVisibility(View.INVISIBLE);
     }
 
     private void loginWithBiometrics() {
@@ -153,7 +154,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 TestFairy.setUserId(getMockBiometricUserName());
                 TestFairy.addEvent("User signed in with biometrics");
 
-//                ST.isLogin = true;
+                ST.isLogin = true;
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
             }
 
@@ -179,14 +180,17 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
 
     @SuppressLint("NewApi")
     private void loginWithEmail() {
-        if (binding.nameET.getText().toString().trim().isEmpty()) {
+        String username = binding.nameET.getText().toString().trim();
+        String password = binding.passwordET.getText().toString().trim();
+
+        if (username.isEmpty()) {
             binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_red));
             binding.nameErrorTV.setVisibility(View.VISIBLE);
             binding.usernameErrorIV.setVisibility(View.VISIBLE);
             binding.passwordRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
             binding.passwordErrorTV.setVisibility(View.INVISIBLE);
             binding.passwordErrorIV.setVisibility(View.INVISIBLE);
-        } else if (binding.passwordET.getText().toString().trim().isEmpty()) {
+        } else if (password.isEmpty()) {
             binding.nameRL.setBackground(getActivity().getDrawable(R.drawable.edit_bg_grey));
             binding.nameErrorTV.setVisibility(View.INVISIBLE);
             binding.usernameErrorIV.setVisibility(View.INVISIBLE);
@@ -194,7 +198,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
             binding.passwordErrorIV.setVisibility(View.VISIBLE);
             binding.passwordErrorTV.setText(getString(R.string.enter_password));
-        } else if (binding.nameET.getText().toString().contains("alice@example.com")) {
+        } else if (username.contains("alice@example.com")) {
             binding.passwordErrorTV.setText(getString(R.string.soory_this_user_has_been_locked_out));
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
 
@@ -207,12 +211,15 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             TestFairy.setUserId(binding.nameET.getText().toString().trim());
             TestFairy.addEvent("User signed in with password");
 
-//            ST.isLogin = true;
+            ST.isLogin = true;
+            ST.hasVisualChanges = username.equals("visual@example.com");
+
             if (mParam1.equals(ST.CHECKOUT)) {
                 Bundle bundle = ST.getBundle(MainActivity.FRAGMENT_CHECKOUT_INFO, 1);
                 ST.startActivityWithDataBundle(mAct, MainActivity.class, bundle, ST.START_ACTIVITY_WITH_FINISH);
-            } else
+            } else {
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
+            }
         }
     }
 

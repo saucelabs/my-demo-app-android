@@ -23,8 +23,8 @@ suites:
     devices:
       - name: "Google.*"
         platformVersion: "14"
-      - name: "Motorola Nexus 6"
-        platformVersion: "7"
+      - name: "LG.*"
+        platformVersion: "8"
       - name: "Samsung.*"
         platformVersion: "11"
 

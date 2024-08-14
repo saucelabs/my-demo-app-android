@@ -14,6 +14,7 @@
             android:layout_marginStart="@dimen/_8"
             android:layout_marginTop="@dimen/titleMarginTop"
             android:text="@string/products"
+            android:contentDescription="title"
             android:textColor="@color/black"
             android:textSize="@dimen/titleTextSize"
             android:textStyle="bold"
@@ -40,6 +41,7 @@
                     android:layout_width="@dimen/_0"
                     android:contentDescription="@string/displays_all_products_of_catalog"
                     android:layout_height="wrap_content"
+                    android:importantForAccessibility="yes"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -22,6 +22,7 @@ public class SingletonClass extends Methods {
     public CheckoutInfo billingInfo = new CheckoutInfo();
     public List<CartItemModel> cartItemList;
     public boolean isLogin = false;
+    public boolean hasVisualChanges = false;
 
     private SingletonClass() {
         cartItemList = new ArrayList<>();

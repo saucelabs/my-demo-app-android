@@ -44,10 +44,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 		ProductModel model = list.get(position);
 
 		holder.binding.titleTV.setText(model.getTitle());
-//		holder.binding.productIV.setImageBitmap(ST.getImage(model.getImage()));
+		holder.binding.titleTV.setContentDescription("Product Title");
 		holder.binding.priceTV.setText(model.getCurrency() + " " + model.getPrice());
+		holder.binding.priceTV.setContentDescription("Product Price");
 		holder.handleRating(model.getRating());
-		holder.binding.productIV.setContentDescription(model.getTitle());
+		holder.binding.productIV.setContentDescription("Product Image");
 		holder.binding.productIV.setImageResource(model.getImageVal());
 
 		holder.binding.productIV.setOnClickListener(new View.OnClickListener() {

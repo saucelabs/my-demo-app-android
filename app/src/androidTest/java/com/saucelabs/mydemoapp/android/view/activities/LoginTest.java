@@ -21,7 +21,9 @@ import com.saucelabs.mydemoapp.android.HappyFlow;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
+import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +36,12 @@ public class LoginTest extends BaseTest {
 
     @Rule
     public ActivityScenarioRule<SplashActivity> activityRule = new ActivityScenarioRule<>(SplashActivity.class);
+
+    @Before
+    public void removeLogin() {
+        SingletonClass.getInstance().isLogin = false;
+        SingletonClass.getInstance().hasVisualChanges = false;
+    }
 
     @Test
     @ErrorFlow

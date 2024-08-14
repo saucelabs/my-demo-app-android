@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -18,6 +19,7 @@ import com.saucelabs.mydemoapp.android.database.AppExecutors;
 import com.saucelabs.mydemoapp.android.databinding.FragmentProductCatalogBinding;
 import com.saucelabs.mydemoapp.android.model.ProductModel;
 import com.saucelabs.mydemoapp.android.utils.Constants;
+import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
 import com.saucelabs.mydemoapp.android.view.adapters.ProductsAdapter;
@@ -28,18 +30,24 @@ import java.util.List;
 
 public class ProductCatalogFragment extends BaseFragment implements View.OnClickListener {
     private FragmentProductCatalogBinding binding;
+    private final boolean addVisualChanges;
     List<ProductModel> productList;
     ProductsAdapter adapter;
     ProductCatalogViewModel viewModel;
 
     public static ProductCatalogFragment newInstance(String param1, String param2, int param3) {
-        ProductCatalogFragment fragment = new ProductCatalogFragment();
+        boolean addVisualChanges = SingletonClass.getInstance().hasVisualChanges;
+        ProductCatalogFragment fragment = new ProductCatalogFragment(addVisualChanges);
         Bundle args = new Bundle();
         args.putString(Constants.ARG_PARAM1, param1);
         args.putString(Constants.ARG_PARAM2, param2);
         args.putInt(Constants.ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public ProductCatalogFragment(boolean addVisualChanges) {
+        this.addVisualChanges = addVisualChanges;
     }
 
     @Override
@@ -60,6 +68,14 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_catalog, container, false);
         viewModel = ViewModelProviders.of(this, new ProductCatalogViewModelFactory(app)).get(ProductCatalogViewModel.class);
         bindData();
+
+        // Add visual changes
+        if (this.addVisualChanges) {
+            ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)binding.productTV.getLayoutParams();
+            params.setMarginStart(400);
+            binding.productTV.requestLayout();;
+        }
+
         return binding.getRoot();
     }
 

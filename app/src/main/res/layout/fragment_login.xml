@@ -289,6 +289,33 @@
                 app:layout_constraintStart_toStartOf="@+id/savedPasswordTV"
                 app:layout_constraintTop_toBottomOf="@id/password1TV" />
 
+            <TextView
+                android:id="@+id/username3TV"
+                style="@style/TextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:contentDescription="@string/visual_user_login"
+                android:focusable="true"
+                android:text="@string/visual_example_com"
+                android:textColor="@drawable/text_bg"
+                app:layout_constraintEnd_toStartOf="@+id/password2TV"
+                app:layout_constraintHorizontal_weight="1.5"
+                app:layout_constraintStart_toStartOf="@id/username2TV"
+                app:layout_constraintTop_toBottomOf="@id/username2TV" />
+
+            <TextView
+                android:id="@+id/password3TV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                style="@style/TextViewStyle"
+                app:layout_constraintEnd_toEndOf="@+id/savedPasswordTV"
+                app:layout_constraintHorizontal_weight="0.8"
+                app:layout_constraintStart_toStartOf="@+id/savedPasswordTV"
+                app:layout_constraintTop_toBottomOf="@id/password2TV" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>

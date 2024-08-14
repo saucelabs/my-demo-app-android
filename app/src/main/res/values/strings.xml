@@ -91,6 +91,8 @@
 	<string name="biomatric_message">Biometric is or not supported or not enable on your device. Please check your device or your settings.</string>
 	<string name="bod_example_com"><u>bod@example.com</u></string>
 	<string name="alice_example_com_locked_out"><u>alice@example.com (locked out)</u></string>
+	<string name="visual_example_com"><u>visual@example.com</u></string>
+	<string name="visual_user_login">Visual User Login</string>
 	<string name="items">Items</string>
 	<string name="enter_password">Enter Password</string>
 	<string name="soory_this_user_has_been_locked_out">Sorry this user has been locked out.</string>
