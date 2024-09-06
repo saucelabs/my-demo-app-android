@@ -252,8 +252,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 		list.add(new MenuItem(getString(R.string.app_reset_state)));
 		list.add(new MenuItem(getString(R.string.fingerprint)));
 		list.add(new MenuItem(getString(R.string.virtual_usb)));
-		list.add(new MenuItem("Report a Bug"));
-		list.add(new MenuItem("Report a Bug (debug)"));
 		list.add(new MenuItem("Crash app (debug)"));
 		if (ST.isLogin) {
 			list.add(new MenuItem(getString(R.string.logout), "Logout Menu Item"));
@@ -319,15 +317,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				startActivity(new Intent(this, VirtualUsbActivity.class));
 				break;
 			case 9:
-				// FIXME: Remove Case ?
-				break;
-			case 10:
-				startActivity(new Intent(this, DebugFeedbackActivity.class));
-				break;
-			case 11:
 				startActivity(new Intent(this, DebugCrashActivity.class));
 				break;
-			case 12:
+			case 10:
 				if (ST.isLogin) {
 					// setFragment(FRAGMENT_CART, param1, param2, param3);
 					showLogoutAlertDialog();

@@ -51,12 +51,6 @@
 			android:windowSoftInputMode="stateHidden"
 			tools:ignore="LockedOrientationActivity" />
 		<activity
-			android:name=".view.activities.CustomFeedbackFormActivity"
-			android:configChanges="orientation|keyboardHidden|screenSize|locale"
-			android:screenOrientation="portrait"
-			android:windowSoftInputMode="stateHidden"
-			tools:ignore="LockedOrientationActivity" />
-		<activity
 			android:name=".view.activities.VirtualUsbActivity"
 			android:configChanges="orientation|keyboardHidden|screenSize|locale"
 			android:screenOrientation="portrait"
