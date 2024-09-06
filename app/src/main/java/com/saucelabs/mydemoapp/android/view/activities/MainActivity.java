@@ -32,7 +32,6 @@ import com.saucelabs.mydemoapp.android.databinding.SortDialogBinding;
 import com.saucelabs.mydemoapp.android.interfaces.OnItemClickListener;
 import com.saucelabs.mydemoapp.android.model.MenuItem;
 import com.saucelabs.mydemoapp.android.utils.Constants;
-import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 import com.saucelabs.mydemoapp.android.utils.base.BaseActivity;
 import com.saucelabs.mydemoapp.android.utils.base.BaseModel;
 import com.saucelabs.mydemoapp.android.view.adapters.MenuAdapter;
@@ -51,8 +50,6 @@ import com.saucelabs.mydemoapp.android.view.fragments.ProductDetailFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.QRFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.WebAddressFragment;
 import com.saucelabs.mydemoapp.android.view.fragments.WebViewFragment;
-import com.testfairy.FeedbackOptions;
-import com.testfairy.TestFairy;
 
 import org.json.JSONObject;
 
@@ -322,8 +319,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 				startActivity(new Intent(this, VirtualUsbActivity.class));
 				break;
 			case 9:
-				TestFairy.setFeedbackOptions(new FeedbackOptions.Builder().build());
-				TestFairy.showFeedbackForm();
+				// FIXME: Remove Case ?
 				break;
 			case 10:
 				startActivity(new Intent(this, DebugFeedbackActivity.class));
@@ -556,9 +552,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 	 */
 	private boolean isThisVersionStillSupported() {
 		try {
-			TestFairyAssetReader.Data testFairyData = new TestFairyAssetReader().read(this);
-			String appToken = testFairyData.getAppToken();
-
 			PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 
 			URL url = new URL("https://mobile.saucelabs.com/services/?method=testfairy.session.getDistributionStatus");
@@ -567,6 +560,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 			connection.setDoInput(true);
 			connection.setDoOutput(true);
 			connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+			String appToken = "SDK-XXXX";
 
 			String urlParameters = "token=" + appToken +
 				"&bundleVersion=" + packageInfo.versionCode +

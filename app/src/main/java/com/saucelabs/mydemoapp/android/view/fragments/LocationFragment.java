@@ -38,7 +38,6 @@ import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.testfairy.TestFairy;
 
 public class LocationFragment extends BaseFragment implements View.OnClickListener {
     private FragmentLocationBinding binding;
@@ -235,15 +234,11 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
         if (requestCode == PERMISSION_ID) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLastLocation();
-
-                TestFairy.addEvent("Location permission granted");
             } else {
                 binding.startBtn.setTextColor(requireActivity().getColor(R.color.white));
                 binding.stopBtn.setTextColor(requireActivity().getColor(R.color.grey));
                 binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.button_grey));
                 binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.green));
-
-                TestFairy.addEvent("Location permission denied");
             }
         }
     }
@@ -252,7 +247,6 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
     public void onResume() {
         super.onResume();
         if (checkPermissions()) {
-            TestFairy.addEvent("Location permission granted");
             getLastLocation();
         }
     }

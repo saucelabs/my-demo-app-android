@@ -7,11 +7,8 @@ import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
-import com.testfairy.TestFairy;
-import com.testfairy.SessionStateListener;
 import com.saucelabs.mydemoapp.android.utils.Network;
 import com.saucelabs.mydemoapp.android.utils.SingletonClass;
-import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 
 import backtraceio.library.BacktraceClient;
 import backtraceio.library.BacktraceCredentials;
@@ -28,7 +25,6 @@ public class MyApplication extends android.app.Application {
 		instance = this;
 		SingletonClass.getInstance();
 
-		initializeTestFairy();
 		initializeBacktrace();
 
 		DeviceVitalsDemo demo = new DeviceVitalsDemo();
@@ -56,23 +52,6 @@ public class MyApplication extends android.app.Application {
 
 		MyApplication.backtraceClient = backtraceClient;
 		*/
-	}
-
-	private void initializeTestFairy() {
-		TestFairyAssetReader.Data testFairyData = new TestFairyAssetReader().read(this);
-
-		TestFairy.setServerEndpoint(testFairyData.getServerEndpoint());
-		TestFairy.addSessionStateListener(new SessionStateListener() {
-			@Override
-			public void onSessionStarted(String s) {
-				fetchToS();
-				Network.fetch("https://my-demo-app.net/api/init");
-			}
-		});
-
-		TestFairy.setUserId(getRandomUserId());
-		
-		TestFairy.begin(this, testFairyData.getAppToken());
 	}
 
 	private static String getRandomUserId() {

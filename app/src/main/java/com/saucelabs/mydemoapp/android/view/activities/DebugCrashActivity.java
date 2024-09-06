@@ -10,14 +10,7 @@ import com.saucelabs.mydemoapp.android.MyApplication;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.databinding.ActivityDebugCrashBinding;
 import com.saucelabs.mydemoapp.android.databinding.ActivityDebugFeedbackBinding;
-import com.saucelabs.mydemoapp.android.utils.TestFairyAssetReader;
 import com.saucelabs.mydemoapp.android.utils.base.BaseActivity;
-import com.testfairy.FeedbackFormField;
-import com.testfairy.FeedbackOptions;
-import com.testfairy.SelectFeedbackFormField;
-import com.testfairy.StringFeedbackFormField;
-import com.testfairy.TestFairy;
-import com.testfairy.TextAreaFeedbackFormField;
 
 import java.util.ArrayList;
 import java.util.HashMap;
