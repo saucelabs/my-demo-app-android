@@ -22,7 +22,6 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentLoginBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
-import com.testfairy.TestFairy;
 
 
 import java.util.Random;
@@ -57,10 +56,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             mParam3 = getArguments().getInt(Constants.ARG_PARAM3, -1);
         }
 
-//        TestFairy.hideView(R.id.nameET);
-        TestFairy.hideView(R.id.password1TV);
-        TestFairy.hideView(R.id.password2TV);
-        TestFairy.hideView(R.id.passwordET);
 //        ST.logActivityToFirebase(getActivity(),"HomeActivity", ST.SCREEN_HOME, "");
     }
 
@@ -140,8 +135,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 Log.e(TAG, "onAuthenticationError: ");
 
                 fetch404();
-
-                TestFairy.addEvent("Authentication errored with biometrics");
             }
 
             @Override
@@ -150,9 +143,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 Log.e(TAG, "onAuthenticationSucceeded: ");
 
                 fetchWiki();
-
-                TestFairy.setUserId(getMockBiometricUserName());
-                TestFairy.addEvent("User signed in with biometrics");
 
                 ST.isLogin = true;
                 ST.startActivity(mAct, MainActivity.class, ST.START_ACTIVITY_WITH_CLEAR_BACK_STACK);
@@ -164,8 +154,6 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 Log.e(TAG, "onAuthenticationFailed: ");
 
                 fetch404();
-
-                TestFairy.addEvent("Authentication failed with biometrics");
             }
         });
 
@@ -203,13 +191,8 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             binding.passwordErrorTV.setVisibility(View.VISIBLE);
 
             fetch404();
-
-            TestFairy.addEvent("Authentication failed for locked user");
         } else {
             fetchWiki();
-
-            TestFairy.setUserId(binding.nameET.getText().toString().trim());
-            TestFairy.addEvent("User signed in with password");
 
             ST.isLogin = true;
             ST.hasVisualChanges = username.equals("visual@example.com");

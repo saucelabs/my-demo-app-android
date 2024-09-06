@@ -80,6 +80,11 @@ task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'crea
     ]))
 }
 
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -117,15 +122,12 @@ dependencies {
 
     // Utils
     implementation 'com.github.gcacace:signature-pad:1.3.1'
-    implementation 'com.kyanogen.signatureview:signature-view:1.2'
-    implementation 'com.williamww:silky-signature:0.1.0'
-    implementation "com.uphyca:creditcardedittext:1.3"
+    implementation(name:'com.kyanogen.signatureview.signature-view', ext:'aar')
+    implementation(name:'com.williamww.silky-signature', ext:'aar')
+    implementation(name:'com.uphyca.creditcardedittext', ext:'aar')
+
     implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
-
-    // TestFairy SDK
-    //noinspection GradleDynamicVersion
-    implementation 'com.testfairy:testfairy-android-sdk:1.+@aar'
 
     // Backtrace SDK
     implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.0'

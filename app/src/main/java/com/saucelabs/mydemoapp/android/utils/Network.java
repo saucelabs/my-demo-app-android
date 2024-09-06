@@ -2,8 +2,6 @@ package com.saucelabs.mydemoapp.android.utils;
 
 import android.util.Log;
 
-import com.testfairy.TestFairy;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -111,22 +109,7 @@ public class Network {
 
 				String requestHeaders = getRequestHeaders(request);
 				String responseHeaders = getResponseHeaders(response);
-
-				TestFairy.addNetworkEvent(
-					new URI(url),
-					request.method(),
-					response.code(),
-					startTime,
-					endTime,
-					requestBodyBytes.length,
-					responseBodyBytes.length,
-					null,
-					requestHeaders,
-					requestBodyBytes,
-					responseHeaders,
-					responseBodyBytes
-				);
-			} catch (IOException | URISyntaxException ignored) {
+			} catch (IOException ignored) {
 			}
 		}).start();
 	}

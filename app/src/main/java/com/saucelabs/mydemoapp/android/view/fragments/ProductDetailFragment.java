@@ -29,7 +29,6 @@ import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
 import com.saucelabs.mydemoapp.android.view.adapters.ColorsAdapter;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModel;
 import com.saucelabs.mydemoapp.android.viewModel.ProductDetailViewModelFactory;
-import com.testfairy.TestFairy;
 
 public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
     private FragmentProductDetailBinding binding;
@@ -228,13 +227,9 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         if (mAct instanceof MainActivity) {
             ((MainActivity) mAct).setData();
         }
-
-        ST.syncCartToTestFairy(getContext());
     }
 
     private void handleRatting(int ratting) {
-        TestFairy.setAttribute("product.id." + selectedProduct.getId() + ".rating", "" + ratting);
-
         binding.rattingV.start1IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start2IV.setImageResource(R.drawable.ic_unselected_start);
         binding.rattingV.start3IV.setImageResource(R.drawable.ic_unselected_start);

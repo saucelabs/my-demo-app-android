@@ -14,7 +14,6 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentCheckoutCompleteBindi
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
-import com.testfairy.TestFairy;
 
 import java.util.ArrayList;
 
@@ -63,8 +62,6 @@ public class CheckoutCompleteFragment extends BaseFragment implements View.OnCli
     }
 
     private void init(){
-        ST.syncCartToTestFairy(getContext());
-        TestFairy.addEvent("Checkout complete");
     }
 
     private void setListener(){

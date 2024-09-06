@@ -33,7 +33,6 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentQrBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.QrCodeAnalyzer;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
-import com.testfairy.TestFairy;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -96,8 +95,6 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 	private void checkPermission() {
 		if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 			requestPermissions(REQUIRED_PERMISSIONS, REQUEST_CODE_PERMISSIONS);
-		} else {
-			TestFairy.addEvent("Location permission granted");
 		}
 	}
 
@@ -107,10 +104,8 @@ public class QRFragment extends BaseFragment implements View.OnClickListener {
 		if (requestCode == REQUEST_CODE_PERMISSIONS) {
 
 			if (allPermissionsGranted()) {
-				TestFairy.addEvent("Camera permission granted");
 				cameraProvider();
 			} else {
-				TestFairy.addEvent("Camera permission denied");
 				ST.startMainActivity(mAct, ST.getBundle(FRAGMENT_PRODUCT_CATAlOG, 1));
 			}
 		}

@@ -113,7 +113,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 		for (int pos = 0; pos < ST.cartItemList.size(); pos++) {
 			if (cartItemModel.getProductModel().getId() == ST.cartItemList.get(pos).getProductModel().getId()) {
 				ST.cartItemList.remove(cartItemModel);
-				ST.syncCartToTestFairy(mAct);
 				fetch("https://my-demo-app.net/api/remove-item?id=" + cartItemModel.getProductModel().getId());
 			}
 		}

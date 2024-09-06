@@ -17,7 +17,6 @@ import com.saucelabs.mydemoapp.android.databinding.FragmentCheckoutBinding;
 import com.saucelabs.mydemoapp.android.utils.Constants;
 import com.saucelabs.mydemoapp.android.utils.base.BaseFragment;
 import com.saucelabs.mydemoapp.android.view.activities.MainActivity;
-import com.testfairy.TestFairy;
 
 
 public class CheckoutFragment extends BaseFragment implements View.OnClickListener {
@@ -54,11 +53,6 @@ public class CheckoutFragment extends BaseFragment implements View.OnClickListen
 			mParam2 = getArguments().getString(Constants.ARG_PARAM2, "");
 			mParam3 = getArguments().getInt(Constants.ARG_PARAM3, -1);
 		}
-
-//        TestFairy.hideView(R.id.nameET);
-		TestFairy.hideView(R.id.cardNumberET);
-		TestFairy.hideView(R.id.expirationDateET);
-		TestFairy.hideView(R.id.securityCodeET);
 	}
 
 	@Override
@@ -418,8 +412,6 @@ public class CheckoutFragment extends BaseFragment implements View.OnClickListen
 			ST.checkoutInfo.setSameShipping(binding.billingAddressCB.isChecked());
 
 			ST.startMainActivity(mAct, ST.getBundle(MainActivity.FRAGMENT_PLACE_ORDER, 1));
-		} else {
-			TestFairy.addEvent("Checkout error");
 		}
 	}
 

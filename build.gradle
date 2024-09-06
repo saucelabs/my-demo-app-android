@@ -1,12 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
     ext.jacocoVersion = '0.8.4'
     repositories {
         google()
         mavenCentral()
+        jcenter()
         maven { url "https://www.jitpack.io" }
-        maven { url "https://maven.testfairy.com" }
     }
 
     dependencies {
@@ -25,9 +24,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter()
         maven { url "https://www.jitpack.io" }
-        maven { url "https://maven.testfairy.com" }
     }
 }
 
