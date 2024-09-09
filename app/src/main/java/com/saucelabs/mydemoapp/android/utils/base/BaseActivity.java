@@ -270,9 +270,9 @@ public class BaseActivity extends AppCompatActivity {
         }
 
         declinaisons = Lists.newArrayList(
-                new ItemVariant("blue", R.drawable.ic_product5_blue, BLUE),
+                new ItemVariant("turquoise", R.drawable.ic_product5_turquoise, BLUE),
                 new ItemVariant("pink", R.drawable.ic_product5_pink, PINK),
-                new ItemVariant("violet", R.drawable.ic_product5_violet, VIOLET),
+                new ItemVariant("purple", R.drawable.ic_product5_purple, VIOLET),
                 new ItemVariant("yellow", R.drawable.ic_product5_yellow, YELLOW)
         );
 
