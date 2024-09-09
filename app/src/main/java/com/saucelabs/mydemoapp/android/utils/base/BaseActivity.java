@@ -5,6 +5,7 @@ import static com.saucelabs.mydemoapp.android.utils.Constants.BLUE;
 import static com.saucelabs.mydemoapp.android.utils.Constants.BROWN;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GRAY;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GREEN;
+import static com.saucelabs.mydemoapp.android.utils.Constants.ORANGE;
 import static com.saucelabs.mydemoapp.android.utils.Constants.PINK;
 import static com.saucelabs.mydemoapp.android.utils.Constants.RED;
 import static com.saucelabs.mydemoapp.android.utils.Constants.VIOLET;
@@ -309,6 +310,31 @@ public class BaseActivity extends AppCompatActivity {
             model.setRating(4);
             model.setCurrency("$");
             model.setDesc("Its not everyday that you come across a midweight quarter-zip fleece jacket capable of handling everythinh from a relaxing day outdoors to a busy day at the office.");
+            model.setImageVal(decl.drawable);
+            colorModel = new ColorModel(R.drawable.ic_gray_circle, decl.colorId);
+            colorList.add(colorModel);
+            model.setColorList(colorList);
+            list.add(model);
+        }
+
+
+        declinaisons = Lists.newArrayList(
+                new ItemVariant("green", R.drawable.ic_product4_green, GREEN),
+                new ItemVariant("orange", R.drawable.ic_product4_orange, ORANGE),
+                new ItemVariant("red", R.drawable.ic_product4_red, RED),
+                new ItemVariant("violet", R.drawable.ic_product4_violet, VIOLET),
+                new ItemVariant("yellow", R.drawable.ic_product4_yellow, YELLOW)
+        );
+
+        for (ItemVariant decl : declinaisons) {
+            model = new ProductModel();
+            colorList = new ArrayList<>();
+            model.setTitle("Sauce Labs Backpack (" + decl.color + ")");
+            model.setPrice(29.99);
+            model.setColors(decl.colorId);
+            model.setRating(4);
+            model.setCurrency("$");
+            model.setDesc("carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
             model.setImageVal(decl.drawable);
             colorModel = new ColorModel(R.drawable.ic_gray_circle, decl.colorId);
             colorList.add(colorModel);

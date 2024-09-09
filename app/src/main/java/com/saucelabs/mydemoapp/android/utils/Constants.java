@@ -34,6 +34,7 @@ public class Constants {
     public static final int PINK = 7;
     public static final int VIOLET = 8;
     public static final int BROWN = 9;
+    public static final int ORANGE = 10;
 
     public final String LOGOUT = "LOGOUT";
     public final String CHECKOUT = "CHECKOUT";
