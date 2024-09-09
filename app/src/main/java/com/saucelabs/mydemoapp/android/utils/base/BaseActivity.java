@@ -2,8 +2,14 @@ package com.saucelabs.mydemoapp.android.utils.base;
 
 import static com.saucelabs.mydemoapp.android.utils.Constants.BLACK;
 import static com.saucelabs.mydemoapp.android.utils.Constants.BLUE;
+import static com.saucelabs.mydemoapp.android.utils.Constants.BROWN;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GRAY;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GREEN;
+import static com.saucelabs.mydemoapp.android.utils.Constants.ORANGE;
+import static com.saucelabs.mydemoapp.android.utils.Constants.PINK;
+import static com.saucelabs.mydemoapp.android.utils.Constants.RED;
+import static com.saucelabs.mydemoapp.android.utils.Constants.VIOLET;
+import static com.saucelabs.mydemoapp.android.utils.Constants.YELLOW;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -15,6 +21,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.common.collect.Lists;
 import com.saucelabs.mydemoapp.android.MyApplication;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.model.ColorModel;
@@ -213,7 +220,7 @@ public class BaseActivity extends AppCompatActivity {
 
         model = new ProductModel();
         colorList = new ArrayList<>();
-        model.setTitle("Test.sllTheThings() T-Shirt");
+        model.setTitle("Test.allTheThings() T-Shirt");
         model.setPrice(15.99);
         model.setColors(BLACK);
         model.setRating(4);
@@ -226,6 +233,114 @@ public class BaseActivity extends AppCompatActivity {
 
         model.setColorList(colorList);
         list.add(model);
+
+        // Extra Colors
+        class ItemVariant {
+            String color;
+            int drawable;
+            int colorId;
+
+            ItemVariant(String color, int drawable, int colorId) {
+                this.color = color;
+                this.drawable = drawable;
+                this.colorId = colorId;
+            }
+        };
+        List<ItemVariant> declinaisons;
+
+        declinaisons = Lists.newArrayList(
+                new ItemVariant("blue", R.drawable.ic_product2_blue, BLUE),
+                new ItemVariant("green", R.drawable.ic_product2_green, GREEN),
+                new ItemVariant("red", R.drawable.ic_product2_red, RED),
+                new ItemVariant("yellow", R.drawable.ic_product2_yellow, YELLOW)
+        );
+
+        for (ItemVariant decl : declinaisons) {
+            model = new ProductModel();
+            model.setTitle("Sauce Labs Bolt T-Shirt (" + decl.color + ")");
+            model.setPrice(15.99);
+            model.setColors(decl.colorId);
+            model.setRating(3);
+            model.setCurrency("$");
+            model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+            model.setImageVal(decl.drawable);
+            colorModel = new ColorModel(R.drawable.ic_black_circle, decl.colorId);
+            colorList.add(colorModel);
+            model.setColorList(colorList);
+            list.add(model);
+        }
+
+        declinaisons = Lists.newArrayList(
+                new ItemVariant("turquoise", R.drawable.ic_product5_turquoise, BLUE),
+                new ItemVariant("pink", R.drawable.ic_product5_pink, PINK),
+                new ItemVariant("purple", R.drawable.ic_product5_purple, VIOLET),
+                new ItemVariant("yellow", R.drawable.ic_product5_yellow, YELLOW)
+        );
+
+        for (ItemVariant decl : declinaisons) {
+            model = new ProductModel();
+            colorList = new ArrayList<>();
+            model.setTitle("Test.allTheThings() T-Shirt (" + decl.color + ")");
+            model.setPrice(15.99);
+            model.setColors(decl.colorId);
+            model.setRating(4);
+            model.setCurrency("$");
+            model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
+            model.setImageVal(decl.drawable);
+            colorModel = new ColorModel(R.drawable.ic_black_circle, decl.colorId);
+            colorList.add(colorModel);
+            model.setColorList(colorList);
+            list.add(model);
+        }
+
+        declinaisons = Lists.newArrayList(
+                new ItemVariant("blue", R.drawable.ic_product3_blue, BLUE),
+                new ItemVariant("brown", R.drawable.ic_product3_brown, BROWN),
+                new ItemVariant("green", R.drawable.ic_product3_green, GREEN),
+                new ItemVariant("pink", R.drawable.ic_product3_pink, PINK),
+                new ItemVariant("red", R.drawable.ic_product3_red, RED)
+        );
+
+        for (ItemVariant decl : declinaisons) {
+            model = new ProductModel();
+            colorList = new ArrayList<>();
+            model.setTitle("Sauce Labs Fleece Jacket (" + decl.color + ")");
+            model.setPrice(49.99);
+            model.setColors(decl.colorId);
+            model.setRating(4);
+            model.setCurrency("$");
+            model.setDesc("Its not everyday that you come across a midweight quarter-zip fleece jacket capable of handling everythinh from a relaxing day outdoors to a busy day at the office.");
+            model.setImageVal(decl.drawable);
+            colorModel = new ColorModel(R.drawable.ic_gray_circle, decl.colorId);
+            colorList.add(colorModel);
+            model.setColorList(colorList);
+            list.add(model);
+        }
+
+
+        declinaisons = Lists.newArrayList(
+                new ItemVariant("green", R.drawable.ic_product4_green, GREEN),
+                new ItemVariant("orange", R.drawable.ic_product4_orange, ORANGE),
+                new ItemVariant("red", R.drawable.ic_product4_red, RED),
+                new ItemVariant("violet", R.drawable.ic_product4_violet, VIOLET),
+                new ItemVariant("yellow", R.drawable.ic_product4_yellow, YELLOW)
+        );
+
+        for (ItemVariant decl : declinaisons) {
+            model = new ProductModel();
+            colorList = new ArrayList<>();
+            model.setTitle("Sauce Labs Backpack (" + decl.color + ")");
+            model.setPrice(29.99);
+            model.setColors(decl.colorId);
+            model.setRating(4);
+            model.setCurrency("$");
+            model.setDesc("carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.");
+            model.setImageVal(decl.drawable);
+            colorModel = new ColorModel(R.drawable.ic_gray_circle, decl.colorId);
+            colorList.add(colorModel);
+            model.setColorList(colorList);
+            list.add(model);
+        }
 
         viewModel.insertProducts(list);
 //        insertProducts(mDb.personDao(), list);
