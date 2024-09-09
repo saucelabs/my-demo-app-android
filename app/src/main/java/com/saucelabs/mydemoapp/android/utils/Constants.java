@@ -29,6 +29,10 @@ public class Constants {
     public static final int BLUE = 2;
     public static final int GRAY = 3;
     public static final int GREEN = 4;
+    public static final int RED = 5;
+    public static final int YELLOW = 6;
+    public static final int PINK = 7;
+    public static final int VIOLET = 7;
 
     public final String LOGOUT = "LOGOUT";
     public final String CHECKOUT = "CHECKOUT";

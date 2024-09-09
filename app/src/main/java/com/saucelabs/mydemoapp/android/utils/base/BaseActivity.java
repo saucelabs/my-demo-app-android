@@ -4,6 +4,10 @@ import static com.saucelabs.mydemoapp.android.utils.Constants.BLACK;
 import static com.saucelabs.mydemoapp.android.utils.Constants.BLUE;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GRAY;
 import static com.saucelabs.mydemoapp.android.utils.Constants.GREEN;
+import static com.saucelabs.mydemoapp.android.utils.Constants.PINK;
+import static com.saucelabs.mydemoapp.android.utils.Constants.RED;
+import static com.saucelabs.mydemoapp.android.utils.Constants.VIOLET;
+import static com.saucelabs.mydemoapp.android.utils.Constants.YELLOW;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -222,6 +226,123 @@ public class BaseActivity extends AppCompatActivity {
         model.setImageVal(R.drawable.ic_product5);
 
         colorModel = new ColorModel(R.drawable.ic_black_circle, BLACK);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        // Extra Colors
+        model = new ProductModel();
+        model.setTitle("Sauce Labs Bolt T-Shirt (blue)");
+        model.setPrice(15.99);
+        model.setColors(BLUE);
+        model.setRating(4);
+        model.setCurrency("$");
+        model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+        model.setImageVal(R.drawable.ic_product2_blue);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLUE);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        model.setTitle("Sauce Labs Bolt T-Shirt (green)");
+        model.setPrice(15.99);
+        model.setColors(GREEN);
+        model.setRating(3);
+        model.setCurrency("$");
+        model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+        model.setImageVal(R.drawable.ic_product2_green);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, GREEN);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        model.setTitle("Sauce Labs Bolt T-Shirt (red)");
+        model.setPrice(15.99);
+        model.setColors(RED);
+        model.setRating(3);
+        model.setCurrency("$");
+        model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+        model.setImageVal(R.drawable.ic_product2_red);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, RED);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        model.setTitle("Sauce Labs Bolt T-Shirt (yellow)");
+        model.setPrice(15.99);
+        model.setColors(YELLOW);
+        model.setRating(3);
+        model.setCurrency("$");
+        model.setDesc("Get your testing superhero on with the Sauce Labs bolt T-Shirt. From American Apparel, 100% ringspun combed cotton gray with red bolt.");
+        model.setImageVal(R.drawable.ic_product2_red);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, YELLOW);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        colorList = new ArrayList<>();
+        model.setTitle("Test.allTheThings() T-Shirt (blue)");
+        model.setPrice(15.99);
+        model.setColors(BLUE);
+        model.setRating(4);
+        model.setCurrency("$");
+        model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
+        model.setImageVal(R.drawable.ic_product5_blue);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, BLUE);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        colorList = new ArrayList<>();
+        model.setTitle("Test.allTheThings() T-Shirt (pink)");
+        model.setPrice(15.99);
+        model.setColors(PINK);
+        model.setRating(4);
+        model.setCurrency("$");
+        model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
+        model.setImageVal(R.drawable.ic_product5_pink);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, PINK);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        colorList = new ArrayList<>();
+        model.setTitle("Test.allTheThings() T-Shirt (violet)");
+        model.setPrice(15.99);
+        model.setColors(VIOLET);
+        model.setRating(4);
+        model.setCurrency("$");
+        model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
+        model.setImageVal(R.drawable.ic_product5_violet);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, VIOLET);
+        colorList.add(colorModel);
+
+        model.setColorList(colorList);
+        list.add(model);
+
+        model = new ProductModel();
+        colorList = new ArrayList<>();
+        model.setTitle("Test.allTheThings() T-Shirt (yellow)");
+        model.setPrice(15.99);
+        model.setColors(YELLOW);
+        model.setRating(4);
+        model.setCurrency("$");
+        model.setDesc("This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.");
+        model.setImageVal(R.drawable.ic_product5_yellow);
+        colorModel = new ColorModel(R.drawable.ic_black_circle, YELLOW);
         colorList.add(colorModel);
 
         model.setColorList(colorList);
