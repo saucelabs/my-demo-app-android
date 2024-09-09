@@ -17,16 +17,14 @@ espresso:
 suites:
   - name: "Main suite"
     emulators:
-      - name: Google Pixel C GoogleAPI Emulator
+      - name: Android GoogleAPI Emulator
         platformVersions:
-          - "8.1"
+          - "14.0"
     devices:
       - name: "Google.*"
         platformVersion: "14"
-      - name: "LG.*"
-        platformVersion: "8"
       - name: "Samsung.*"
-        platformVersion: "11"
+        platformVersion: "13"
 
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
