@@ -68,6 +68,7 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_catalog, container, false);
         viewModel = ViewModelProviders.of(this, new ProductCatalogViewModelFactory(app)).get(ProductCatalogViewModel.class);
         bindData();
+        binding.productRV.setNestedScrollingEnabled(false);
 
         // Add visual changes
         if (this.addVisualChanges) {
