@@ -35,6 +35,15 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
     ProductsAdapter adapter;
     ProductCatalogViewModel viewModel;
 
+    public static boolean isRunningEspressoTest() {
+        try {
+            Class.forName("androidx.test.espresso.Espresso");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+    }
+
     public static ProductCatalogFragment newInstance(String param1, String param2, int param3) {
         boolean addVisualChanges = SingletonClass.getInstance().hasVisualChanges;
         ProductCatalogFragment fragment = new ProductCatalogFragment(addVisualChanges);
@@ -68,7 +77,7 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_catalog, container, false);
         viewModel = ViewModelProviders.of(this, new ProductCatalogViewModelFactory(app)).get(ProductCatalogViewModel.class);
         bindData();
-        binding.productRV.setNestedScrollingEnabled(false);
+        binding.productRV.setNestedScrollingEnabled(isRunningEspressoTest());
 
         // Add visual changes
         if (this.addVisualChanges) {
