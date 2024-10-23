@@ -4,21 +4,23 @@ apply plugin: 'jacoco'
 android {
     signingConfigs {}
 
-    compileSdkVersion 31
-    buildToolsVersion "30.0.2"
+    compileSdk 34
     useLibrary 'org.apache.http.legacy'
     ndkVersion '21.3.6528147'
 
     defaultConfig {
         applicationId "com.saucelabs.mydemoapp.android"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 1 // CI automatically replaces this
         versionName "1.0.0" // CI automatically replaces this
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
+
+        buildConfigField "String", "SAUCE_USERNAME", getProperty("SAUCE_USERNAME", "\"\"")
+        buildConfigField "String", "SAUCE_ACCESS_KEY", getProperty("SAUCE_ACCESS_KEY", "\"\"")
     }
 
     testOptions {
@@ -49,6 +51,8 @@ android {
         enabled = true
     }
 
+    namespace 'com.saucelabs.mydemoapp.android'
+
     lintOptions {
         checkReleaseBuilds false
     }
@@ -59,6 +63,18 @@ android {
             v2SigningEnabled true
         }
     }
+    buildFeatures {
+        buildConfig = true
+    }
+}
+
+String getProperty(String name, String defaultValue) {
+    if (!rootProject.file("./local.properties").exists()) {
+        return defaultValue
+    }
+    def properties = new Properties()
+    properties.load(rootProject.file("./local.properties").newDataInputStream())
+    return properties.containsKey(name) ? properties[name] : defaultValue
 }
 
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
@@ -90,6 +106,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Libraries For Testing
+    androidTestImplementation("com.saucelabs.visual:visual-espresso:0.0.1")
+
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation 'androidx.test:runner:1.4.0'
@@ -138,6 +156,10 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:${camerax_version}"
     implementation "androidx.camera:camera-view:${camerax_version}"
     implementation "com.google.zxing:core:3.3.3"
+
+    configurations.implementation {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
