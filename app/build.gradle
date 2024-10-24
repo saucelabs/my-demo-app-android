@@ -19,6 +19,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
+
+        buildConfigField "String", "SAUCE_USERNAME", getProperty("SAUCE_USERNAME", "\"\"")
+        buildConfigField "String", "SAUCE_ACCESS_KEY", getProperty("SAUCE_ACCESS_KEY", "\"\"")
     }
 
     testOptions {
@@ -61,6 +64,15 @@ android {
     }
 }
 
+String getProperty(String name, String defaultValue) {
+    if (!rootProject.file("./local.properties").exists()) {
+        return defaultValue
+    }
+    def properties = new Properties()
+    properties.load(rootProject.file("./local.properties").newDataInputStream())
+    return properties.containsKey(name) ? properties[name] : defaultValue
+}
+
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
 
     reports {
@@ -90,6 +102,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Libraries For Testing
+    androidTestImplementation 'com.saucelabs.visual:visual-espresso:0.0.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation 'androidx.test:runner:1.4.0'
