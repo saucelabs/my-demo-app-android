@@ -7,7 +7,10 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
+import static androidx.test.espresso.matcher.ViewMatchers.withParentIndex;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.core.AllOf.allOf;
 
 import android.text.TextUtils;
 
@@ -23,6 +26,7 @@ import com.saucelabs.mydemoapp.android.BuildConfig;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
+import com.saucelabs.visual.VisualCheckOptions;
 import com.saucelabs.visual.VisualClient;
 import com.saucelabs.visual.junit.TestMetaInfoRule;
 
@@ -80,9 +84,24 @@ public class VisualTest extends BaseTest {
 
         waitView(withId(R.id.menuIV));
 
-        client.sauceVisualCheck("App Catalog");
+        client.sauceVisualCheck("App Catalog", VisualCheckOptions.builder()
+                .ignore( // Ignore any changes on the first image
+                        allOf(withParentIndex(0),  // Get the first element in ViewGroup (an image)
+                                withParent(allOf(
+                                        withParentIndex(0),  // Get the first element in RV (a ViewGroup)
+                                        withParent(withId(R.id.productRV)))))
+                )
+                .build());
 
         onView(withId(R.id.menuIV)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void captureOnlyAppCatalog() {
+        waitView(withId(R.id.menuIV));
+        client.sauceVisualCheck("Catalog Fragment", VisualCheckOptions.builder()
+                .clipElement(withId(R.id.scrollView))
+                .build());
     }
 
     @AfterClass
