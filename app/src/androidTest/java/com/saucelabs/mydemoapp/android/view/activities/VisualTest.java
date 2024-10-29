@@ -71,6 +71,8 @@ public class VisualTest extends BaseTest {
         String name = TextUtils.isEmpty(visualCheck) ? "bod@example.com" : "visual@example.com";
         String pass = "10203040";
 
+        waitView(withId(R.id.menuRV));
+
         // enter a name
         onView(withId(R.id.nameET)).perform(typeText(name), closeSoftKeyboard());
         onView(withId(R.id.passwordET)).perform(typeText(pass), closeSoftKeyboard());
