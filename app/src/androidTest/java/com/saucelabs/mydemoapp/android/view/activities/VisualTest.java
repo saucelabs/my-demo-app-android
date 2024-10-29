@@ -26,11 +26,13 @@ import com.saucelabs.mydemoapp.android.BuildConfig;
 import com.saucelabs.mydemoapp.android.R;
 import com.saucelabs.mydemoapp.android.actions.NestingAwareScrollAction;
 import com.saucelabs.mydemoapp.android.actions.SideNavClickAction;
+import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 import com.saucelabs.visual.VisualCheckOptions;
 import com.saucelabs.visual.VisualClient;
 import com.saucelabs.visual.junit.TestMetaInfoRule;
 
 import org.junit.AfterClass;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,6 +52,12 @@ public class VisualTest extends BaseTest {
     static VisualClient client = VisualClient.builder(BuildConfig.SAUCE_USERNAME, BuildConfig.SAUCE_ACCESS_KEY)
             .buildName("My Demo App")
             .build();
+
+    @Before
+    public void removeLogin() {
+        SingletonClass.getInstance().isLogin = false;
+        SingletonClass.getInstance().hasVisualChanges = false;
+    }
 
     @Test
     public void checkAppCatalog() {

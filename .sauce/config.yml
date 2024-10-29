@@ -26,7 +26,6 @@ suites:
       - name: "Samsung.*"
         platformVersion: "13"
     testOptions:
-      size: large
       visualCheck: $VISUAL_CHECK
 
 
