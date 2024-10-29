@@ -20,8 +20,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArguments clearPackageData: 'true'
 
-        buildConfigField "String", "SAUCE_USERNAME", getProperty("SAUCE_USERNAME", "\"\"")
-        buildConfigField "String", "SAUCE_ACCESS_KEY", getProperty("SAUCE_ACCESS_KEY", "\"\"")
+        buildConfigField "String", "SAUCE_USERNAME", "\"${System.getenv('SAUCE_USERNAME')}\""
+        buildConfigField "String", "SAUCE_ACCESS_KEY", "\"${System.getenv('SAUCE_ACCESS_KEY')}\""
     }
 
     testOptions {
@@ -62,15 +62,6 @@ android {
             v2SigningEnabled true
         }
     }
-}
-
-String getProperty(String name, String defaultValue) {
-    if (!rootProject.file("./local.properties").exists()) {
-        return defaultValue
-    }
-    def properties = new Properties()
-    properties.load(rootProject.file("./local.properties").newDataInputStream())
-    return properties.containsKey(name) ? properties[name] : defaultValue
 }
 
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
