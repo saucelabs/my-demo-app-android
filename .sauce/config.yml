@@ -25,6 +25,8 @@ suites:
         platformVersion: "14"
       - name: "Samsung.*"
         platformVersion: "13"
+    testOptions:
+      visualCheck: $VISUAL_CHECK
 
 
 # Controls what artifacts to fetch when the suite on Sauce Cloud has finished.
