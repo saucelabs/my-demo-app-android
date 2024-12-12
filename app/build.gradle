@@ -93,7 +93,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Libraries For Testing
-    androidTestImplementation 'com.saucelabs.visual:visual-espresso:0.0.1-RC'
+    androidTestImplementation 'com.saucelabs.visual:visual-espresso:0.0.1'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
     androidTestImplementation("com.android.support.test.espresso:espresso-contrib:3.0.2")
     androidTestImplementation 'androidx.test:runner:1.4.0'
