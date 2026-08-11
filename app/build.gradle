@@ -1,6 +1,43 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 
+def localConfiguration = rootProject.ext.localConfiguration
+def configuredValue = { String propertyName, String environmentName, String defaultValue ->
+    def value = project.findProperty(propertyName) ?:
+            localConfiguration.getProperty(propertyName) ?:
+            System.getenv(environmentName) ?:
+            defaultValue
+    value.toString()
+}
+def buildConfigString = { String value ->
+    '"' + value.replace('\\', '\\\\').replace('"', '\\"') + '"'
+}
+
+def backtraceSubmissionUrl = configuredValue(
+        'backtraceSubmissionUrl',
+        'BACKTRACE_SUBMISSION_URL',
+        ''
+)
+def sauceMobileBetaToken = configuredValue(
+        'sauceMobileBetaToken',
+        'SAUCE_MOBILE_BETA_TOKEN',
+        ''
+)
+def sauceEnvironment = configuredValue('sauceEnvironment', 'SAUCE_ENVIRONMENT', 'beta')
+def sauceDistributionId = configuredValue(
+        'sauceDistributionId',
+        'SAUCE_DISTRIBUTION_ID',
+        ''
+)
+
+def sauceMobileBetaAar = configuredValue('sauceMobileBetaAar', 'SAUCE_MOBILE_BETA_AAR', '').trim()
+def sauceMobileBetaVersion = configuredValue(
+        'sauceMobileBetaVersion',
+        'SAUCE_MOBILE_BETA_VERSION',
+        ''
+).trim()
+def sauceMobileBetaEnabled = Boolean.valueOf(sauceMobileBetaAar || sauceMobileBetaVersion)
+
 android {
     signingConfigs {}
 
@@ -22,6 +59,10 @@ android {
 
         buildConfigField "String", "SAUCE_USERNAME", "\"${System.getenv('SAUCE_USERNAME')}\""
         buildConfigField "String", "SAUCE_ACCESS_KEY", "\"${System.getenv('SAUCE_ACCESS_KEY')}\""
+        buildConfigField "String", "BACKTRACE_SUBMISSION_URL", buildConfigString(backtraceSubmissionUrl)
+        buildConfigField "String", "SAUCE_MOBILE_BETA_TOKEN", buildConfigString(sauceMobileBetaToken)
+        buildConfigField "String", "SAUCE_ENVIRONMENT", buildConfigString(sauceEnvironment)
+        buildConfigField "String", "SAUCE_DISTRIBUTION_ID", buildConfigString(sauceDistributionId)
     }
 
     testOptions {
@@ -50,6 +91,17 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    // Sauce Mobile Beta is a beta/debug capability. The production release
+    // variant always compiles the no-op adapter and never packages the SDK.
+    // Debug builds compile the real integration only when an AAR or published
+    // version is explicitly supplied.
+    sourceSets {
+        debug.java.srcDir(
+                sauceMobileBetaEnabled ? 'src/mobileBeta/java' : 'src/noMobileBeta/java'
+        )
+        release.java.srcDir('src/noMobileBeta/java')
     }
 
     lintOptions {
@@ -133,8 +185,32 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.4.2'
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
 
-    // Backtrace SDK
+    // Backtrace is the sole crash owner in all variants.
     implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.0'
+
+    // Sauce Mobile Beta is opt-in and debug-only. A direct AAR is convenient
+    // while validating an unreleased SDK; a published Maven version exercises
+    // the real coordinate and POM. Release builds contain neither dependency.
+    if (sauceMobileBetaAar) {
+        def localAar = file(sauceMobileBetaAar)
+        if (!localAar.isFile()) {
+            throw new GradleException("Sauce Mobile Beta AAR not found: ${localAar}")
+        }
+
+        debugImplementation files(localAar)
+
+        // Direct AAR dependencies have no POM, so include the two external
+        // runtime dependencies declared by the published artifact.
+        debugImplementation 'androidx.core:core-ktx:1.3.1'
+        // Must match the kotlin version the AAR is compiled with
+        // (ext.kotlin_version in testfairy-android-sdk/build.gradle) — the
+        // file() dependency has no POM, so these pins stand in for it.
+        debugImplementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.21'
+    } else if (sauceMobileBetaVersion) {
+        debugImplementation(
+                "com.saucelabs.mobilebeta:sauce-mobile-beta-android:${sauceMobileBetaVersion}"
+        )
+    }
 
     def camerax_version = "1.1.0"
     implementation "androidx.camera:camera-core:${camerax_version}"
