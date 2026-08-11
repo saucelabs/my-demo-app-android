@@ -1,4 +1,13 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+def localConfiguration = new Properties()
+def localConfigurationFile = rootProject.file('local.properties')
+if (localConfigurationFile.isFile()) {
+    localConfigurationFile.withInputStream { input ->
+        localConfiguration.load(input)
+    }
+}
+ext.localConfiguration = localConfiguration
+
 buildscript {
     ext.jacocoVersion = '0.8.4'
     repositories {
@@ -23,11 +32,18 @@ buildscript {
     }
 }
 
+def sauceMobileBetaRepository = findProperty('sauceMobileBetaRepository') ?:
+        localConfiguration.getProperty(
+                'sauceMobileBetaRepository',
+                'https://maven.testfairy.com'
+        )
+
 allprojects {
     repositories {
         google()
         mavenCentral()
         maven { url "https://www.jitpack.io" }
+        maven { url uri(sauceMobileBetaRepository) }
         maven {
             url "https://oss.sonatype.org/content/repositories/staging/"
         }
@@ -37,4 +53,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
