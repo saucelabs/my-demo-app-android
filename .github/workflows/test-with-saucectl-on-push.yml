@@ -13,16 +13,21 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v4
         with:
+          distribution: temurin
           java-version: 11
-
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v2
-
+        uses: android-actions/setup-android@v4
+        # The runner image's latest sdkmanager needs Java 17, but Gradle 7.2 / AGP 7.0.2 require JDK 11: pin cmdline-tools 9.0 (build 9477386), the newest release that runs on JDK 11.
+        # The action's default package list requests the legacy 'tools' package, which Google removed — list packages explicitly.
+        with:
+          cmdline-tools-version: 9477386
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
       - name: Compile
         run: |
           ./gradlew app:assembleDebug
