@@ -5,7 +5,6 @@ import android.util.Log;
 import com.testfairy.SessionStateListener;
 import com.testfairy.TestFairy;
 
-import java.io.ObjectInputFilter.Config;
 import java.util.HashMap;
 import java.util.Map;
 
