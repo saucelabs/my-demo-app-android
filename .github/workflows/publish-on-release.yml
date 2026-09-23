@@ -42,7 +42,20 @@ jobs:
           versionName: ${{ env.CI_TAG }}
 
       - name: Compile APK
+        # SDK credentials for the published APKs. app/build.gradle reads these environment variables (precedence: -P property, local.properties, env, empty).
+        # Empty secrets leave the corresponding SDK disabled at runtime.
+        env:
+          BACKTRACE_UNIVERSE: ${{ secrets.BACKTRACE_UNIVERSE }}
+          BACKTRACE_TOKEN: ${{ secrets.BACKTRACE_TOKEN }}
+          SAUCE_MOBILE_BETA_TOKEN: ${{ secrets.SAUCE_MOBILE_BETA_TOKEN }}
         run: |
+          if [ -n "${BACKTRACE_UNIVERSE}" ] && [ -n "${BACKTRACE_TOKEN}" ]; then
+            # Android needs the JSON submission URL (the native integration derives /minidump from it).
+            export BACKTRACE_SUBMISSION_URL="https://submit.backtrace.io/${BACKTRACE_UNIVERSE}/${BACKTRACE_TOKEN}/json"
+          else
+            echo "::warning::BACKTRACE_UNIVERSE and/or BACKTRACE_TOKEN secret is empty; Backtrace is disabled in these APKs"
+          fi
+          [ -n "${SAUCE_MOBILE_BETA_TOKEN}" ] || echo "::warning::SAUCE_MOBILE_BETA_TOKEN secret is empty; Sauce Mobile Beta is disabled in these APKs"
           ./gradlew app:assembleDebug
           ./gradlew app:assembleDebugAndroidTest
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/mda-${{ env.CI_TAG }}-${{ github.run_number }}.apk

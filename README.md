@@ -66,9 +66,13 @@ Gradle `-P` properties and environment variables remain supported for CI. Their 
 Supported environment variables include:
 `BACKTRACE_SUBMISSION_URL`, `SAUCE_MOBILE_BETA_TOKEN`, `SAUCE_MOBILE_BETA_AAR`, `SAUCE_MOBILE_BETA_VERSION`, `SAUCE_MOBILE_BETA_DISABLED`, `SAUCE_ENVIRONMENT`, and `SAUCE_DISTRIBUTION_ID`.
 
+The release workflow (`.github/workflows/publish-on-release.yml`) fills them from the repository secrets `BACKTRACE_UNIVERSE`, `BACKTRACE_TOKEN` (composed into `https://submit.backtrace.io/<universe>/<token>/json`) and `SAUCE_MOBILE_BETA_TOKEN`, so the published APKs report to Backtrace and Sauce Mobile Beta.
+
+The Backtrace URL must be the JSON submission URL (`…/json`, or a URL containing `format=json`): the native crash integration derives its minidump endpoint from it and is only enabled for those forms; JVM reporting works with any form. With the database enabled, reports are queued under `files/backtrace/` and resent until accepted.
+
 
 The typed integration is in `app/src/mobileBeta/java/com/saucelabs/mydemoapp/android/SauceMobileBetaIntegration.java`.
-It registers the asynchronous session callback before initialization, disables auto-update for this demo, calls `beginWithoutCrashHandler(...)`, and verifies that the Backtrace JVM handler remains installed.
+When Backtrace is configured it registers the asynchronous session callback before initialization (mirroring the session URL into Backtrace attributes), disables auto-update for this demo, calls `beginWithoutCrashHandler(...)`, and verifies that the default (Backtrace) JVM handler remains installed. Each SDK is configured independently: Sauce Mobile Beta still starts when Backtrace is not configured.
 The release source set uses a no-op adapter and does not receive the Sauce Mobile Beta dependency.
 
 This app is part of a set of demo apps.

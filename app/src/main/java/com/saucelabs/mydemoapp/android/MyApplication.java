@@ -3,18 +3,21 @@ package com.saucelabs.mydemoapp.android;
 import android.content.Context;
 import android.util.Log;
 
+import java.io.File;
+
 import com.saucelabs.mydemoapp.android.utils.Network;
 import com.saucelabs.mydemoapp.android.utils.SingletonClass;
 
 import backtraceio.library.BacktraceClient;
 import backtraceio.library.BacktraceCredentials;
 import backtraceio.library.models.BacktraceExceptionHandler;
+import backtraceio.library.models.database.BacktraceDatabaseSettings;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MyApplication extends android.app.Application {
 
@@ -62,25 +65,35 @@ public class MyApplication extends android.app.Application {
 	}
 
 	private void initializeBacktrace(Map<String, String> sharedAttributes) {
-		if (BuildConfig.BACKTRACE_SUBMISSION_URL.trim().isEmpty()) {
-			Log.w(Config.TAG, "Backtrace is not configured; set BACKTRACE_SUBMISSION_URL.");
+		String submissionUrl = BuildConfig.BACKTRACE_SUBMISSION_URL.trim();
+		if (submissionUrl.isEmpty()) {
+			Log.w(Config.TAG, "Backtrace is not configured; set BACKTRACE_SUBMISSION_URL (local.properties: backtraceSubmissionUrl).");
 			return;
 		}
 
-		Map<String, Object> backtraceAttributes = new HashMap<>();
-		backtraceAttributes.putAll(sharedAttributes);
+		Map<String, Object> backtraceAttributes = new ConcurrentHashMap<>(sharedAttributes);
 
-		BacktraceCredentials credentials = new BacktraceCredentials(
-			BuildConfig.BACKTRACE_SUBMISSION_URL
+		BacktraceCredentials credentials = new BacktraceCredentials(submissionUrl);
+
+		File databaseDirectory = new File(getApplicationContext().getFilesDir(), "backtrace");
+		BacktraceDatabaseSettings databaseSettings = new BacktraceDatabaseSettings(
+			databaseDirectory.getAbsolutePath()
 		);
+		databaseSettings.setMaxRecordCount(10);
 		BacktraceClient client = new BacktraceClient(
 			getApplicationContext(),
 			credentials,
+			databaseSettings,
 			backtraceAttributes
 		);
 
 		BacktraceExceptionHandler.enable(client);
-		client.enableNativeIntegration();
+
+		if (submissionUrl.contains("/json") || submissionUrl.contains("format=json")) {
+			client.enableNativeIntegration();
+		} else {
+			Log.w(Config.TAG, "BACKTRACE_SUBMISSION_URL is not the JSON submission URL (…/json); native crash reporting stays disabled.");
+		}
 		MyApplication.backtraceClient = client;
 	}
 

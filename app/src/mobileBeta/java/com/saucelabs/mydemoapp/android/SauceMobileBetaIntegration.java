@@ -5,10 +5,12 @@ import android.util.Log;
 import com.testfairy.SessionStateListener;
 import com.testfairy.TestFairy;
 
+import java.io.ObjectInputFilter.Config;
 import java.util.HashMap;
 import java.util.Map;
 
 import backtraceio.library.BacktraceClient;
+import backtraceio.library.BacktraceDatabase;
 
 /**
  * Debug/beta-only Backtrace + Sauce Mobile Beta integration.
@@ -26,31 +28,34 @@ final class SauceMobileBetaIntegration {
 		final BacktraceClient backtraceClient,
 		Map<String, String> sharedAttributes
 	) {
-		if (backtraceClient == null) {
-			Log.w(Config.TAG, "Sauce Mobile Beta skipped because Backtrace is not configured.");
+		if (BuildConfig.SAUCE_MOBILE_BETA_TOKEN.trim().isEmpty()) {
+			Log.w(Config.TAG, "Sauce Mobile Beta is not configured; set SAUCE_MOBILE_BETA_TOKEN (local.properties: sauceMobileBetaToken).");
 			return;
 		}
 
-		if (BuildConfig.SAUCE_MOBILE_BETA_TOKEN.trim().isEmpty()) {
-			Log.w(Config.TAG, "Sauce Mobile Beta is not configured; set SAUCE_MOBILE_BETA_TOKEN.");
-			return;
+		if (backtraceClient == null) {
+			// Each SDK is configured independently: Mobile Beta still records sessions, there is just no Backtrace report to correlate them with.
+			Log.w(Config.TAG, "Backtrace is not configured; Sauce Mobile Beta starts without crash-report correlation.");
 		}
 
 		final Thread.UncaughtExceptionHandler backtraceCrashHandler =
 			Thread.getDefaultUncaughtExceptionHandler();
 
-		TestFairy.addSessionStateListener(new SessionStateListener() {
-			@Override
-			public void onSessionStarted(String sessionUrl) {
-				backtraceClient.getAttributes().put("sauce.mobile_beta.session_url", sessionUrl);
-				backtraceClient.getAttributes().put("sauce.mobile_beta.session_started", true);
-			}
+		if (backtraceClient != null) {
+			TestFairy.addSessionStateListener(new SessionStateListener() {
+				@Override
+				public void onSessionStarted(String sessionUrl) {
+					// Overwritten on every session start: stop()/resume creates a new session with a new URL, all sharing this launch's sauce.correlation_id.
+					mirrorToBacktrace(backtraceClient, "sauce.mobile_beta.session_started", "true");
+					mirrorToBacktrace(backtraceClient, "sauce.mobile_beta.session_url", sessionUrl == null ? "" : sessionUrl);
+				}
 
-			@Override
-			public void onSessionFailed() {
-				backtraceClient.getAttributes().put("sauce.mobile_beta.session_started", false);
-			}
-		});
+				@Override
+				public void onSessionFailed() {
+					mirrorToBacktrace(backtraceClient, "sauce.mobile_beta.session_started", "false");
+				}
+			});
+		}
 
 		TestFairy.disableAutoUpdate();
 		TestFairy.setUserId(MyApplication.getRandomUserId());
@@ -75,8 +80,25 @@ final class SauceMobileBetaIntegration {
 
 		if (Thread.getDefaultUncaughtExceptionHandler() != backtraceCrashHandler) {
 			throw new IllegalStateException(
-				"Sauce Mobile Beta replaced Backtrace's uncaught-exception handler"
+				"Sauce Mobile Beta replaced the default uncaught-exception handler"
 			);
+		}
+	}
+
+	/**
+	 * JVM reports read the client's live attribute map, but native (Crashpad) annotations are snapshotted once at enableNativeIntegration();
+	 * values added later must also be pushed through BacktraceDatabase.addAttribute (String values only) to reach native crash reports.
+	 */
+	private static void mirrorToBacktrace(BacktraceClient client, String key, String value) {
+		client.getAttributes().put(key, value);
+		if (client.database instanceof BacktraceDatabase) {
+			try {
+				((BacktraceDatabase) client.database).addAttribute(key, value);
+			} catch (RuntimeException | LinkageError error) {
+				// Defensive: addAttribute is a JNI call; when Crashpad is not initialized the native
+				// side only logs a warning, so this path is not expected in practice.
+				Log.w(Config.TAG, "Could not mirror " + key + " into native Backtrace reports: " + error);
+			}
 		}
 	}
 }
