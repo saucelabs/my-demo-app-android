@@ -135,9 +135,8 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
 
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(5);
+        mLocationRequest.setInterval(5000);
         mLocationRequest.setFastestInterval(0);
-        mLocationRequest.setNumUpdates(1);
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
@@ -244,6 +243,12 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mFusedLocationClient.removeLocationUpdates(mLocationCallback);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         if (checkPermissions()) {
@@ -261,7 +266,6 @@ public class LocationFragment extends BaseFragment implements View.OnClickListen
                 binding.stopBtn.setBackgroundColor(requireActivity().getColor(R.color.green));
                 binding.startBtn.setBackgroundColor(requireActivity().getColor(R.color.button_grey));
                 requestNewLocationData();
-                getLastLocation();
             }
 //            if (checkPermissions()) {
 //                getLastLocation();
