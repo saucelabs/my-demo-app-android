@@ -94,6 +94,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
+                    android:text="Stop and resume the Sauce Mobile Beta session (debug). Each session start gets a new sauce.correlation_id, pushed to Backtrace; crash afterwards and the report must carry the new id."
+                    android:textIsSelectable="true"
+                    android:textSize="12dp" />
+
+                <Button
+                    android:id="@+id/stop_and_resume_session_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/green"
+                    android:text="STOP AND RESUME SESSION (DEBUG)"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
                     android:text="In order for this part of the demo to work, please modify \n\n
  MyApplication::initializeBacktrace() \n\nhttps://github.com/saucelabs/my-demo-app-android/blob/main/app/src/main/java/com/saucelabs/mydemoapp/android/MyApplication.java"
                     android:textIsSelectable="true"

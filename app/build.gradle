@@ -23,6 +23,13 @@ def sauceMobileBetaToken = configuredValue(
         'SAUCE_MOBILE_BETA_TOKEN',
         ''
 )
+// Server Endpoint from Organization Settings > SDK Settings (https://<host>/services/).
+// Required: the SDK's built-in default server is no longer in service.
+def sauceMobileBetaEndpoint = configuredValue(
+        'sauceMobileBetaEndpoint',
+        'SAUCE_MOBILE_BETA_ENDPOINT',
+        ''
+)
 def sauceEnvironment = configuredValue('sauceEnvironment', 'SAUCE_ENVIRONMENT', 'beta')
 def sauceDistributionId = configuredValue(
         'sauceDistributionId',
@@ -38,7 +45,7 @@ def sauceMobileBetaAar = configuredValue('sauceMobileBetaAar', 'SAUCE_MOBILE_BET
 def sauceMobileBetaVersion = configuredValue(
         'sauceMobileBetaVersion',
         'SAUCE_MOBILE_BETA_VERSION',
-        '2.2.0-rc'
+        '2.3.0'
 ).trim()
 def sauceMobileBetaDisabled = configuredValue(
         'sauceMobileBetaDisabled',
@@ -70,6 +77,7 @@ android {
         buildConfigField "String", "SAUCE_ACCESS_KEY", "\"${System.getenv('SAUCE_ACCESS_KEY')}\""
         buildConfigField "String", "BACKTRACE_SUBMISSION_URL", buildConfigString(backtraceSubmissionUrl)
         buildConfigField "String", "SAUCE_MOBILE_BETA_TOKEN", buildConfigString(sauceMobileBetaToken)
+        buildConfigField "String", "SAUCE_MOBILE_BETA_ENDPOINT", buildConfigString(sauceMobileBetaEndpoint)
         buildConfigField "String", "SAUCE_ENVIRONMENT", buildConfigString(sauceEnvironment)
         buildConfigField "String", "SAUCE_DISTRIBUTION_ID", buildConfigString(sauceDistributionId)
     }
@@ -150,6 +158,14 @@ repositories {
     }
 }
 
+// Backtrace 3.10.0 depends on gson 2.12.1, which pulls error_prone_annotations 2.36.0; the D8 shipped with AGP 7.0.2 throws a
+// NullPointerException while dexing that jar (com/google/errorprone/annotations/Modifier.class). The artifact holds compile-time
+// annotations only, so it is dropped from every configuration. gson 2.12.1 itself dexes fine and Backtrace uses only Gson,
+// GsonBuilder, FieldNamingPolicy and @SerializedName.
+configurations.all {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -195,7 +211,13 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:4.9.0"
 
     // Backtrace is the sole crash owner in all variants.
-    implementation 'com.github.backtrace-labs.backtrace-android:backtrace-library:3.7.0'
+    // 3.10.0 has BacktraceBase.addAttribute(Map), which the Sauce Mobile Beta crash reporter attribute sink uses.
+    // Every release from 3.7.14 declares androidx.appcompat:appcompat:1.6.1 (runtime scope) in its POM, and that AAR
+    // requires compileSdk 33; the library's bytecode references no androidx.appcompat class, so the transitive
+    // dependency is excluded and the app's own appcompat stays, keeping AGP 7.0 / compileSdk 31 (3.11+ needs AGP 8 and compileSdk 35+).
+    implementation('com.github.backtrace-labs.backtrace-android:backtrace-library:3.10.0') {
+        exclude group: 'androidx.appcompat', module: 'appcompat'
+    }
 
     // Sauce Mobile Beta is debug-only. The published Maven version (default) exercises the real coordinate and POM;
     // a direct AAR is for validating an unreleased SDK build. Release builds contain neither dependency.

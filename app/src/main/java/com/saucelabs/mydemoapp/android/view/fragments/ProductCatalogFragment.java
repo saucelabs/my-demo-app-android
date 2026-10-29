@@ -50,6 +50,12 @@ public class ProductCatalogFragment extends BaseFragment implements View.OnClick
         this.addVisualChanges = addVisualChanges;
     }
 
+    // Required by the fragment framework: after a process death Android re-creates the fragment from saved state
+    // through the no-arg constructor; without it the automatic task restart crashed with Fragment$InstantiationException.
+    public ProductCatalogFragment() {
+        this(SingletonClass.getInstance().hasVisualChanges);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

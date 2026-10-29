@@ -48,6 +48,7 @@ jobs:
           BACKTRACE_UNIVERSE: ${{ secrets.BACKTRACE_UNIVERSE }}
           BACKTRACE_TOKEN: ${{ secrets.BACKTRACE_TOKEN }}
           SAUCE_MOBILE_BETA_TOKEN: ${{ secrets.SAUCE_MOBILE_BETA_TOKEN }}
+          SAUCE_MOBILE_BETA_ENDPOINT: ${{ secrets.SAUCE_MOBILE_BETA_ENDPOINT }}
         run: |
           if [ -n "${BACKTRACE_UNIVERSE}" ] && [ -n "${BACKTRACE_TOKEN}" ]; then
             # Android needs the JSON submission URL (the native integration derives /minidump from it).
@@ -56,6 +57,7 @@ jobs:
             echo "::warning::BACKTRACE_UNIVERSE and/or BACKTRACE_TOKEN secret is empty; Backtrace is disabled in these APKs"
           fi
           [ -n "${SAUCE_MOBILE_BETA_TOKEN}" ] || echo "::warning::SAUCE_MOBILE_BETA_TOKEN secret is empty; Sauce Mobile Beta is disabled in these APKs"
+          [ -n "${SAUCE_MOBILE_BETA_ENDPOINT}" ] || echo "::warning::SAUCE_MOBILE_BETA_ENDPOINT secret is empty; Sauce Mobile Beta is disabled in these APKs (the SDK's built-in default server is no longer in service)"
           ./gradlew app:assembleDebug
           ./gradlew app:assembleDebugAndroidTest
           mv app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/mda-${{ env.CI_TAG }}-${{ github.run_number }}.apk

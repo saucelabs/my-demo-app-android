@@ -4,7 +4,7 @@
 # Debug builds use the published Sauce Mobile Beta release by default # (com.saucelabs.mobilebeta:sauce-mobile-beta-android from https://maven.testfairy.com).
 # Uncomment to pin a different version/repository.
 # To build without the SDK at all: sauceMobileBetaDisabled=true
-# sauceMobileBetaVersion=2.2.0-rc
+# sauceMobileBetaVersion=2.3.0
 # sauceMobileBetaRepository=https://maven.testfairy.com
 
 # Development only: a locally built AAR takes precedence over the published version.
@@ -13,6 +13,8 @@
 # Runtime configuration. Never commit real values.
 backtraceSubmissionUrl=https://submit.backtrace.io/<universe>/<token>/json
 sauceMobileBetaToken=<sauce-mobile-beta-token>
+# Server Endpoint from Organization Settings > SDK Settings. Required: the SDK's built-in default server is no longer in service.
+sauceMobileBetaEndpoint=<server-endpoint>
 sauceEnvironment=beta
 
 # Optional MAD build/distribution correlation value.
